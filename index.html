@@ -3,12 +3,43 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Cayden Lunt" />
     <meta
       name="description"
-      content="Cayden Lunt's portfolio featuring software projects in Python, C#, C, WebAssembly, and modern frontend development."
+      content="Cayden Lunt is a software engineer and product test engineer building full-stack apps, automation systems, internal tools, and WebAssembly projects."
+    />
+    <meta
+      name="keywords"
+      content="Cayden Lunt, cayden lunt, Cayden Lunt portfolio, software engineer, product test engineer, test automation engineer, Playwright, TypeScript, Python, C#, C, WebAssembly"
     />
     <meta name="theme-color" content="#07111f" />
-    <title>Cayden Lunt | Software Portfolio</title>
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Cayden Lunt | Software Engineer Portfolio" />
+    <meta
+      property="og:description"
+      content="Portfolio of Cayden Lunt: software engineering, test automation, internal tools, firmware-adjacent work, and modern web development."
+    />
+    <meta property="og:url" content="https://portfolio.caydenlunt.com/" />
+    <meta property="og:site_name" content="Cayden Lunt Portfolio" />
+    <meta property="og:image" content="https://portfolio.caydenlunt.com/images/og-card.svg" />
+    <meta property="og:image:type" content="image/svg+xml" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Cayden Lunt software engineer portfolio card"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Cayden Lunt | Software Engineer Portfolio" />
+    <meta
+      name="twitter:description"
+      content="Software engineering portfolio for Cayden Lunt, featuring internal tools, automation, testing, and WebAssembly projects."
+    />
+    <meta name="twitter:image" content="https://portfolio.caydenlunt.com/images/og-card.svg" />
+    <title>Cayden Lunt | Software Engineer Portfolio</title>
+    <link rel="canonical" href="https://portfolio.caydenlunt.com/" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -19,6 +50,66 @@
     <link rel="stylesheet" href="styles/main.css" />
     <link rel="stylesheet" href="styles/large.css" media="(min-width: 768px)" />
     <link rel="icon" href="images/portfolio.ico" type="image/x-icon" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Person",
+            "@id": "https://portfolio.caydenlunt.com/#person",
+            "name": "Cayden Lunt",
+            "url": "https://portfolio.caydenlunt.com/",
+            "jobTitle": "Software Engineer",
+            "description": "Software engineer and product test engineer building internal tools, automation systems, full-stack applications, and WebAssembly projects.",
+            "address": {
+              "@type": "PostalAddress",
+              "addressRegion": "Utah",
+              "addressCountry": "US"
+            },
+            "sameAs": [
+              "https://github.com/Hibob555556",
+              "https://www.linkedin.com/in/cayden-lunt-test-engineer"
+            ],
+            "knowsAbout": [
+              "C#",
+              ".NET",
+              "TypeScript",
+              "Python",
+              "C",
+              "Playwright",
+              "Selenium",
+              "Vue",
+              "Nuxt",
+              "WebAssembly",
+              "Test Automation",
+              "Software Testing"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://portfolio.caydenlunt.com/#website",
+            "url": "https://portfolio.caydenlunt.com/",
+            "name": "Cayden Lunt Portfolio",
+            "publisher": {
+              "@id": "https://portfolio.caydenlunt.com/#person"
+            }
+          },
+          {
+            "@type": "CollectionPage",
+            "@id": "https://portfolio.caydenlunt.com/#webpage",
+            "url": "https://portfolio.caydenlunt.com/",
+            "name": "Cayden Lunt | Software Engineer Portfolio",
+            "description": "Portfolio of Cayden Lunt featuring software engineering projects, test automation work, and professional experience.",
+            "isPartOf": {
+              "@id": "https://portfolio.caydenlunt.com/#website"
+            },
+            "about": {
+              "@id": "https://portfolio.caydenlunt.com/#person"
+            }
+          }
+        ]
+      }
+    </script>
   </head>
   <body class="is-loading">
     <div id="loader" aria-hidden="true">
@@ -45,11 +136,95 @@
     </header>
 
     <main id="top" class="page-shell">
+      <section class="hero section portfolio-overview">
+        <article class="hero-copy" data-reveal>
+          <p class="eyebrow">Cayden Lunt | Software Engineering Portfolio</p>
+          <h1>Cayden Lunt</h1>
+          <p class="hero-text">
+            Cayden Lunt is a software engineer and product test engineer in
+            Utah building full-stack applications, internal tools, automation
+            systems, and firmware-oriented solutions. My work spans C#/.NET,
+            TypeScript-based web development, Python, C, testing, and system
+            support, with a strong emphasis on practical value and fast
+            adaptation.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button button-secondary" href="https://github.com/Hibob555556" target="_blank" rel="me noopener">
+              GitHub Profile
+            </a>
+            <a class="button button-secondary" href="#contact">Contact</a>
+          </div>
+
+          <ul class="hero-metrics">
+            <li>
+              <strong>Cross-stack work</strong>
+              C#/.NET, TypeScript, Python, C, SQL, and full-stack web
+              application development
+            </li>
+            <li>
+              <strong>Context switching</strong>
+              Moving between appliances, requirements, languages, and project
+              types without losing momentum or quality
+            </li>
+            <li>
+              <strong>Engineering focus</strong>
+              Testing, automation, packaging, performance, and usability
+            </li>
+            <li>
+              <strong>Ramp-up speed</strong>
+              Learning frameworks, tools, and systems quickly because of a
+              strong foundation in programming fundamentals
+            </li>
+            <li>
+              <strong>Team value</strong>
+              Ready to step in, support a team quickly, and contribute with
+              detail-focused software, automation, and tests
+            </li>
+          </ul>
+
+          <div class="overview-notes">
+            <article>
+              <p class="card-kicker">Current role</p>
+              <h3>Product testing with strong software depth.</h3>
+              <p>
+                At Campbell Scientific, I build internal web applications,
+                automation systems, and testing workflows that support
+                engineering teams, reduce manual effort, and improve delivery
+                quality across multiple products, including TypeScript-based
+                tools built with Vue and Nuxt.
+              </p>
+            </article>
+            <article>
+              <p class="card-kicker">Cross-context work</p>
+              <h3>Switching contexts without losing precision.</h3>
+              <p>
+                A large part of my day-to-day work is testing across different
+                appliances, requirements, and technical constraints while
+                balancing shifting priorities. That means context switching
+                often while still managing workload and keeping the work
+                detail-focused.
+              </p>
+            </article>
+            <article>
+              <p class="card-kicker">Ramp-up and support</p>
+              <h3>Fast learner, immediate contributor.</h3>
+              <p>
+                I am able to lock in quickly on new frameworks, tools, and
+                environments because I understand how languages and systems work
+                underneath. That shows up in fast ramp-up, strong IT-backed
+                troubleshooting, and reliable team support.
+              </p>
+            </article>
+          </div>
+        </article>
+      </section>
+
       <section id="work" class="section">
         <div class="projects-spotlight" data-reveal>
           <div class="projects-spotlight-copy">
             <p class="eyebrow">Selected work</p>
-            <h2>Software projects.</h2>
+            <h2>Cayden Lunt software projects.</h2>
             <p>
               A selection of projects covering Python tooling, browser
               automation, and WebAssembly-based applications.
@@ -144,89 +319,6 @@
             </p>
           </article>
         </div>
-      </section>
-
-      <section class="hero section portfolio-overview">
-        <article class="hero-copy" data-reveal>
-          <p class="eyebrow">Software Engineering Portfolio</p>
-          <h1>Cayden Lunt</h1>
-          <p class="hero-text">
-            Software Engineer building full-stack applications, internal tools,
-            automation systems, and firmware-oriented solutions. My work spans
-            C#/.NET, TypeScript-based web development, Python, C, testing, and
-            system support, with a strong emphasis on practical value and fast
-            adaptation.
-          </p>
-
-          <div class="hero-actions">
-            <a class="button button-secondary" href="https://github.com/Hibob555556" target="_blank" rel="noopener">
-              GitHub Profile
-            </a>
-            <a class="button button-secondary" href="#contact">Contact</a>
-          </div>
-
-          <ul class="hero-metrics">
-            <li>
-              <strong>Cross-stack work</strong>
-              C#/.NET, TypeScript, Python, C, SQL, and full-stack web
-              application development
-            </li>
-            <li>
-              <strong>Context switching</strong>
-              Moving between appliances, requirements, languages, and project
-              types without losing momentum or quality
-            </li>
-            <li>
-              <strong>Engineering focus</strong>
-              Testing, automation, packaging, performance, and usability
-            </li>
-            <li>
-              <strong>Ramp-up speed</strong>
-              Learning frameworks, tools, and systems quickly because of a
-              strong foundation in programming fundamentals
-            </li>
-            <li>
-              <strong>Team value</strong>
-              Ready to step in, support a team quickly, and contribute with
-              detail-focused software, automation, and tests
-            </li>
-          </ul>
-
-          <div class="overview-notes">
-            <article>
-              <p class="card-kicker">Current role</p>
-              <h3>Product testing with strong software depth.</h3>
-              <p>
-                At Campbell Scientific, I build internal web applications,
-                automation systems, and testing workflows that support
-                engineering teams, reduce manual effort, and improve delivery
-                quality across multiple products, including TypeScript-based
-                tools built with Vue and Nuxt.
-              </p>
-            </article>
-            <article>
-              <p class="card-kicker">Cross-context work</p>
-              <h3>Switching contexts without losing precision.</h3>
-              <p>
-                A large part of my day-to-day work is testing across different
-                appliances, requirements, and technical constraints while
-                balancing shifting priorities. That means context switching
-                often while still managing workload and keeping the work
-                detail-focused.
-              </p>
-            </article>
-            <article>
-              <p class="card-kicker">Ramp-up and support</p>
-              <h3>Fast learner, immediate contributor.</h3>
-              <p>
-                I am able to lock in quickly on new frameworks, tools, and
-                environments because I understand how languages and systems work
-                underneath. That shows up in fast ramp-up, strong IT-backed
-                troubleshooting, and reliable team support.
-              </p>
-            </article>
-          </div>
-        </article>
       </section>
 
       <section id="experience" class="section">
@@ -430,15 +522,15 @@
         </div>
 
         <div class="footer-actions">
-          <a class="button button-primary" href="https://www.linkedin.com/in/cayden-lunt-test-engineer" target="_blank" rel="noopener">
+          <a class="button button-primary" href="https://www.linkedin.com/in/cayden-lunt-test-engineer" target="_blank" rel="me noopener">
             Connect on LinkedIn
           </a>
           <div class="social-links">
-            <a href="https://github.com/Hibob555556" target="_blank" rel="noopener">
+            <a href="https://github.com/Hibob555556" target="_blank" rel="me noopener">
               <img src="images/github.svg" alt="GitHub" />
               GitHub
             </a>
-            <a href="https://www.linkedin.com/in/cayden-lunt-test-engineer" target="_blank" rel="noopener">
+            <a href="https://www.linkedin.com/in/cayden-lunt-test-engineer" target="_blank" rel="me noopener">
               <img src="images/linkedin.svg" alt="LinkedIn" />
               LinkedIn
             </a>

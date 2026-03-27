@@ -1,0 +1,26 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Cayden Lunt software engineer portfolio</title>
+  <desc id="desc">Preview card for Cayden Lunt portfolio website.</desc>
+  <rect width="1200" height="630" fill="#07111F"/>
+  <rect width="1200" height="630" fill="url(#bgGlow)"/>
+  <circle cx="171" cy="112" r="190" fill="#32D7BE" fill-opacity="0.18"/>
+  <circle cx="1028" cy="116" r="150" fill="#FFD279" fill-opacity="0.16"/>
+  <circle cx="1032" cy="517" r="198" fill="#81A8FF" fill-opacity="0.14"/>
+  <rect x="72" y="74" width="1056" height="482" rx="36" fill="#0C1728" fill-opacity="0.9" stroke="#FFFFFF" stroke-opacity="0.1"/>
+  <rect x="112" y="114" width="92" height="92" rx="24" fill="url(#mark)"/>
+  <text x="158" y="170" text-anchor="middle" fill="#F3F7FF" font-family="Space Grotesk, Arial, sans-serif" font-size="34" font-weight="700" letter-spacing="0.14em">CL</text>
+  <text x="112" y="278" fill="#7CF0CF" font-family="Space Grotesk, Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="0.24em">SOFTWARE ENGINEER PORTFOLIO</text>
+  <text x="112" y="368" fill="#F3F7FF" font-family="Space Grotesk, Arial, sans-serif" font-size="76" font-weight="700">Cayden Lunt</text>
+  <text x="112" y="432" fill="#D7E4FB" font-family="Manrope, Arial, sans-serif" font-size="30" font-weight="500">Full-stack apps, test automation, internal tools, and WebAssembly projects.</text>
+  <text x="112" y="497" fill="#9FB0CB" font-family="Manrope, Arial, sans-serif" font-size="26" font-weight="500">portfolio.caydenlunt.com</text>
+  <defs>
+    <radialGradient id="bgGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(365 62) rotate(38.5581) scale(802.985 977.415)">
+      <stop stop-color="#32D7BE" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#07111F" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="mark" x1="112" y1="114" x2="204" y2="206" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7CF0CF" stop-opacity="0.24"/>
+      <stop offset="1" stop-color="#FFD279" stop-opacity="0.18"/>
+    </linearGradient>
+  </defs>
+</svg>
