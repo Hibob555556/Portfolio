@@ -1,10 +1,60 @@
-/* Styles for larger screens */
 @media (min-width: 768px) {
-    body {
-        margin: auto;
-        max-width: 800px;
+    .projects-spotlight {
+        grid-template-columns: minmax(0, 1.25fr) repeat(2, minmax(0, 0.8fr));
+        align-items: start;
     }
-    .project {
-        padding: 30px;
+
+    .overview-notes {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .project-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .experience-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .about-layout {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .value-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 1080px) {
+    .section-grid {
+        display: grid;
+        grid-template-columns: minmax(280px, 0.7fr) minmax(0, 1.3fr);
+        gap: 1.4rem;
+        align-items: start;
+    }
+
+    .project-grid-prominent {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .overview-notes {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .section-heading {
+        margin-bottom: 0;
+        position: sticky;
+        top: 6.2rem;
+    }
+
+    .section-heading.narrow {
+        max-width: 36rem;
+    }
+
+    .split-section {
+        display: grid;
+        grid-template-columns: minmax(280px, 0.78fr) minmax(0, 1.22fr);
+        gap: 1.4rem;
+        align-items: start;
     }
 }
