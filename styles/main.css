@@ -557,6 +557,7 @@ ul {
     letter-spacing: -0.04em;
     margin-bottom: 0.8rem;
 }
+
 .project-grid,
 .experience-list,
 .value-grid,
@@ -711,6 +712,59 @@ ul {
 
 .section-heading p {
     max-width: 46rem;
+}
+
+.certification-panel {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.85fr);
+    align-items: center;
+}
+
+.certification-copy ul {
+    list-style: none;
+    padding: 0;
+    margin: 1.3rem 0 0;
+    display: grid;
+    gap: 0.75rem;
+}
+
+.certification-copy li {
+    position: relative;
+    padding-left: 1.1rem;
+    color: var(--muted);
+}
+
+.certification-copy li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.8rem;
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent-warm));
+}
+
+.certification-image-card {
+    padding: 1.35rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.04);
+    box-shadow: 0 22px 60px rgba(0, 0, 0, 0.22);
+}
+
+.certification-image-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 1rem;
+    object-fit: cover;
+}
+
+@media (max-width: 767px) {
+    .certification-panel {
+        grid-template-columns: 1fr;
+    }
 }
 
 .project-card ul {
@@ -899,6 +953,7 @@ ul {
 }
 
 @keyframes loaderPulse {
+
     0%,
     100% {
         transform: scale(1);
@@ -935,6 +990,7 @@ ul {
 }
 
 @media (max-width: 767px) {
+
     .page-shell,
     .site-header {
         width: min(100vw - 1.2rem, 100%);

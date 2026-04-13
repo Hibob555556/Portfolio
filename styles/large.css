@@ -41,7 +41,8 @@
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
-    .section-heading {
+    .section-grid .section-heading,
+    .split-section .section-heading {
         margin-bottom: 0;
         position: sticky;
         top: 6.2rem;

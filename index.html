@@ -1,56 +1,45 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="author" content="Cayden Lunt" />
-    <meta
-      name="description"
-      content="Cayden Lunt is a software engineer building full-stack apps, automation systems, internal tools, and WebAssembly projects."
-    />
-    <meta
-      name="keywords"
-      content="Cayden Lunt, cayden lunt, Cayden Lunt portfolio, software engineer, full-stack developer, automation engineer, Playwright, TypeScript, Python, C#, C, WebAssembly"
-    />
-    <meta name="theme-color" content="#07111f" />
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Cayden Lunt | Software Engineer Portfolio" />
-    <meta
-      property="og:description"
-      content="Portfolio of Cayden Lunt: software engineering, internal tools, automation systems, firmware-adjacent work, and modern web development."
-    />
-    <meta property="og:url" content="https://www.caydenlunt.com/" />
-    <meta property="og:site_name" content="Cayden Lunt Portfolio" />
-    <meta property="og:image" content="https://www.caydenlunt.com/images/og-card.svg" />
-    <meta property="og:image:type" content="image/svg+xml" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta
-      property="og:image:alt"
-      content="Cayden Lunt software engineer portfolio card"
-    />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Cayden Lunt | Software Engineer Portfolio" />
-    <meta
-      name="twitter:description"
-      content="Software engineering portfolio for Cayden Lunt, featuring internal tools, automation systems, full-stack work, and WebAssembly projects."
-    />
-    <meta name="twitter:image" content="https://www.caydenlunt.com/images/og-card.svg" />
-    <title>Cayden Lunt | Software Engineer Portfolio</title>
-    <link rel="canonical" href="https://www.caydenlunt.com/" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles/normalize.css" />
-    <link rel="stylesheet" href="styles/main.css" />
-    <link rel="stylesheet" href="styles/large.css" media="(min-width: 768px)" />
-    <link rel="icon" href="images/portfolio.ico" type="image/x-icon" />
-    <script type="application/ld+json">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Cayden Lunt" />
+  <meta name="description"
+    content="Cayden Lunt is a software engineer building full-stack apps, automation systems, internal tools, and WebAssembly projects." />
+  <meta name="keywords"
+    content="Cayden Lunt, cayden lunt, Cayden Lunt portfolio, software engineer, full-stack developer, automation engineer, Playwright, TypeScript, Python, C#, C, WebAssembly" />
+  <meta name="theme-color" content="#07111f" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Cayden Lunt | Software Engineer Portfolio" />
+  <meta property="og:description"
+    content="Portfolio of Cayden Lunt: software engineering, internal tools, automation systems, firmware-adjacent work, and modern web development." />
+  <meta property="og:url" content="https://www.caydenlunt.com/" />
+  <meta property="og:site_name" content="Cayden Lunt Portfolio" />
+  <meta property="og:image" content="https://www.caydenlunt.com/images/og-card.svg" />
+  <meta property="og:image:type" content="image/svg+xml" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Cayden Lunt software engineer portfolio card" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Cayden Lunt | Software Engineer Portfolio" />
+  <meta name="twitter:description"
+    content="Software engineering portfolio for Cayden Lunt, featuring internal tools, automation systems, full-stack work, and WebAssembly projects." />
+  <meta name="twitter:image" content="https://www.caydenlunt.com/images/og-card.svg" />
+  <title>Cayden Lunt | Software Engineer Portfolio</title>
+  <link rel="canonical" href="https://www.caydenlunt.com/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="styles/normalize.css" />
+  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="styles/large.css" media="(min-width: 768px)" />
+  <link rel="icon" href="images/portfolio.ico" type="image/x-icon" />
+  <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@graph": [
@@ -110,436 +99,480 @@
         ]
       }
     </script>
-  </head>
-  <body class="is-loading">
-    <div id="loader" aria-hidden="true">
-      <div class="loader-mark">CL</div>
-      <div class="loader-line"></div>
-      <p>Loading selected work...</p>
-    </div>
+</head>
 
-    <header class="site-header">
-      <a class="brand" href="#top" aria-label="Back to top">
-        <span class="brand-mark">CL</span>
-        <span class="brand-copy">
-          <strong>Cayden Lunt</strong>
-          <span>Software Engineer and Builder</span>
-        </span>
-      </a>
+<body class="is-loading">
+  <div id="loader" aria-hidden="true">
+    <div class="loader-mark">CL</div>
+    <div class="loader-line"></div>
+    <p>Loading selected work...</p>
+  </div>
 
-      <nav class="site-nav" aria-label="Primary">
-        <a href="#work">Projects</a>
-        <a href="#stack">Stack</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Back to top">
+      <span class="brand-mark">CL</span>
+      <span class="brand-copy">
+        <strong>Cayden Lunt</strong>
+        <span>Software Engineer and Builder</span>
+      </span>
+    </a>
 
-    <main id="top" class="page-shell">
-      <section id="work" class="section">
-        <div class="projects-spotlight" data-reveal>
-          <div class="projects-spotlight-copy">
-            <p class="eyebrow">Selected work</p>
-            <h2>Cayden Lunt software projects.</h2>
-            <p>
-              A selection of projects covering Python tooling, browser
-              automation, and WebAssembly-based applications.
-            </p>
-          </div>
-          <div class="projects-spotlight-stats">
-            <div>
-              <strong>4</strong>
-              <span>Featured projects</span>
-            </div>
-            <div>
-              <strong>3</strong>
-              <span>Live web demos</span>
-            </div>
-            <div>
-              <strong>4</strong>
-              <span>GitHub repositories</span>
-            </div>
-          </div>
-        </div>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="#work">Projects</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#stack">Stack</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-        <div class="project-grid project-grid-prominent">
-          <article class="project-card" data-reveal>
-            <p class="project-type">Python Tooling</p>
-            <h3>QuickQRForge</h3>
-            <p>
-              A URL-to-QR-code generator built for practical use, with both a
-              command-line workflow and interactive TUI experience.
-            </p>
-            <ul>
-              <li>CLI and TUI support for different user workflows</li>
-              <li>URL normalization, validation, and useful exit codes</li>
-              <li>PyPI packaging, CI coverage, and reusable library API</li>
-            </ul>
-            <p class="project-links">
-              <a class="project-link-button" href="https://github.com/Hibob555556/QRGenerator/" target="_blank" rel="noopener">View on GitHub</a>
-              <a class="project-link-button project-link-button-accent" href="https://pypi.org/project/QuickQRForge/" target="_blank" rel="noopener">View on PyPI</a>
-            </p>
-          </article>
-
-          <article class="project-card" data-reveal>
-            <p class="project-type">C# and Playwright</p>
-            <h3>WebScraping Automation</h3>
-            <p>
-              A browser automation tool in C# built to extract data from dynamic
-              sites with modern rendering and async workflows.
-            </p>
-            <ul>
-              <li>Reliable handling for JavaScript-heavy websites</li>
-              <li>Async-first architecture for scalable scraping flows</li>
-              <li>Built around navigation timing and state edge cases</li>
-            </ul>
-            <p class="project-links">
-              <a class="project-link-button project-link-button-accent" href="https://github.com/hibob555556/WebScraping" target="_blank" rel="noopener">View on GitHub</a>
-            </p>
-          </article>
-
-          <article class="project-card" data-reveal>
-            <p class="project-type">C and WebAssembly</p>
-            <h3>SunTracker</h3>
-            <p>
-              A solar elevation calculator with a JavaScript interface and C
-              core compiled to WebAssembly for responsive in-browser
-              computation.
-            </p>
-            <ul>
-              <li>Real-time elevation calculations from location inputs</li>
-              <li>Daily visualization powered by Chart.js</li>
-              <li>Low-level performance paired with a clean frontend</li>
-            </ul>
-            <p class="project-links">
-              <a class="project-link-button project-link-button-accent" href="https://hibob555556.github.io/WASM_SunTracker/" rel="noopener">View Site</a>
-              <a class="project-link-button" href="https://github.com/Hibob555556/WASM_SunTracker" target="_blank" rel="noopener">View on GitHub</a>
-            </p>
-          </article>
-
-          <article class="project-card" data-reveal>
-            <p class="project-type">WebAssembly UI</p>
-            <h3>Decimal and Binary Converter</h3>
-            <p>
-              A browser-based conversion tool that combines C logic with a
-              JavaScript frontend for fast, interactive number conversion.
-            </p>
-            <ul>
-              <li>Efficient conversion algorithms compiled to WebAssembly</li>
-              <li>Readable binary formatting for eight-bit groupings</li>
-              <li>Clean bridge between C functions and browser UI</li>
-            </ul>
-            <p class="project-links">
-              <a class="project-link-button project-link-button-accent" href="https://hibob555556.github.io/DecimalToBinaryWasm/" rel="noopener">View Site</a>
-              <a class="project-link-button" href="https://github.com/Hibob555556/DecimalToBinaryWasm" target="_blank" rel="noopener">View on GitHub</a>
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section class="hero section portfolio-overview">
-        <article class="hero-copy" data-reveal>
-          <p class="eyebrow">Cayden Lunt | Software Engineering Portfolio</p>
-          <h1>Cayden Lunt</h1>
-          <p class="hero-text">
-            Cayden Lunt is a software engineer in Utah building full-stack
-            applications, internal tools, automation systems, and
-            firmware-oriented solutions. My work spans C#/.NET,
-            TypeScript-based web development, Python, C, and system support,
-            with a strong emphasis on practical value and fast adaptation.
+  <main id="top" class="page-shell">
+    <section id="work" class="section">
+      <div class="projects-spotlight" data-reveal>
+        <div class="projects-spotlight-copy">
+          <p class="eyebrow">Selected work</p>
+          <h2>Cayden Lunt software projects.</h2>
+          <p>
+            A selection of projects covering Python tooling, browser
+            automation, and WebAssembly-based applications.
           </p>
-
-          <div class="hero-actions">
-            <a class="button button-secondary" href="https://github.com/Hibob555556" target="_blank" rel="me noopener">
-              GitHub Profile
-            </a>
-            <a class="button button-secondary" href="#contact">Contact</a>
+        </div>
+        <div class="projects-spotlight-stats">
+          <div>
+            <strong>4</strong>
+            <span>Featured projects</span>
           </div>
+          <div>
+            <strong>3</strong>
+            <span>Live web demos</span>
+          </div>
+          <div>
+            <strong>4</strong>
+            <span>GitHub repositories</span>
+          </div>
+        </div>
+      </div>
 
-          <ul class="hero-metrics">
-            <li>
-              <strong>Cross-stack work</strong>
-              C#/.NET, TypeScript, Python, C, SQL, and full-stack web
-              application development
-            </li>
-            <li>
-              <strong>Context switching</strong>
-              Moving between appliances, requirements, languages, and project
-              types without losing momentum or quality
-            </li>
-            <li>
-              <strong>Engineering focus</strong>
-              Product-minded software, automation, performance, and usability
-            </li>
-            <li>
-              <strong>Ramp-up speed</strong>
-              Learning frameworks, tools, and systems quickly because of a
-              strong foundation in programming fundamentals
-            </li>
-            <li>
-              <strong>Team value</strong>
-              Ready to step in, support a team quickly, and contribute with
-              detail-focused software, automation, and delivery-minded work
-            </li>
+      <div class="project-grid project-grid-prominent">
+        <article class="project-card" data-reveal>
+          <p class="project-type">Python Tooling</p>
+          <h3>QuickQRForge</h3>
+          <p>
+            A URL-to-QR-code generator built for practical use, with both a
+            command-line workflow and interactive TUI experience.
+          </p>
+          <ul>
+            <li>CLI and TUI support for different user workflows</li>
+            <li>URL normalization, validation, and useful exit codes</li>
+            <li>PyPI packaging, CI coverage, and reusable library API</li>
           </ul>
-
-          <div class="overview-notes">
-            <article>
-              <p class="card-kicker">Current role</p>
-              <h3>Software engineering that improves real team workflows.</h3>
-              <p>
-                At Campbell Scientific, I build internal web applications,
-                automation systems, and engineering workflows that support
-                teams, reduce manual effort, and improve delivery quality
-                across multiple products, including TypeScript-based tools
-                built with Vue and Nuxt.
-              </p>
-            </article>
-            <article>
-              <p class="card-kicker">Cross-context work</p>
-              <h3>Switching contexts without losing precision.</h3>
-              <p>
-                A large part of my day-to-day work is moving across different
-                appliances, requirements, and technical constraints while
-                balancing shifting priorities. That means context switching
-                often while still managing workload and keeping the work
-                detail-focused.
-              </p>
-            </article>
-            <article>
-              <p class="card-kicker">Ramp-up and support</p>
-              <h3>Fast learner, immediate contributor.</h3>
-              <p>
-                I am able to lock in quickly on new frameworks, tools, and
-                environments because I understand how languages and systems work
-                underneath. That shows up in fast ramp-up, strong IT-backed
-                troubleshooting, and reliable team support.
-              </p>
-            </article>
-          </div>
+          <p class="project-links">
+            <a class="project-link-button" href="https://github.com/Hibob555556/QRGenerator/" target="_blank"
+              rel="noopener">View on GitHub</a>
+            <a class="project-link-button project-link-button-accent" href="https://pypi.org/project/QuickQRForge/"
+              target="_blank" rel="noopener">View on PyPI</a>
+          </p>
         </article>
-      </section>
 
-      <section id="experience" class="section">
-        <div class="section-grid">
-          <div class="section-heading" data-reveal>
-            <p class="eyebrow">Professional Experience</p>
-            <h2>Professional experience in software engineering, automation, and support.</h2>
-            <p>
-              Recent roles focused on internal tools, software engineering,
-              automation, troubleshooting, and supporting engineering teams
-              across multiple products and environments.
-            </p>
-          </div>
-
-          <div class="experience-list">
-            <article class="experience-card" data-reveal>
-              <div class="experience-topline">
-                <div>
-                  <p class="card-kicker">Campbell Scientific</p>
-                  <h3>Product Test Engineer</h3>
-                </div>
-                <p class="experience-dates">Mar 2024 - Present</p>
-              </div>
-              <p class="experience-summary">
-                Software engineering and automation work across multiple
-                products, appliances, cloud applications, and evolving
-                technical requirements.
-              </p>
-              <ul>
-                <li>Built internal web applications in Vue, Nuxt, and TypeScript to support engineering workflows</li>
-                <li>Developed Playwright and Selenium automation to reduce manual effort and strengthen UI reliability</li>
-                <li>Tested and troubleshot cloud applications in distributed environments using strong IT support skills</li>
-                <li>Maintained and updated firmware in C, contributing to debugging and performance improvements</li>
-                <li>Performed security validation aligned with ISO 27001 practices across changing tools and requirements</li>
-                <li>Context-switched across products and priorities while staying detail-focused and dependable to the team</li>
-              </ul>
-            </article>
-
-            <article class="experience-card" data-reveal>
-              <div class="experience-topline">
-                <div>
-                  <p class="card-kicker">Space Dynamics Laboratory</p>
-                  <h3>Student Engineering Assistant</h3>
-                </div>
-                <p class="experience-dates">Aug 2022 - Mar 2024</p>
-              </div>
-              <p class="experience-summary">
-                Engineering support work focused on automation, internal tools,
-                framework reliability, and fast contribution across shifting
-                product needs.
-              </p>
-              <ul>
-                <li>Developed automation tools in C# to validate complex UI workflows and improve product quality</li>
-                <li>Built in-house stress-testing libraries to improve resilience and broaden system coverage</li>
-                <li>Contributed to internal engineering frameworks and troubleshooting across multiple products</li>
-                <li>Adapted quickly to changing requirements and supported agile teams during development sprints</li>
-                <li>Executed regression coverage and maintained validation suites across evolving product versions</li>
-              </ul>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="stack" class="section split-section">
-        <div class="section-heading" data-reveal>
-          <p class="eyebrow">Stack and approach</p>
-          <h2>Comfortable across languages, systems, software delivery, and engineering execution.</h2>
+        <article class="project-card" data-reveal>
+          <p class="project-type">C# and Playwright</p>
+          <h3>WebScraping Automation</h3>
           <p>
-            My background combines software development, automation, and
-            hands-on IT support. I enjoy work that spans internal tools,
-            firmware-adjacent debugging, distributed systems, and user-facing
-            applications, including modern TypeScript frontend work.
+            A browser automation tool in C# built to extract data from dynamic
+            sites with modern rendering and async workflows.
           </p>
-        </div>
+          <ul>
+            <li>Reliable handling for JavaScript-heavy websites</li>
+            <li>Async-first architecture for scalable scraping flows</li>
+            <li>Built around navigation timing and state edge cases</li>
+          </ul>
+          <p class="project-links">
+            <a class="project-link-button project-link-button-accent" href="https://github.com/hibob555556/WebScraping"
+              target="_blank" rel="noopener">View on GitHub</a>
+          </p>
+        </article>
 
-        <div class="stack-panel" data-reveal>
-          <div class="chip-group">
-            <span>C#/.NET</span>
-            <span>TypeScript</span>
-            <span>Python</span>
-            <span>C</span>
-            <span>Vue</span>
-            <span>Nuxt</span>
-            <span>Playwright</span>
-            <span>Selenium</span>
-            <span>Jest</span>
-            <span>REST APIs</span>
-            <span>SQL</span>
-            <span>Docker</span>
-            <span>CI and Testing</span>
-            <span>Linux and Bash</span>
-            <span>Firmware Development</span>
-            <span>ISO 27001</span>
-          </div>
+        <article class="project-card" data-reveal>
+          <p class="project-type">C and WebAssembly</p>
+          <h3>SunTracker</h3>
           <p>
-            Recent work has included Vue and Nuxt internal applications,
-            TypeScript frontend development, Playwright and Selenium
-            automation, cloud applications, firmware maintenance in C, and
-            security-focused validation aligned with ISO 27001 practices. I
-            like building systems that reduce friction, expand capability, and
-            make engineering work easier to trust.
+            A solar elevation calculator with a JavaScript interface and C
+            core compiled to WebAssembly for responsive in-browser
+            computation.
           </p>
-        </div>
-      </section>
+          <ul>
+            <li>Real-time elevation calculations from location inputs</li>
+            <li>Daily visualization powered by Chart.js</li>
+            <li>Low-level performance paired with a clean frontend</li>
+          </ul>
+          <p class="project-links">
+            <a class="project-link-button project-link-button-accent"
+              href="https://hibob555556.github.io/WASM_SunTracker/" rel="noopener">View Site</a>
+            <a class="project-link-button" href="https://github.com/Hibob555556/WASM_SunTracker" target="_blank"
+              rel="noopener">View on GitHub</a>
+          </p>
+        </article>
 
-      <section id="about" class="section">
-        <div class="about-layout">
-          <article class="about-card" data-reveal>
-            <p class="eyebrow">About me</p>
-            <h2>Builder mindset, engineering mindset, support mindset.</h2>
-            <p>
-              I like solving practical engineering problems and presenting the
-              result with enough clarity and polish that the work can speak for
-              itself. Maintainability, security awareness, and user trust are
-              part of the build process, not extras.
-            </p>
-          </article>
-
-          <article class="about-card" data-reveal>
-            <p class="eyebrow">What I bring</p>
-            <h2>Curious execution with strong follow-through.</h2>
-            <p>
-              Whether I am building an internal tool, automating UI validation,
-              maintaining firmware, or adapting to a new framework, I aim for
-              solutions that are durable, understandable, and ready for real
-              use. I can move across different kinds of work and still stay
-              organized, careful, and productive.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section" data-reveal>
-        <div class="section-grid">
-          <div class="section-heading narrow">
-            <p class="eyebrow">Why this work stands out</p>
-            <h2>Engineering that balances utility, clarity, and finish.</h2>
-            <p>
-              The same patterns show up across both projects and professional
-              work: practical utility, maintainable structure, thoughtful
-              implementation, and the ability to handle changing products,
-              requirements, systems, and technologies.
-            </p>
-          </div>
-
-          <div class="value-grid">
-            <article>
-              <h3>Built to be used</h3>
-              <p>
-                Tools designed around actual workflows, not just technical
-                demos.
-              </p>
-            </article>
-            <article>
-              <h3>Built to last</h3>
-              <p>
-                Modular structure, automated tests, and maintainability
-                considerations from the start.
-              </p>
-            </article>
-            <article>
-              <h3>Built with range</h3>
-              <p>
-                Comfortable moving between low-level logic, automation,
-                interface work, test coverage, and changing requirements
-                without losing cohesion.
-              </p>
-            </article>
-            <article>
-              <h3>Built for fast contribution</h3>
-              <p>
-                Strong underlying technical understanding makes it easier to
-                learn unfamiliar tools quickly and become useful to a team
-                without a long ramp-up period.
-              </p>
-            </article>
-            <article>
-              <h3>Built with operational awareness</h3>
-              <p>
-                Hands-on testing and IT experience make it easier to diagnose
-                issues in real environments, support teammates, and keep work
-                moving when systems get complicated.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer id="contact" class="page-shell">
-      <section class="site-footer" data-reveal>
-        <p class="eyebrow">Contact</p>
-        <div class="footer-copy">
-          <h2>Let&apos;s build something useful and memorable.</h2>
+        <article class="project-card" data-reveal>
+          <p class="project-type">WebAssembly UI</p>
+          <h3>Decimal and Binary Converter</h3>
           <p>
-            I am always interested in thoughtful software work, especially where
-            reliability, tooling, and product feel all matter.
+            A browser-based conversion tool that combines C logic with a
+            JavaScript frontend for fast, interactive number conversion.
           </p>
-        </div>
+          <ul>
+            <li>Efficient conversion algorithms compiled to WebAssembly</li>
+            <li>Readable binary formatting for eight-bit groupings</li>
+            <li>Clean bridge between C functions and browser UI</li>
+          </ul>
+          <p class="project-links">
+            <a class="project-link-button project-link-button-accent"
+              href="https://hibob555556.github.io/DecimalToBinaryWasm/" rel="noopener">View Site</a>
+            <a class="project-link-button" href="https://github.com/Hibob555556/DecimalToBinaryWasm" target="_blank"
+              rel="noopener">View on GitHub</a>
+          </p>
+        </article>
+      </div>
+    </section>
 
-        <div class="footer-actions">
-          <a class="button button-primary" href="https://www.linkedin.com/in/cayden-lunt-test-engineer" target="_blank" rel="me noopener">
-            Connect on LinkedIn
-          </a>
-          <div class="social-links">
-            <a href="https://github.com/Hibob555556" target="_blank" rel="me noopener">
-              <img src="images/github.svg" alt="GitHub" />
-              GitHub
-            </a>
-            <a href="https://www.linkedin.com/in/cayden-lunt-test-engineer" target="_blank" rel="me noopener">
-              <img src="images/linkedin.svg" alt="LinkedIn" />
-              LinkedIn
-            </a>
-          </div>
-        </div>
-
-        <p class="footer-note">
-          &copy;<span id="year">2026</span> Cayden Lunt | Utah, United States
+    <section id="certifications" class="section">
+      <div class="section-heading" data-reveal>
+        <p class="eyebrow">Certifications</p>
+        <h2>BYU Idaho Web & Computer Programming</h2>
+        <p>
+          A formal certificate in web and computer programming, highlighting practical programming skills, website
+          design, and standards-driven development.
         </p>
-      </section>
-    </footer>
+      </div>
 
-    <script src="scripts/main.js"></script>
-  </body>
+      <div class="certification-panel" data-reveal>
+        <div class="certification-copy">
+          <p>
+            This certificate shows focused achievement in programming, modern web design, dynamic web development, and
+            the ability to learn new technologies.
+          </p>
+          <ul>
+            <li>Write programs for meaningful tasks in a variety of domains</li>
+            <li>Design websites that are visually appealing and effective</li>
+            <li>Develop dynamic webpages that follow standards and best practices</li>
+            <li>Learn and apply new technology and techniques in future programming</li>
+          </ul>
+        </div>
+        <div class="certification-image-card">
+          <img src="images/certificate.png" alt="BYU Idaho Web & Computer Programming certificate" />
+        </div>
+      </div>
+    </section>
+
+    <section class="hero section portfolio-overview">
+      <article class="hero-copy" data-reveal>
+        <p class="eyebrow">Cayden Lunt | Software Engineering Portfolio</p>
+        <h1>Cayden Lunt</h1>
+        <p class="hero-text">
+          Cayden Lunt is a software engineer in Utah building full-stack
+          applications, internal tools, automation systems, and
+          firmware-oriented solutions. My work spans C#/.NET,
+          TypeScript-based web development, Python, C, and system support,
+          with a strong emphasis on practical value and fast adaptation.
+        </p>
+
+        <div class="hero-actions">
+          <a class="button button-secondary" href="https://github.com/Hibob555556" target="_blank" rel="me noopener">
+            GitHub Profile
+          </a>
+          <a class="button button-secondary" href="#contact">Contact</a>
+        </div>
+
+        <ul class="hero-metrics">
+          <li>
+            <strong>Cross-stack work</strong>
+            C#/.NET, TypeScript, Python, C, SQL, and full-stack web
+            application development
+          </li>
+          <li>
+            <strong>Context switching</strong>
+            Moving between appliances, requirements, languages, and project
+            types without losing momentum or quality
+          </li>
+          <li>
+            <strong>Engineering focus</strong>
+            Product-minded software, automation, performance, and usability
+          </li>
+          <li>
+            <strong>Ramp-up speed</strong>
+            Learning frameworks, tools, and systems quickly because of a
+            strong foundation in programming fundamentals
+          </li>
+          <li>
+            <strong>Team value</strong>
+            Ready to step in, support a team quickly, and contribute with
+            detail-focused software, automation, and delivery-minded work
+          </li>
+        </ul>
+
+        <div class="overview-notes">
+          <article>
+            <p class="card-kicker">Current role</p>
+            <h3>Software engineering that improves real team workflows.</h3>
+            <p>
+              At Campbell Scientific, I build internal web applications,
+              automation systems, and engineering workflows that support
+              teams, reduce manual effort, and improve delivery quality
+              across multiple products, including TypeScript-based tools
+              built with Vue and Nuxt.
+            </p>
+          </article>
+          <article>
+            <p class="card-kicker">Cross-context work</p>
+            <h3>Switching contexts without losing precision.</h3>
+            <p>
+              A large part of my day-to-day work is moving across different
+              appliances, requirements, and technical constraints while
+              balancing shifting priorities. That means context switching
+              often while still managing workload and keeping the work
+              detail-focused.
+            </p>
+          </article>
+          <article>
+            <p class="card-kicker">Ramp-up and support</p>
+            <h3>Fast learner, immediate contributor.</h3>
+            <p>
+              I am able to lock in quickly on new frameworks, tools, and
+              environments because I understand how languages and systems work
+              underneath. That shows up in fast ramp-up, strong IT-backed
+              troubleshooting, and reliable team support.
+            </p>
+          </article>
+        </div>
+      </article>
+    </section>
+
+    <section id="experience" class="section">
+      <div class="section-grid">
+        <div class="section-heading" data-reveal>
+          <p class="eyebrow">Professional Experience</p>
+          <h2>Professional experience in software engineering, automation, and support.</h2>
+          <p>
+            Recent roles focused on internal tools, software engineering,
+            automation, troubleshooting, and supporting engineering teams
+            across multiple products and environments.
+          </p>
+        </div>
+
+        <div class="experience-list">
+          <article class="experience-card" data-reveal>
+            <div class="experience-topline">
+              <div>
+                <p class="card-kicker">Campbell Scientific</p>
+                <h3>Product Test Engineer</h3>
+              </div>
+              <p class="experience-dates">Mar 2024 - Present</p>
+            </div>
+            <p class="experience-summary">
+              Software engineering and automation work across multiple
+              products, appliances, cloud applications, and evolving
+              technical requirements.
+            </p>
+            <ul>
+              <li>Built internal web applications in Vue, Nuxt, and TypeScript to support engineering workflows</li>
+              <li>Developed Playwright and Selenium automation to reduce manual effort and strengthen UI reliability
+              </li>
+              <li>Tested and troubleshot cloud applications in distributed environments using strong IT support skills
+              </li>
+              <li>Maintained and updated firmware in C, contributing to debugging and performance improvements</li>
+              <li>Performed security validation aligned with ISO 27001 practices across changing tools and requirements
+              </li>
+              <li>Context-switched across products and priorities while staying detail-focused and dependable to the
+                team</li>
+            </ul>
+          </article>
+
+          <article class="experience-card" data-reveal>
+            <div class="experience-topline">
+              <div>
+                <p class="card-kicker">Space Dynamics Laboratory</p>
+                <h3>Student Engineering Assistant</h3>
+              </div>
+              <p class="experience-dates">Aug 2022 - Mar 2024</p>
+            </div>
+            <p class="experience-summary">
+              Engineering support work focused on automation, internal tools,
+              framework reliability, and fast contribution across shifting
+              product needs.
+            </p>
+            <ul>
+              <li>Developed automation tools in C# to validate complex UI workflows and improve product quality</li>
+              <li>Built in-house stress-testing libraries to improve resilience and broaden system coverage</li>
+              <li>Contributed to internal engineering frameworks and troubleshooting across multiple products</li>
+              <li>Adapted quickly to changing requirements and supported agile teams during development sprints</li>
+              <li>Executed regression coverage and maintained validation suites across evolving product versions</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="stack" class="section split-section">
+      <div class="section-heading" data-reveal>
+        <p class="eyebrow">Stack and approach</p>
+        <h2>Comfortable across languages, systems, software delivery, and engineering execution.</h2>
+        <p>
+          My background combines software development, automation, and
+          hands-on IT support. I enjoy work that spans internal tools,
+          firmware-adjacent debugging, distributed systems, and user-facing
+          applications, including modern TypeScript frontend work.
+        </p>
+      </div>
+
+      <div class="stack-panel" data-reveal>
+        <div class="chip-group">
+          <span>C#/.NET</span>
+          <span>TypeScript</span>
+          <span>Python</span>
+          <span>C</span>
+          <span>Vue</span>
+          <span>Nuxt</span>
+          <span>Playwright</span>
+          <span>Selenium</span>
+          <span>Jest</span>
+          <span>REST APIs</span>
+          <span>SQL</span>
+          <span>Docker</span>
+          <span>CI and Testing</span>
+          <span>Linux and Bash</span>
+          <span>Firmware Development</span>
+          <span>ISO 27001</span>
+        </div>
+        <p>
+          Recent work has included Vue and Nuxt internal applications,
+          TypeScript frontend development, Playwright and Selenium
+          automation, cloud applications, firmware maintenance in C, and
+          security-focused validation aligned with ISO 27001 practices. I
+          like building systems that reduce friction, expand capability, and
+          make engineering work easier to trust.
+        </p>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="about-layout">
+        <article class="about-card" data-reveal>
+          <p class="eyebrow">About me</p>
+          <h2>Builder mindset, engineering mindset, support mindset.</h2>
+          <p>
+            I like solving practical engineering problems and presenting the
+            result with enough clarity and polish that the work can speak for
+            itself. Maintainability, security awareness, and user trust are
+            part of the build process, not extras.
+          </p>
+        </article>
+
+        <article class="about-card" data-reveal>
+          <p class="eyebrow">What I bring</p>
+          <h2>Curious execution with strong follow-through.</h2>
+          <p>
+            Whether I am building an internal tool, automating UI validation,
+            maintaining firmware, or adapting to a new framework, I aim for
+            solutions that are durable, understandable, and ready for real
+            use. I can move across different kinds of work and still stay
+            organized, careful, and productive.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" data-reveal>
+      <div class="section-grid">
+        <div class="section-heading narrow">
+          <p class="eyebrow">Why this work stands out</p>
+          <h2>Engineering that balances utility, clarity, and finish.</h2>
+          <p>
+            The same patterns show up across both projects and professional
+            work: practical utility, maintainable structure, thoughtful
+            implementation, and the ability to handle changing products,
+            requirements, systems, and technologies.
+          </p>
+        </div>
+
+        <div class="value-grid">
+          <article>
+            <h3>Built to be used</h3>
+            <p>
+              Tools designed around actual workflows, not just technical
+              demos.
+            </p>
+          </article>
+          <article>
+            <h3>Built to last</h3>
+            <p>
+              Modular structure, automated tests, and maintainability
+              considerations from the start.
+            </p>
+          </article>
+          <article>
+            <h3>Built with range</h3>
+            <p>
+              Comfortable moving between low-level logic, automation,
+              interface work, test coverage, and changing requirements
+              without losing cohesion.
+            </p>
+          </article>
+          <article>
+            <h3>Built for fast contribution</h3>
+            <p>
+              Strong underlying technical understanding makes it easier to
+              learn unfamiliar tools quickly and become useful to a team
+              without a long ramp-up period.
+            </p>
+          </article>
+          <article>
+            <h3>Built with operational awareness</h3>
+            <p>
+              Hands-on testing and IT experience make it easier to diagnose
+              issues in real environments, support teammates, and keep work
+              moving when systems get complicated.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact" class="page-shell">
+    <section class="site-footer" data-reveal>
+      <p class="eyebrow">Contact</p>
+      <div class="footer-copy">
+        <h2>Let&apos;s build something useful and memorable.</h2>
+        <p>
+          I am always interested in thoughtful software work, especially where
+          reliability, tooling, and product feel all matter.
+        </p>
+      </div>
+
+      <div class="footer-actions">
+        <a class="button button-primary" href="https://www.linkedin.com/in/cayden-lunt-test-engineer" target="_blank"
+          rel="me noopener">
+          Connect on LinkedIn
+        </a>
+        <div class="social-links">
+          <a href="https://github.com/Hibob555556" target="_blank" rel="me noopener">
+            <img src="images/github.svg" alt="GitHub" />
+            GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/cayden-lunt-test-engineer" target="_blank" rel="me noopener">
+            <img src="images/linkedin.svg" alt="LinkedIn" />
+            LinkedIn
+          </a>
+        </div>
+      </div>
+
+      <p class="footer-note">
+        &copy;<span id="year">2026</span> Cayden Lunt | Utah, United States
+      </p>
+    </section>
+  </footer>
+
+  <script src="scripts/main.js"></script>
+</body>
+
 </html>
