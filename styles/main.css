@@ -718,7 +718,24 @@ ul {
     display: grid;
     gap: 1.5rem;
     grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.85fr);
-    align-items: center;
+    align-items: start;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    position: relative;
+}
+
+.certification-panel::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: min(10rem, 28%);
+    height: 1px;
+    background: linear-gradient(90deg, rgba(124, 240, 207, 0.7), rgba(255, 210, 121, 0));
+}
+
+.certification-panel + .certification-panel {
+    margin-top: 2rem;
 }
 
 .certification-copy ul {
