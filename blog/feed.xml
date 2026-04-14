@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Cayden Lunt Blog</title>
+    <link>https://www.caydenlunt.com/blog/</link>
+    <description>Software engineering notes, technical milestones, and lessons learned from Cayden Lunt.</description>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 14 Apr 2026 00:00:00 GMT</lastBuildDate>
+    <ttl>1440</ttl>
+
+    <item>
+      <title>How I Earned My Web &amp; Computer Programming Certificate from BYU Idaho</title>
+      <link>https://www.caydenlunt.com/blog/byu-idaho-web-computer-programming-certification.html</link>
+      <guid>https://www.caydenlunt.com/blog/byu-idaho-web-computer-programming-certification.html</guid>
+      <pubDate>Tue, 14 Apr 2026 00:00:00 GMT</pubDate>
+      <description>How I earned my Web &amp; Computer Programming certificate from BYU Idaho, what I learned, and how it strengthened my software engineering foundation.</description>
+    </item>
+  </channel>
+</rss>
