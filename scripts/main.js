@@ -54,8 +54,9 @@ if ("IntersectionObserver" in window && revealItems.length > 0) {
             observer.unobserve(entry.target);
         });
     }, {
-        threshold: 0.18,
-        rootMargin: "0px 0px -30px 0px"
+        // Use a very small threshold so tall article cards still reveal on phones.
+        threshold: 0.01,
+        rootMargin: "0px 0px -5% 0px"
     });
 
     revealItems.forEach((item, index) => {
