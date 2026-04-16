@@ -744,6 +744,21 @@ ul {
     gap: 1rem;
 }
 
+.blog-card-image {
+    margin-top: 1.2rem;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.18);
+}
+
+.blog-card-image img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
 .blog-list-card h3,
 .blog-highlight-card h3,
 .blog-article-shell h1,

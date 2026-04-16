@@ -8,9 +8,15 @@
   </url>
   <url>
     <loc>https://www.caydenlunt.com/blog/</loc>
-    <lastmod>2026-04-14</lastmod>
+    <lastmod>2026-04-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.caydenlunt.com/blog/why-learning-assembly-still-matters.html</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.caydenlunt.com/blog/byu-idaho-web-computer-programming-certification.html</loc>

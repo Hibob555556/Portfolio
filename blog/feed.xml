@@ -5,8 +5,16 @@
     <link>https://www.caydenlunt.com/blog/</link>
     <description>Software engineering notes, technical milestones, and lessons learned from Cayden Lunt.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 14 Apr 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 15 Apr 2026 00:00:00 GMT</lastBuildDate>
     <ttl>1440</ttl>
+
+    <item>
+      <title>Why Learning Assembly Still Matters (A Developer's Perspective)</title>
+      <link>https://www.caydenlunt.com/blog/why-learning-assembly-still-matters.html</link>
+      <guid>https://www.caydenlunt.com/blog/why-learning-assembly-still-matters.html</guid>
+      <pubDate>Wed, 15 Apr 2026 00:00:00 GMT</pubDate>
+      <description>Why even a small assembly project can change how you think about memory, operating systems, debugging, and performance.</description>
+    </item>
 
     <item>
       <title>How I Earned My Web &amp; Computer Programming Certificate from BYU Idaho</title>

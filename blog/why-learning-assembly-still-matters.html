@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Cayden Lunt" />
+  <meta name="description"
+    content="Why learning assembly still matters for modern developers, even if you never write production systems in it." />
+  <meta name="keywords"
+    content="why learn assembly, assembly language for developers, NASM, low-level programming, Cayden Lunt blog" />
+  <meta name="theme-color" content="#07111f" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Why Learning Assembly Still Matters (A Developer's Perspective)" />
+  <meta property="og:description"
+    content="A practical perspective on what learning assembly teaches about memory, operating systems, debugging, and performance." />
+  <meta property="og:url" content="https://www.caydenlunt.com/blog/why-learning-assembly-still-matters.html" />
+  <meta property="og:site_name" content="Cayden Lunt Portfolio" />
+  <meta property="og:image" content="https://www.caydenlunt.com/images/blog/hero.png" />
+  <meta property="og:image:alt" content="Abstract low-level programming themed blog image for a post about learning assembly" />
+  <meta property="article:published_time" content="2026-04-15" />
+  <meta property="article:modified_time" content="2026-04-15" />
+  <meta property="article:author" content="Cayden Lunt" />
+  <meta property="article:section" content="Programming" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Why Learning Assembly Still Matters (A Developer's Perspective)" />
+  <meta name="twitter:description"
+    content="Why even a small assembly project can change how you think about memory, operating systems, debugging, and performance." />
+  <meta name="twitter:image" content="https://www.caydenlunt.com/images/blog/hero.png" />
+  <title>Why Learning Assembly Still Matters (A Developer's Perspective)</title>
+  <link rel="canonical" href="https://www.caydenlunt.com/blog/why-learning-assembly-still-matters.html" />
+  <link rel="alternate" type="application/rss+xml" title="Cayden Lunt Blog RSS"
+    href="https://www.caydenlunt.com/blog/feed.xml" />
+  <link rel="manifest" href="../site.webmanifest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="../styles/normalize.css" />
+  <link rel="stylesheet" href="../styles/main.css" />
+  <link rel="stylesheet" href="../styles/large.css" media="(min-width: 768px)" />
+  <link rel="icon" href="../images/portfolio.ico" type="image/x-icon" />
+  <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "BlogPosting",
+            "headline": "Why Learning Assembly Still Matters (A Developer's Perspective)",
+            "description": "A practical perspective on what learning assembly teaches about memory, operating systems, debugging, and performance.",
+            "author": {
+              "@type": "Person",
+              "name": "Cayden Lunt",
+              "url": "https://www.caydenlunt.com/"
+            },
+            "publisher": {
+              "@type": "Person",
+              "name": "Cayden Lunt",
+              "url": "https://www.caydenlunt.com/"
+            },
+            "datePublished": "2026-04-15",
+            "dateModified": "2026-04-15",
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": "https://www.caydenlunt.com/blog/why-learning-assembly-still-matters.html"
+            },
+            "image": "https://www.caydenlunt.com/images/blog/hero.png"
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Portfolio",
+                "item": "https://www.caydenlunt.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Blog",
+                "item": "https://www.caydenlunt.com/blog/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Why Learning Assembly Still Matters (A Developer's Perspective)",
+                "item": "https://www.caydenlunt.com/blog/why-learning-assembly-still-matters.html"
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+</head>
+
+<body class="is-loading">
+  <div id="loader" aria-hidden="true">
+    <div class="loader-mark">CL</div>
+    <div class="loader-line"></div>
+    <p>Loading article...</p>
+  </div>
+
+  <header class="site-header">
+    <a class="brand" href="../index.html" aria-label="Back to portfolio">
+      <span class="brand-mark">CL</span>
+      <span class="brand-copy">
+        <strong>Cayden Lunt</strong>
+        <span>Full-Stack Software Engineer</span>
+      </span>
+    </a>
+
+    <nav class="site-nav" aria-label="Primary">
+      <a href="../index.html#top">Overview</a>
+      <a href="../index.html#work">Projects</a>
+      <a href="./">Blog</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="page-shell">
+    <article class="blog-article-shell" data-reveal>
+      <div class="blog-breadcrumbs">
+        <a href="../index.html">Portfolio</a>
+        <span>/</span>
+        <a href="./">Blog</a>
+      </div>
+
+      <p class="eyebrow">Programming</p>
+      <h1>Why Learning Assembly Still Matters (A Developer's Perspective)</h1>
+      <div class="blog-meta">
+        <span>Published April 15, 2026</span>
+        <span>Low-Level Programming</span>
+        <span>Developer Perspective</span>
+      </div>
+      <p class="hero-text">
+        Most developers never touch assembly, and for day-to-day work that is usually fine. But after writing even a
+        small program in assembly, it becomes much easier to understand what high-level languages are doing for you,
+        what the operating system expects, and why performance and debugging work the way they do.
+      </p>
+
+      <div class="blog-article-layout">
+        <section class="blog-article-body">
+          <h2>From “Hello World” to understanding everything underneath it</h2>
+          <p>
+            At a high level, printing text should feel trivial. In assembly, it does not. In my `hello.asm` and
+            Windows-specific `hello_windows.asm`, even something as simple as outputting `Hello, World!` required
+            manually defining the message in memory, calculating its length, passing arguments correctly, and calling
+            the operating system the way it expects.
+          </p>
+          <p>
+            There is no runtime, no safety net, and no abstraction layer smoothing out the rough edges. That is
+            exactly why the experience is valuable. It strips away convenience and lets you see what actually has to
+            happen for a program to do even the most basic work.
+          </p>
+        </section>
+
+        <section class="blog-article-body">
+          <h2>You see what high-level code actually does</h2>
+          <p>
+            In C#, `Console.WriteLine("Hello, World!");` feels like one operation. In assembly, it becomes a chain of
+            smaller responsibilities: get a handle to standard output, pass a pointer to your string, pass the length,
+            allocate space for bytes written, and finally invoke the OS correctly.
+          </p>
+          <p>
+            Writing these small programs made one thing very clear to me: high-level languages are not simple. They are
+            hiding complexity. That is one of their strengths, but learning assembly helps you recognize what is being
+            hidden and why it matters.
+          </p>
+        </section>
+
+        <section class="blog-article-body">
+          <h2>Memory stops being abstract</h2>
+          <p>
+            In my assembly programs, the message was not just a string. It was raw bytes:
+          </p>
+          <div class="code-block">
+            <div class="code-block-label">
+              <span>Assembly data definition</span>
+              <span>Memory view</span>
+            </div>
+            <pre><code>msg db "Hello, World!", 0xA</code></pre>
+          </div>
+          <p>
+            That changes the way you think. Where is this stored? How long is it? What address is being passed to the
+            operating system? You are not just “using variables” anymore. You are working with memory directly, and
+            that mental shift carries over into debugging tricky issues, understanding performance bottlenecks, and
+            writing safer code in languages like C# or C.
+          </p>
+        </section>
+
+        <section class="blog-article-body">
+          <h2>You learn how the operating system really works</h2>
+          <p>
+            The Windows version of the project made this especially obvious. You do not print to the screen directly.
+            You talk to the operating system. Functions like `GetStdHandle`, `WriteFile`, and `ExitProcess` are the
+            real workhorses.
+          </p>
+          <p>
+            Assembly makes that interaction explicit. Arguments are passed in registers. Memory is passed by reference.
+            The rules are strict, and there is no abstraction layer to hide them. Once you see that clearly, concepts
+            like system calls and APIs stop feeling theoretical and start feeling concrete.
+          </p>
+        </section>
+
+        <section class="blog-article-body">
+          <h2>Debugging becomes more logical</h2>
+          <p>
+            When something breaks in high-level code, it can sometimes feel random because so much is happening behind
+            the scenes. Assembly removes that illusion. There are usually only a few possibilities: the wrong register,
+            the wrong address, or the wrong value.
+          </p>
+          <p>
+            That simplicity sharpens your debugging instincts. Even when you return to higher-level languages, you are
+            more likely to reason through failures in terms of what the program is actually doing instead of treating
+            bugs like mysterious behavior.
+          </p>
+        </section>
+
+        <section class="blog-article-body">
+          <h2>Performance stops feeling like guesswork</h2>
+          <p>
+            Before assembly, performance advice can sound vague: avoid unnecessary allocations, be careful with loops,
+            keep data access efficient. After assembly, the reasons feel much more concrete because every instruction
+            costs something, every memory access matters, and every abstraction adds overhead.
+          </p>
+          <p>
+            That does not mean high-level code is bad. It means you stop following best practices mechanically and
+            start understanding why they exist in the first place.
+          </p>
+        </section>
+
+        <section class="blog-article-body">
+          <h2>The real value is perspective</h2>
+          <p>
+            Writing these small programs did not make me an assembly expert. What it did do was change how I think
+            about code. Now, when I write higher-level software, I am more aware of what is happening underneath, what
+            it likely compiles into, and where inefficiencies might exist.
+          </p>
+          <p>
+            That perspective is rare, and it compounds over time. You do not need to build entire systems in assembly
+            for the exercise to matter. Writing even a simple `Hello, World!` at that level forces you to confront how
+            software actually runs. Once you see that clearly, you cannot really unsee it.
+          </p>
+          <p class="project-links">
+            <a class="project-link-button project-link-button-accent" href="../projects/hello-assembly.html">View the HelloAssembly project page</a>
+            <a class="project-link-button" href="./">Back to blog</a>
+          </p>
+        </section>
+      </div>
+    </article>
+  </main>
+
+  <footer class="page-shell">
+    <section class="site-footer" data-reveal>
+      <p class="eyebrow">Contact</p>
+      <div class="footer-copy">
+        <h2>Open to full-stack software engineering opportunities.</h2>
+        <p>
+          I am especially interested in roles involving internal platforms, modern web applications, automation
+          systems, and software that makes team workflows faster and more reliable.
+        </p>
+      </div>
+
+      <div class="footer-actions">
+        <a class="button button-primary" href="https://www.linkedin.com/in/cayden-lunt-test-engineer" target="_blank"
+          rel="me noopener">
+          Connect on LinkedIn
+        </a>
+        <div class="social-links">
+          <a href="https://github.com/Hibob555556" target="_blank" rel="me noopener">
+            <img src="../images/github.svg" alt="GitHub" />
+            GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/cayden-lunt-test-engineer" target="_blank" rel="me noopener">
+            <img src="../images/linkedin.svg" alt="LinkedIn" />
+            LinkedIn
+          </a>
+        </div>
+      </div>
+
+      <p class="footer-note">
+        &copy;<span id="year">2026</span> Cayden Lunt | Utah, United States
+      </p>
+    </section>
+  </footer>
+
+  <script src="../scripts/main.js"></script>
+</body>
+
+</html>
