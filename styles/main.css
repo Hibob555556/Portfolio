@@ -867,6 +867,7 @@ ul {
 
 .code-block {
     margin: 1rem 0 0;
+    overflow: hidden;
     border: 1px solid rgba(124, 240, 207, 0.18);
     border-radius: var(--radius-lg);
     background:
@@ -908,6 +909,56 @@ ul {
     color: #e9f4ff;
     font-family: "Consolas", "SFMono-Regular", "Liberation Mono", monospace;
     font-size: 0.92rem;
+    line-height: 1.45;
+    white-space: pre;
+}
+
+.code-block code.has-line-numbers {
+    counter-reset: code-line;
+    white-space: normal;
+}
+
+.code-line {
+    display: grid;
+    grid-template-columns: 3rem minmax(0, 1fr);
+    gap: 1rem;
+    white-space: pre;
+}
+
+.code-line::before {
+    counter-increment: code-line;
+    content: counter(code-line);
+    color: rgba(159, 176, 203, 0.72);
+    text-align: right;
+    user-select: none;
+}
+
+.output-block {
+    margin-top: 1rem;
+    overflow: hidden;
+    border: 1px solid rgba(255, 210, 121, 0.18);
+    border-radius: var(--radius-lg);
+    background:
+        linear-gradient(180deg, rgba(9, 16, 30, 0.98), rgba(6, 12, 22, 0.96));
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.03),
+        0 18px 40px rgba(0, 0, 0, 0.22);
+}
+
+.output-block .code-block-label {
+    border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+.output-block pre {
+    margin: 0;
+    padding: 1rem;
+    overflow-x: auto;
+}
+
+.output-block code {
+    color: #fff1cc;
+    font-family: "Consolas", "SFMono-Regular", "Liberation Mono", monospace;
+    font-size: 0.95rem;
     line-height: 1.65;
     white-space: pre;
 }

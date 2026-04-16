@@ -209,33 +209,43 @@
           <span>hello.asm</span>
           <span>Linux syscall path</span>
         </div>
-        <pre><code>; hello.asm - Hand-written NASM x86-64 Linux assembly routine
-; This file implements `print_arken` entirely in assembly.
-; It demonstrates Linux syscall usage, RIP-relative data access, and
-; non-executable stack metadata in a minimal assembly project.
+        <pre><code class="has-line-numbers"><span class="code-line">; hello.asm - Hand-written NASM x86-64 Linux assembly routine</span>
+<span class="code-line">; This file implements `print_arken` entirely in assembly.</span>
+<span class="code-line">; It demonstrates Linux syscall usage, RIP-relative data access, and</span>
+<span class="code-line">; non-executable stack metadata in a minimal assembly project.</span>
+<span class="code-line"></span>
+<span class="code-line">global print_arken       ; export symbol for the C driver</span>
+<span class="code-line">section .data</span>
+<span class="code-line">    ; Define the message to be printed</span>
+<span class="code-line">    msg db "Hello, World!", 0xA</span>
+<span class="code-line"></span>
+<span class="code-line">    ; Calculate the length of the message</span>
+<span class="code-line">    len equ $ - msg</span>
+<span class="code-line"></span>
+<span class="code-line">section .text</span>
+<span class="code-line">print_arken:</span>
+<span class="code-line">    mov rax, 1          ; tell the kernel we want to write (syscall number for sys_write)</span>
+<span class="code-line">    mov rdi, 1          ; tell the kernel we want to write to stdout (file descriptor 1)</span>
+<span class="code-line">    lea rsi, [rel msg]  ; load the address of the message into rsi</span>
+<span class="code-line">    mov rdx, len        ; tell the kernel the length of the message</span>
+<span class="code-line">    syscall             ; invoke the kernel to perform the write operation</span>
+<span class="code-line">    ret                 ; return to caller</span>
+<span class="code-line"></span>
+<span class="code-line">; Tell the linker that this object does not require an executable stack.</span>
+<span class="code-line">; This avoids the `/usr/bin/ld: missing .note.GNU-stack section` warning.</span>
+<span class="code-line">; The GNU stack note is a special empty section used by the linker to infer</span>
+<span class="code-line">; whether the object needs an executable stack.</span>
+<span class="code-line">section .note.GNU-stack</span></code></pre>
+      </div>
 
-global print_arken       ; export symbol for the C driver
-section .data
-    ; Define the message to be printed
-    msg db "Hello, World!", 0xA
-
-    ; Calculate the length of the message
-    len equ $ - msg
-
-section .text
-print_arken:
-    mov rax, 1          ; tell the kernel we want to write (syscall number for sys_write)
-    mov rdi, 1          ; tell the kernel we want to write to stdout (file descriptor 1)
-    lea rsi, [rel msg]  ; load the address of the message into rsi
-    mov rdx, len        ; tell the kernel the length of the message
-    syscall             ; invoke the kernel to perform the write operation
-    ret                 ; return to caller
-
-; Tell the linker that this object does not require an executable stack.
-; This avoids the `/usr/bin/ld: missing .note.GNU-stack section` warning.
-; The GNU stack note is a special empty section used by the linker to infer
-; whether the object needs an executable stack.
-section .note.GNU-stack</code></pre>
+      <div class="output-block">
+        <div class="code-block-label">
+          <span>Example output</span>
+          <span>Linux run</span>
+        </div>
+        <pre><code>Hello, World!
+Hello, World!
+Hello, World!</code></pre>
       </div>
 
       <div class="code-notes">
@@ -249,8 +259,8 @@ section .note.GNU-stack</code></pre>
         <article>
           <h3>What is useful to notice</h3>
           <p>
-            `lea rsi, [rel msg]` is the key memory access here. It loads the address of the string without hard-coding
-            an absolute address.
+            Lines 16 through 20 are the whole write operation. `lea rsi, [rel msg]` is the key memory access here,
+            and line 20 is the actual handoff to the kernel.
           </p>
         </article>
       </div>
@@ -271,57 +281,65 @@ section .note.GNU-stack</code></pre>
           <span>hello_windows.asm</span>
           <span>Windows API path</span>
         </div>
-        <pre><code>extern GetStdHandle
-extern WriteFile
-extern ExitProcess
+        <pre><code class="has-line-numbers"><span class="code-line">extern GetStdHandle</span>
+<span class="code-line">extern WriteFile</span>
+<span class="code-line">extern ExitProcess</span>
+<span class="code-line"></span>
+<span class="code-line">; This code defines a simple Windows application in x86-64 assembly using NASM syntax.</span>
+<span class="code-line">; It demonstrates how to call Windows API functions to write a message to the console.</span>
+<span class="code-line">section .data</span>
+<span class="code-line">    ; Define the message as bytes.</span>
+<span class="code-line">    ; The string is followed by 0xA</span>
+<span class="code-line">    ; which is the newline character.</span>
+<span class="code-line">    msg db "Hello, World!", 0xA</span>
+<span class="code-line"></span>
+<span class="code-line">    ; Calculate the length of the message</span>
+<span class="code-line">    msg_len equ $ - msg</span>
+<span class="code-line"></span>
+<span class="code-line">; The .bss section is used for uninitialized data. Here we reserve space for a variable `written`</span>
+<span class="code-line">; that will hold the number of bytes written by WriteFile. We use `resd 1` to reserve space for</span>
+<span class="code-line">; one double word (4 bytes) since WriteFile expects a pointer to a DWORD to store the number of bytes written.</span>
+<span class="code-line">section .bss</span>
+<span class="code-line">    written resd 1</span>
+<span class="code-line"></span>
+<span class="code-line">; The .text section contains the executable code. We define the `main` function as the entry point of the program.</span>
+<span class="code-line">section .text</span>
+<span class="code-line">    global main</span>
+<span class="code-line"></span>
+<span class="code-line"></span>
+<span class="code-line">; The main function is the entry point of the program.</span>
+<span class="code-line">; It will call GetStdHandle to get the handle for standard output,</span>
+<span class="code-line">; then call WriteFile to write the message to standard output,</span>
+<span class="code-line">; and finally call ExitProcess to exit the program.</span>
+<span class="code-line">main:</span>
+<span class="code-line">    sub rsp, 40              ; Reserve shadow space and maintain 16-byte stack alignment</span>
+<span class="code-line"></span>
+<span class="code-line">    mov rcx, -11             ; GetStdHandle(STD_OUTPUT_HANDLE) where STD_OUTPUT_HANDLE is -11.</span>
+<span class="code-line">                             ;      Note: -11 is STD_OUTPUT_HANDLE, -10 is STD_INPUT_HANDLE</span>
+<span class="code-line">                             ;            and -12 is STD_ERROR_HANDLE.</span>
+<span class="code-line"></span>
+<span class="code-line">    call GetStdHandle        ; Get the handle for standard output, result is in rax</span>
+<span class="code-line"></span>
+<span class="code-line">    mov rbx, rax             ; Save the handle in rbx for later use</span>
+<span class="code-line"></span>
+<span class="code-line">    mov rcx, rbx             ; Set the handle as the first argument for WriteFile</span>
+<span class="code-line">    lea rdx, [rel msg]       ; Load the address of the message into rdx</span>
+<span class="code-line">    mov r8, msg_len          ; Set the length of the message as the third argument</span>
+<span class="code-line">    lea r9, [rel written]    ; Load the address of the variable to receive the number of bytes written</span>
+<span class="code-line"></span>
+<span class="code-line">    mov qword [rsp + 32], 0  ; Set the lpOverlapped parameter to NULL (0) for synchronous operation</span>
+<span class="code-line">    call WriteFile           ; Call WriteFile to write the message to standard output</span>
+<span class="code-line"></span>
+<span class="code-line">    mov ecx, 0               ; Set the exit code to 0</span>
+<span class="code-line">    call ExitProcess         ; Call ExitProcess to exit the program</span></code></pre>
+      </div>
 
-; This code defines a simple Windows application in x86-64 assembly using NASM syntax.
-; It demonstrates how to call Windows API functions to write a message to the console.
-section .data
-    ; Define the message as bytes.
-    ; The string is followed by 0xA
-    ; which is the newline character.
-    msg db "Hello, World!", 0xA
-
-    ; Calculate the length of the message
-    msg_len equ $ - msg
-
-; The .bss section is used for uninitialized data. Here we reserve space for a variable `written`
-; that will hold the number of bytes written by WriteFile. We use `resd 1` to reserve space for
-; one double word (4 bytes) since WriteFile expects a pointer to a DWORD to store the number of bytes written.
-section .bss
-    written resd 1
-
-; The .text section contains the executable code. We define the `main` function as the entry point of the program.
-section .text
-    global main
-
-
-; The main function is the entry point of the program.
-; It will call GetStdHandle to get the handle for standard output,
-; then call WriteFile to write the message to standard output,
-; and finally call ExitProcess to exit the program.
-main:
-    sub rsp, 40              ; Reserve shadow space and maintain 16-byte stack alignment
-
-    mov rcx, -11             ; GetStdHandle(STD_OUTPUT_HANDLE) where STD_OUTPUT_HANDLE is -11.
-                             ;      Note: -11 is STD_OUTPUT_HANDLE, -10 is STD_INPUT_HANDLE
-                             ;            and -12 is STD_ERROR_HANDLE.
-
-    call GetStdHandle        ; Get the handle for standard output, result is in rax
-
-    mov rbx, rax             ; Save the handle in rbx for later use
-
-    mov rcx, rbx             ; Set the handle as the first argument for WriteFile
-    lea rdx, [rel msg]       ; Load the address of the message into rdx
-    mov r8, msg_len          ; Set the length of the message as the third argument
-    lea r9, [rel written]    ; Load the address of the variable to receive the number of bytes written
-
-    mov qword [rsp + 32], 0  ; Set the lpOverlapped parameter to NULL (0) for synchronous operation
-    call WriteFile           ; Call WriteFile to write the message to standard output
-
-    mov ecx, 0               ; Set the exit code to 0
-    call ExitProcess         ; Call ExitProcess to exit the program</code></pre>
+      <div class="output-block">
+        <div class="code-block-label">
+          <span>Example output</span>
+          <span>Windows run</span>
+        </div>
+        <pre><code>Hello, World!</code></pre>
       </div>
 
       <div class="code-notes">
@@ -335,8 +353,8 @@ main:
         <article>
           <h3>What stands out most</h3>
           <p>
-            `sub rsp, 40` and `mov qword [rsp + 32], 0` are there to satisfy call-frame rules around alignment and
-            shadow space before invoking `WriteFile`.
+            Lines 31 through 47 are mostly setup for API calls. `sub rsp, 40` and `mov qword [rsp + 32], 0` are there
+            to satisfy call-frame rules around alignment and shadow space before invoking `WriteFile`.
           </p>
         </article>
       </div>
