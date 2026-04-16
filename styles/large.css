@@ -12,6 +12,11 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
+    .project-facts,
+    .code-notes {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
     .experience-list {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
@@ -56,6 +61,11 @@
         display: grid;
         grid-template-columns: minmax(280px, 0.78fr) minmax(0, 1.22fr);
         gap: 1.4rem;
+        align-items: start;
+    }
+
+    .project-article-layout {
+        grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
         align-items: start;
     }
 }

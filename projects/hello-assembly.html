@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Cayden Lunt" />
+  <meta name="description"
+    content="HelloAssembly is a small NASM x86-64 project showing Linux syscall output and Windows API console output side by side, with the actual assembly source explained." />
+  <meta name="keywords"
+    content="HelloAssembly, NASM x86-64, Linux syscall assembly, Windows x64 assembly, Cayden Lunt assembly project" />
+  <meta name="theme-color" content="#07111f" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="HelloAssembly | NASM x86-64 Project Walkthrough" />
+  <meta property="og:description"
+    content="A project page for HelloAssembly showing Linux and Windows x86-64 NASM source, build flow, and the low-level differences between syscall and Win32 output." />
+  <meta property="og:url" content="https://www.caydenlunt.com/projects/hello-assembly.html" />
+  <meta property="og:site_name" content="Cayden Lunt Portfolio" />
+  <meta property="og:image" content="https://www.caydenlunt.com/images/og-card.svg" />
+  <meta property="og:image:type" content="image/svg+xml" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Cayden Lunt software engineer portfolio card" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="HelloAssembly | NASM x86-64 Project Walkthrough" />
+  <meta name="twitter:description"
+    content="See the actual NASM source for HelloAssembly, with notes on Linux syscalls, Windows API calls, and x86-64 calling conventions." />
+  <meta name="twitter:image" content="https://www.caydenlunt.com/images/og-card.svg" />
+  <title>HelloAssembly | NASM x86-64 Project Walkthrough</title>
+  <link rel="canonical" href="https://www.caydenlunt.com/projects/hello-assembly.html" />
+  <link rel="manifest" href="../site.webmanifest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="../styles/normalize.css" />
+  <link rel="stylesheet" href="../styles/main.css" />
+  <link rel="stylesheet" href="../styles/large.css" media="(min-width: 768px)" />
+  <link rel="icon" href="../images/portfolio.ico" type="image/x-icon" />
+  <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "SoftwareSourceCode",
+            "name": "HelloAssembly",
+            "codeRepository": "https://github.com/Hibob555556/HelloAssembly",
+            "programmingLanguage": ["NASM", "C"],
+            "runtimePlatform": ["Linux x86-64", "Windows x86-64"],
+            "description": "A small NASM project that prints Hello, World! using a Linux syscall implementation and a Windows API implementation.",
+            "author": {
+              "@type": "Person",
+              "name": "Cayden Lunt",
+              "url": "https://www.caydenlunt.com/"
+            },
+            "url": "https://www.caydenlunt.com/projects/hello-assembly.html"
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Portfolio",
+                "item": "https://www.caydenlunt.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "HelloAssembly",
+                "item": "https://www.caydenlunt.com/projects/hello-assembly.html"
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+</head>
+
+<body class="is-loading">
+  <div id="loader" aria-hidden="true">
+    <div class="loader-mark">CL</div>
+    <div class="loader-line"></div>
+    <p>Loading project...</p>
+  </div>
+
+  <header class="site-header">
+    <a class="brand" href="../index.html" aria-label="Back to portfolio">
+      <span class="brand-mark">CL</span>
+      <span class="brand-copy">
+        <strong>Cayden Lunt</strong>
+        <span>Full-Stack Software Engineer</span>
+      </span>
+    </a>
+
+    <nav class="site-nav" aria-label="Primary">
+      <a href="../index.html#top">Overview</a>
+      <a href="../index.html#work">Projects</a>
+      <a href="../blog/">Blog</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="page-shell">
+    <article class="project-article-shell" data-reveal>
+      <div class="blog-breadcrumbs">
+        <a href="../index.html">Portfolio</a>
+        <span>/</span>
+        <span>HelloAssembly</span>
+      </div>
+
+      <p class="eyebrow">Low-Level Programming Project</p>
+      <h1>HelloAssembly</h1>
+      <div class="blog-meta">
+        <span>NASM x86-64</span>
+        <span>Linux and Windows</span>
+        <span>Actual source included below</span>
+      </div>
+      <p class="hero-text">
+        HelloAssembly is a small low-level programming project built to compare two very direct ways of doing the same
+        thing: printing a line to standard output in Linux and printing a line to the console in Windows. The programs
+        are intentionally small, which makes the assembly readable enough to show directly on the project page.
+      </p>
+
+      <div class="project-links">
+        <a class="project-link-button project-link-button-accent" href="https://github.com/Hibob555556/HelloAssembly"
+          target="_blank" rel="noopener">View on GitHub</a>
+        <a class="project-link-button" href="../index.html#work">Back to portfolio projects</a>
+      </div>
+
+      <div class="project-article-layout">
+        <section class="project-article-panel" data-reveal>
+          <h2>What this project shows</h2>
+          <p>
+            The Linux version exports a tiny assembly routine that a C driver calls three times. That keeps the
+            assembly focused on register setup and the `sys_write` syscall itself. The Windows version is a native
+            console program that calls `GetStdHandle`, `WriteFile`, and `ExitProcess` directly using the Windows x64
+            calling convention.
+          </p>
+          <p>
+            The interesting part is not the output string. It is the contrast in how each operating system expects
+            work to be described: syscall numbers and file descriptors on Linux, versus API functions, argument
+            registers, shadow space, and imported symbols on Windows.
+          </p>
+
+          <div class="project-facts">
+            <article>
+              <h3>Linux path</h3>
+              <p>Uses `rax`, `rdi`, `rsi`, and `rdx` to set up `sys_write`, then invokes `syscall` directly.</p>
+            </article>
+            <article>
+              <h3>Windows path</h3>
+              <p>Calls Win32 functions with `rcx`, `rdx`, `r8`, and `r9`, plus stack shadow space for `WriteFile`.</p>
+            </article>
+            <article>
+              <h3>Why it works well as a showcase</h3>
+              <p>The source is small enough to read in one sitting, but still exposes real platform-level details.</p>
+            </article>
+            <article>
+              <h3>Repository structure</h3>
+              <p>The repo includes `hello.asm`, `hello_windows.asm`, a tiny `main.c` harness, and generated outputs.</p>
+            </article>
+          </div>
+
+          <div class="project-stack">
+            <span>NASM</span>
+            <span>x86-64</span>
+            <span>Linux syscalls</span>
+            <span>Windows API</span>
+            <span>C interoperability</span>
+            <span>Console I/O</span>
+          </div>
+        </section>
+
+        <section class="project-article-panel" data-reveal>
+          <h2>Key takeaways</h2>
+          <ul class="callout-list">
+            <li>The Linux example is minimal because the kernel interface is exposed directly through `syscall`.</li>
+            <li>The Windows example is longer because console output is handled through imported system functions.</li>
+            <li>RIP-relative addressing keeps the string reference position-independent in both examples.</li>
+            <li>The project makes calling conventions easier to understand because each file has one job and very few moving parts.</li>
+          </ul>
+
+          <h2>Build flow</h2>
+          <ul class="callout-list">
+            <li>Linux: assemble `hello.asm`, link it with `main.c`, then run the executable from Linux or WSL.</li>
+            <li>Windows: assemble `hello_windows.asm`, link against `kernel32`, then run the resulting `.exe` in PowerShell.</li>
+            <li>Both paths print the same `Hello, World!` message, but they get there through different OS interfaces.</li>
+          </ul>
+        </section>
+      </div>
+    </article>
+
+    <section class="code-showcase" data-reveal>
+      <div class="code-showcase-header">
+        <p class="eyebrow">Linux Example</p>
+        <h2>`hello.asm`</h2>
+        <p>
+          This routine is about as direct as it gets: load the write syscall number, point at the message, provide the
+          byte count, and hand control to the kernel.
+        </p>
+      </div>
+
+      <div class="code-block">
+        <div class="code-block-label">
+          <span>hello.asm</span>
+          <span>Linux syscall path</span>
+        </div>
+        <pre><code>; hello.asm - Hand-written NASM x86-64 Linux assembly routine
+; This file implements `print_arken` entirely in assembly.
+; It demonstrates Linux syscall usage, RIP-relative data access, and
+; non-executable stack metadata in a minimal assembly project.
+
+global print_arken       ; export symbol for the C driver
+section .data
+    ; Define the message to be printed
+    msg db "Hello, World!", 0xA
+
+    ; Calculate the length of the message
+    len equ $ - msg
+
+section .text
+print_arken:
+    mov rax, 1          ; tell the kernel we want to write (syscall number for sys_write)
+    mov rdi, 1          ; tell the kernel we want to write to stdout (file descriptor 1)
+    lea rsi, [rel msg]  ; load the address of the message into rsi
+    mov rdx, len        ; tell the kernel the length of the message
+    syscall             ; invoke the kernel to perform the write operation
+    ret                 ; return to caller
+
+; Tell the linker that this object does not require an executable stack.
+; This avoids the `/usr/bin/ld: missing .note.GNU-stack section` warning.
+; The GNU stack note is a special empty section used by the linker to infer
+; whether the object needs an executable stack.
+section .note.GNU-stack</code></pre>
+      </div>
+
+      <div class="code-notes">
+        <article>
+          <h3>Why the file stays small</h3>
+          <p>
+            Linux exposes output as a syscall, so the routine only needs to prepare registers and execute one kernel
+            instruction.
+          </p>
+        </article>
+        <article>
+          <h3>What is useful to notice</h3>
+          <p>
+            `lea rsi, [rel msg]` is the key memory access here. It loads the address of the string without hard-coding
+            an absolute address.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="code-showcase" data-reveal>
+      <div class="code-showcase-header">
+        <p class="eyebrow">Windows Example</p>
+        <h2>`hello_windows.asm`</h2>
+        <p>
+          The Windows version shows more ceremony because the program calls into imported API functions instead of
+          issuing a raw write syscall directly from the program body.
+        </p>
+      </div>
+
+      <div class="code-block">
+        <div class="code-block-label">
+          <span>hello_windows.asm</span>
+          <span>Windows API path</span>
+        </div>
+        <pre><code>extern GetStdHandle
+extern WriteFile
+extern ExitProcess
+
+; This code defines a simple Windows application in x86-64 assembly using NASM syntax.
+; It demonstrates how to call Windows API functions to write a message to the console.
+section .data
+    ; Define the message as bytes.
+    ; The string is followed by 0xA
+    ; which is the newline character.
+    msg db "Hello, World!", 0xA
+
+    ; Calculate the length of the message
+    msg_len equ $ - msg
+
+; The .bss section is used for uninitialized data. Here we reserve space for a variable `written`
+; that will hold the number of bytes written by WriteFile. We use `resd 1` to reserve space for
+; one double word (4 bytes) since WriteFile expects a pointer to a DWORD to store the number of bytes written.
+section .bss
+    written resd 1
+
+; The .text section contains the executable code. We define the `main` function as the entry point of the program.
+section .text
+    global main
+
+
+; The main function is the entry point of the program.
+; It will call GetStdHandle to get the handle for standard output,
+; then call WriteFile to write the message to standard output,
+; and finally call ExitProcess to exit the program.
+main:
+    sub rsp, 40              ; Reserve shadow space and maintain 16-byte stack alignment
+
+    mov rcx, -11             ; GetStdHandle(STD_OUTPUT_HANDLE) where STD_OUTPUT_HANDLE is -11.
+                             ;      Note: -11 is STD_OUTPUT_HANDLE, -10 is STD_INPUT_HANDLE
+                             ;            and -12 is STD_ERROR_HANDLE.
+
+    call GetStdHandle        ; Get the handle for standard output, result is in rax
+
+    mov rbx, rax             ; Save the handle in rbx for later use
+
+    mov rcx, rbx             ; Set the handle as the first argument for WriteFile
+    lea rdx, [rel msg]       ; Load the address of the message into rdx
+    mov r8, msg_len          ; Set the length of the message as the third argument
+    lea r9, [rel written]    ; Load the address of the variable to receive the number of bytes written
+
+    mov qword [rsp + 32], 0  ; Set the lpOverlapped parameter to NULL (0) for synchronous operation
+    call WriteFile           ; Call WriteFile to write the message to standard output
+
+    mov ecx, 0               ; Set the exit code to 0
+    call ExitProcess         ; Call ExitProcess to exit the program</code></pre>
+      </div>
+
+      <div class="code-notes">
+        <article>
+          <h3>Why the Windows version is longer</h3>
+          <p>
+            Console output is reached through system libraries, so the code has to set up arguments for multiple calls
+            and obey Windows x64 ABI requirements.
+          </p>
+        </article>
+        <article>
+          <h3>What stands out most</h3>
+          <p>
+            `sub rsp, 40` and `mov qword [rsp + 32], 0` are there to satisfy call-frame rules around alignment and
+            shadow space before invoking `WriteFile`.
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="page-shell">
+    <section class="site-footer" data-reveal>
+      <p class="eyebrow">Contact</p>
+      <div class="footer-copy">
+        <h2>Open to full-stack software engineering opportunities.</h2>
+        <p>
+          I am especially interested in roles involving internal platforms, modern web applications, automation
+          systems, and software that makes team workflows faster and more reliable.
+        </p>
+      </div>
+
+      <div class="footer-actions">
+        <a class="button button-primary" href="https://www.linkedin.com/in/cayden-lunt-test-engineer" target="_blank"
+          rel="me noopener">
+          Connect on LinkedIn
+        </a>
+        <div class="social-links">
+          <a href="https://github.com/Hibob555556" target="_blank" rel="me noopener">
+            <img src="../images/github.svg" alt="GitHub" />
+            GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/cayden-lunt-test-engineer" target="_blank" rel="me noopener">
+            <img src="../images/linkedin.svg" alt="LinkedIn" />
+            LinkedIn
+          </a>
+        </div>
+      </div>
+
+      <p class="footer-note">
+        &copy;<span id="year">2026</span> Cayden Lunt | Utah, United States
+      </p>
+    </section>
+  </footer>
+
+  <script src="../scripts/main.js"></script>
+</body>
+
+</html>
