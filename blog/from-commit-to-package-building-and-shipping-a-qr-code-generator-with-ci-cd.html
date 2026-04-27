@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Cayden Lunt" />
+  <meta name="description"
+    content="How QRGenerator and QuickQRForge demonstrate the difference between working code and software that is packaged, automated, and shipped with CI/CD." />
+  <meta name="keywords"
+    content="CI/CD portfolio project, Python package publishing, PyPI release workflow, QRGenerator, QuickQRForge, Cayden Lunt blog" />
+  <meta name="theme-color" content="#07111f" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="From Commit to Package: Building and Shipping a QR Code Generator with CI/CD" />
+  <meta property="og:description"
+    content="A portfolio case study on turning a simple QR code utility into a tested, packaged, publicly distributed Python project with CI/CD." />
+  <meta property="og:url"
+    content="https://www.caydenlunt.com/blog/from-commit-to-package-building-and-shipping-a-qr-code-generator-with-ci-cd.html" />
+  <meta property="og:site_name" content="Cayden Lunt Portfolio" />
+  <meta property="fb:app_id" content="966242223397117" />
+  <meta property="og:image" content="https://www.caydenlunt.com/images/blog/quick_qr_forge_hero.jpg" />
+  <meta property="og:image:alt"
+    content="QuickQRForge themed hero image representing packaging and shipping a QR code generator project" />
+  <meta property="article:published_time" content="2026-04-26" />
+  <meta property="article:modified_time" content="2026-04-26" />
+  <meta property="article:author" content="Cayden Lunt" />
+  <meta property="article:section" content="Software Engineering" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="From Commit to Package: Building and Shipping a QR Code Generator with CI/CD" />
+  <meta name="twitter:description"
+    content="How QRGenerator and QuickQRForge show the difference between a working script and software that is packaged, published, and automated." />
+  <meta name="twitter:image" content="https://www.caydenlunt.com/images/blog/quick_qr_forge_hero.jpg" />
+  <title>From Commit to Package: Building and Shipping a QR Code Generator with CI/CD</title>
+  <link rel="canonical"
+    href="https://www.caydenlunt.com/blog/from-commit-to-package-building-and-shipping-a-qr-code-generator-with-ci-cd.html" />
+  <link rel="alternate" type="application/rss+xml" title="Cayden Lunt Blog RSS"
+    href="https://www.caydenlunt.com/blog/feed.xml" />
+  <link rel="manifest" href="../site.webmanifest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="../styles/normalize.css" />
+  <link rel="stylesheet" href="../styles/main.css" />
+  <link rel="stylesheet" href="../styles/large.css" media="(min-width: 768px)" />
+  <link rel="icon" href="../images/portfolio.ico" type="image/x-icon" />
+  <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "BlogPosting",
+            "headline": "From Commit to Package: Building and Shipping a QR Code Generator with CI/CD",
+            "description": "A portfolio case study on turning a simple QR code utility into a tested, packaged, publicly distributed Python project with CI/CD.",
+            "author": {
+              "@type": "Person",
+              "name": "Cayden Lunt",
+              "url": "https://www.caydenlunt.com/"
+            },
+            "publisher": {
+              "@type": "Person",
+              "name": "Cayden Lunt",
+              "url": "https://www.caydenlunt.com/"
+            },
+            "datePublished": "2026-04-26",
+            "dateModified": "2026-04-26",
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": "https://www.caydenlunt.com/blog/from-commit-to-package-building-and-shipping-a-qr-code-generator-with-ci-cd.html"
+            },
+            "image": "https://www.caydenlunt.com/images/blog/quick_qr_forge_hero.jpg"
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Portfolio",
+                "item": "https://www.caydenlunt.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Blog",
+                "item": "https://www.caydenlunt.com/blog/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "From Commit to Package: Building and Shipping a QR Code Generator with CI/CD",
+                "item": "https://www.caydenlunt.com/blog/from-commit-to-package-building-and-shipping-a-qr-code-generator-with-ci-cd.html"
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+</head>
+
+<body class="is-loading">
+  <div id="loader" aria-hidden="true">
+    <div class="loader-mark">CL</div>
+    <div class="loader-line"></div>
+    <p>Loading article...</p>
+  </div>
+
+  <header class="site-header">
+    <a class="brand" href="../index.html" aria-label="Back to portfolio">
+      <span class="brand-mark">CL</span>
+      <span class="brand-copy">
+        <strong>Cayden Lunt</strong>
+        <span>Full-Stack Software Engineer</span>
+      </span>
+    </a>
+
+    <nav class="site-nav" aria-label="Primary">
+      <a href="../index.html#top">Overview</a>
+      <a href="../index.html#work">Projects</a>
+      <a href="./">Blog</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="page-shell">
+    <article class="blog-article-shell" data-reveal>
+      <div class="blog-breadcrumbs">
+        <a href="../index.html">Portfolio</a>
+        <span>/</span>
+        <a href="./">Blog</a>
+      </div>
+
+      <p class="eyebrow">Software Engineering</p>
+      <h1>From Commit to Package: Building and Shipping a QR Code Generator with CI/CD</h1>
+      <div class="blog-meta">
+        <span>Published April 26, 2026</span>
+        <span>Python Packaging</span>
+        <span>CI/CD</span>
+      </div>
+      <p class="hero-text">
+        There is a major difference between writing code that works on your machine and building software that other
+        people can actually install, trust, and use. This project was built to show that difference clearly.
+      </p>
+
+      <div class="blog-card-image">
+        <img src="../images/blog/quick_qr_forge_hero.jpg"
+          alt="QuickQRForge hero image representing Python packaging and CI/CD delivery" />
+      </div>
+
+      <div class="blog-article-layout">
+        <section class="blog-article-body">
+          <h2>The gap between code that works and software that ships</h2>
+          <p>
+            Anyone can write a script that solves a problem locally. Fewer developers build the systems around that
+            script: testing, versioning, packaging, release workflows, and automation that make the software reliable
+            outside the original machine where it was written.
+          </p>
+          <p>
+            That distinction matters because professional software engineering is not just about implementation. It is
+            about reducing manual friction, making releases repeatable, and turning useful code into something another
+            person can install without cloning a repository or reverse-engineering your setup.
+          </p>
+          <p>
+            That was the goal behind two related projects: <strong>QRGenerator</strong>, the source repository, and
+            <strong>QuickQRForge</strong>, the published Python package on PyPI.
+          </p>
+        </section>
+
+        <section class="blog-article-body">
+          <h2>Why this project goes beyond "it runs"</h2>
+          <p>
+            A lot of portfolio projects stop the moment the core feature works. In practice, that is usually where the
+            harder engineering work begins.
+          </p>
+          <p>
+            Once a tool is functional, the real questions start showing up:
+          </p>
+          <ul>
+            <li>Can it be tested automatically before changes are accepted?</li>
+            <li>Can it be versioned safely without introducing release confusion?</li>
+            <li>Can it be published without a fragile, manual checklist?</li>
+            <li>Can someone install and use it without pulling the whole source tree?</li>
+            <li>Can releases be repeated consistently every time?</li>
+          </ul>
+          <p>
+            Those questions are what separate a script from a product. This project was designed to answer them on
+            purpose.
+          </p>
+        </section>
+
+        <section class="blog-article-body">
+          <h2>QRGenerator: building the core application first</h2>
+          <p>
+            The foundation is QRGenerator, a lightweight Python-based QR code generation tool built for speed,
+            simplicity, and maintainability.
+          </p>
+          <p>
+            The core application had a straightforward mission: generate QR codes reliably, keep the interface simple,
+            and stay clean enough to evolve into a reusable package. There was no interest in overengineering it. The
+            value came from building a practical utility that did one thing well and could be extended without turning
+            into unnecessary architecture.
+          </p>
+          <p>
+            That simplicity is exactly what made it a strong packaging candidate. Once the feature was stable, the next
+            step was to treat it like real software instead of a local-only tool.
+          </p>
+        </section>
+
+        <section class="blog-article-body">
+          <h2>QuickQRForge: turning source code into a real package</h2>
+          <p>
+            Publishing the QR generation logic as <strong>QuickQRForge</strong> on PyPI is where the project moved from
+            application development into software delivery.
+          </p>
+          <p>
+            That step matters more than it sounds. Once a project is published, it stops being just source code in a
+            repository and becomes a consumer-facing artifact with real expectations around structure, metadata,
+            versioning, installation, and release integrity.
+          </p>
+          <p>
+            Instead of asking someone to clone a repo and figure it out, the tool becomes installable through a single
+            command:
+          </p>
+          <div class="code-block">
+            <div class="code-block-label">
+              <span>Package installation</span>
+              <span>PyPI</span>
+            </div>
+            <pre><code>pip install QuickQRForge</code></pre>
+          </div>
+          <p>
+            That one line represents a lot of work behind the scenes: package structure, dependency declarations, build
+            artifacts, metadata validation, versioning discipline, and confidence that what gets published is actually
+            ready to be consumed.
+          </p>
+        </section>
+
+        <section class="blog-article-body">
+          <h2>CI/CD: the part most portfolio projects skip</h2>
+          <p>
+            The most valuable part of this project is not the QR code generation itself. It is the delivery pipeline
+            built around it.
+          </p>
+          <p>
+            Most developers can build a utility. Far fewer show that they can automate validation, enforce release
+            consistency, and ship software through a repeatable workflow from commit to release. That is where this
+            project becomes much more than a QR tool.
+          </p>
+          <p>
+            The CI/CD pipeline was built to automate the software lifecycle end to end. That includes validating code
+            changes, running checks before release, building distributable artifacts, preparing release output
+            consistently, and reducing human error in the publishing process.
+          </p>
+          <p>
+            Instead of a manual sequence that depends on memory and luck, the workflow becomes predictable:
+          </p>
+          <ul>
+            <li>Commit code</li>
+            <li>Run automated validation</li>
+            <li>Build consistently</li>
+            <li>Prepare release artifacts</li>
+            <li>Publish predictably</li>
+          </ul>
+          <p>
+            That is what CI/CD is supposed to do. Not just automate deployment, but make delivery dependable.
+          </p>
+        </section>
+
+        <section class="blog-article-body">
+          <h2>Why the pipeline matters more than the app</h2>
+          <p>
+            A QR generator is useful. A reproducible release pipeline is transferable.
+          </p>
+          <p>
+            That is the real engineering value of this project. The specific feature could have been anything. What
+            matters is the mindset behind it: automate repetitive work, validate early, reduce release risk, and remove
+            failure points before they become production problems.
+          </p>
+          <p>
+            Those skills transfer across internal tooling, backend services, SaaS platforms, automation systems, and
+            deployment infrastructure. The app is the example. The delivery discipline is the takeaway.
+          </p>
+        </section>
+
+        <section class="blog-article-body">
+          <h2>Why publishing to PyPI matters</h2>
+          <p>
+            There is a big difference between saying you can build software and proving you can ship it. A public
+            package helps prove it.
+          </p>
+          <p>
+            Publishing to PyPI demonstrates packaging knowledge, public artifact ownership, dependency management,
+            release discipline, and the ability to support software through a real distribution channel. A private
+            repository shows implementation. A published package shows delivery.
+          </p>
+          <p>
+            Software is only valuable when it can be used. Shipping the package is what turns the project from an
+            internal exercise into something concrete.
+          </p>
+        </section>
+
+        <section class="blog-article-body">
+          <h2>What this project demonstrates</h2>
+          <p>
+            This work was never just about QR codes. It demonstrates practical Python development, maintainable project
+            structure, packaging, public distribution, release automation, and CI/CD workflow design.
+          </p>
+          <p>
+            QRGenerator shows implementation. QuickQRForge shows distribution. The pipeline shows engineering
+            discipline. Put together, they represent the full lifecycle from writing a useful feature to shipping it in
+            a way other people can trust.
+          </p>
+          <p>
+            Good software is not just built. It is tested, packaged, versioned, automated, and shipped.
+          </p>
+          <p class="project-links">
+            <a class="project-link-button" href="https://github.com/Hibob555556/QRGenerator/" target="_blank"
+              rel="noopener">View QRGenerator on GitHub</a>
+            <a class="project-link-button project-link-button-accent" href="https://pypi.org/project/QuickQRForge/"
+              target="_blank" rel="noopener">View QuickQRForge on PyPI</a>
+            <a class="project-link-button" href="./">Back to blog</a>
+          </p>
+        </section>
+      </div>
+    </article>
+  </main>
+
+  <footer class="page-shell">
+    <section class="site-footer" data-reveal>
+      <p class="eyebrow">Contact</p>
+      <div class="footer-copy">
+        <h2>Open to full-stack software engineering opportunities.</h2>
+        <p>
+          I am especially interested in roles involving internal platforms, modern web applications, automation
+          systems, and software that makes team workflows faster and more reliable.
+        </p>
+      </div>
+
+      <div class="footer-actions">
+        <a class="button button-primary" href="https://www.linkedin.com/in/cayden-lunt-test-engineer" target="_blank"
+          rel="me noopener">
+          Connect on LinkedIn
+        </a>
+        <div class="social-links">
+          <a href="https://github.com/Hibob555556" target="_blank" rel="me noopener">
+            <img src="../images/github.svg" alt="GitHub" />
+            GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/cayden-lunt-test-engineer" target="_blank" rel="me noopener">
+            <img src="../images/linkedin.svg" alt="LinkedIn" />
+            LinkedIn
+          </a>
+        </div>
+      </div>
+
+      <p class="footer-note">
+        &copy;<span id="year">2026</span> Cayden Lunt | Utah, United States
+      </p>
+    </section>
+  </footer>
+
+  <script src="../scripts/main.js"></script>
+</body>
+
+</html>

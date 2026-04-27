@@ -5,8 +5,16 @@
     <link>https://www.caydenlunt.com/blog/</link>
     <description>Software engineering notes, technical milestones, and lessons learned from Cayden Lunt.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 15 Apr 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 26 Apr 2026 00:00:00 GMT</lastBuildDate>
     <ttl>1440</ttl>
+
+    <item>
+      <title>From Commit to Package: Building and Shipping a QR Code Generator with CI/CD</title>
+      <link>https://www.caydenlunt.com/blog/from-commit-to-package-building-and-shipping-a-qr-code-generator-with-ci-cd.html</link>
+      <guid>https://www.caydenlunt.com/blog/from-commit-to-package-building-and-shipping-a-qr-code-generator-with-ci-cd.html</guid>
+      <pubDate>Sun, 26 Apr 2026 00:00:00 GMT</pubDate>
+      <description>How QRGenerator and QuickQRForge demonstrate the difference between working code and software that is packaged, automated, and shipped with CI/CD.</description>
+    </item>
 
     <item>
       <title>Why Learning Assembly Still Matters (A Developer's Perspective)</title>
