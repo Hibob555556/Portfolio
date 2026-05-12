@@ -7,32 +7,32 @@
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="author" content="Cayden Lunt" />
   <meta name="description"
-    content="How building PgSearch with PgSeek became a hands-on way to learn PostgreSQL search, TypeScript, Docker, and containerized development." />
+    content="How building PgSeek became a hands-on way to learn PostgreSQL-backed application design, TypeScript, Docker, and containerized development." />
   <meta name="keywords"
-    content="PgSearch, PgSeek, PostgreSQL full text search, Docker Compose, TypeScript, Nuxt, containerization, Cayden Lunt blog" />
+    content="PgSeek, PostgreSQL, Docker Compose, TypeScript, Nuxt, Vue, OpenAPI, containerization, Cayden Lunt blog" />
   <meta name="theme-color" content="#07111f" />
   <meta property="og:locale" content="en_US" />
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="Learning Systems Through Search: Building PgSearch with PostgreSQL, TypeScript, Docker, and Containers" />
+  <meta property="og:title" content="Learning Systems Through Search: Building PgSeek with PostgreSQL, TypeScript, Docker, and Containers" />
   <meta property="og:description"
-    content="A portfolio case study on using PgSearch to learn PostgreSQL search, containerized development, Docker workflows, and TypeScript system design." />
+    content="A portfolio case study on using PgSeek to learn PostgreSQL-backed application design, containerized development, Docker workflows, and TypeScript system design." />
   <meta property="og:url"
     content="https://www.caydenlunt.com/blog/learning-search-systems-with-pgsearch.html" />
   <meta property="og:site_name" content="Cayden Lunt Portfolio" />
   <meta property="fb:app_id" content="966242223397117" />
   <meta property="og:image" content="https://www.caydenlunt.com/images/PgSearchHero.png" />
   <meta property="og:image:alt"
-    content="PgSearch themed hero image representing PostgreSQL search, Docker containers, and TypeScript development" />
+    content="PgSeek themed hero image representing PostgreSQL, Docker containers, and TypeScript development" />
   <meta property="article:published_time" content="2026-05-12" />
   <meta property="article:modified_time" content="2026-05-12" />
   <meta property="article:author" content="Cayden Lunt" />
   <meta property="article:section" content="Software Engineering" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Learning Systems Through Search: Building PgSearch with PostgreSQL, TypeScript, Docker, and Containers" />
+  <meta name="twitter:title" content="Learning Systems Through Search: Building PgSeek with PostgreSQL, TypeScript, Docker, and Containers" />
   <meta name="twitter:description"
-    content="How PgSearch turned PostgreSQL search, TypeScript, Docker, and containerization into a practical full-stack learning project." />
+    content="How PgSeek turned PostgreSQL, TypeScript, Docker, and containerization into a practical full-stack learning project." />
   <meta name="twitter:image" content="https://www.caydenlunt.com/images/PgSearchHero.png" />
-  <title>Learning Systems Through Search: Building PgSearch with PostgreSQL, TypeScript, Docker, and Containers</title>
+  <title>Learning Systems Through Search: Building PgSeek with PostgreSQL, TypeScript, Docker, and Containers</title>
   <link rel="canonical"
     href="https://www.caydenlunt.com/blog/learning-search-systems-with-pgsearch.html" />
   <link rel="alternate" type="application/rss+xml" title="Cayden Lunt Blog RSS"
@@ -53,8 +53,8 @@
         "@graph": [
           {
             "@type": "BlogPosting",
-            "headline": "Learning Systems Through Search: Building PgSearch with PostgreSQL, TypeScript, Docker, and Containers",
-            "description": "A portfolio case study on using PgSearch to learn PostgreSQL search, containerized development, Docker workflows, and TypeScript system design.",
+            "headline": "Learning Systems Through Search: Building PgSeek with PostgreSQL, TypeScript, Docker, and Containers",
+            "description": "A portfolio case study on using PgSeek to learn PostgreSQL-backed application design, containerized development, Docker workflows, and TypeScript system design.",
             "author": {
               "@type": "Person",
               "name": "Cayden Lunt",
@@ -91,7 +91,7 @@
               {
                 "@type": "ListItem",
                 "position": 3,
-                "name": "Learning Systems Through Search: Building PgSearch with PostgreSQL, TypeScript, Docker, and Containers",
+                "name": "Learning Systems Through Search: Building PgSeek with PostgreSQL, TypeScript, Docker, and Containers",
                 "item": "https://www.caydenlunt.com/blog/learning-search-systems-with-pgsearch.html"
               }
             ]
@@ -134,21 +134,21 @@
       </div>
 
       <p class="eyebrow">Software Engineering</p>
-      <h1>Learning Systems Through Search: Building PgSearch with PostgreSQL, TypeScript, Docker, and Containers</h1>
+      <h1>Learning Systems Through Search: Building PgSeek with PostgreSQL, TypeScript, Docker, and Containers</h1>
       <div class="blog-meta">
         <span>Published May 12, 2026</span>
         <span>PostgreSQL</span>
         <span>Docker</span>
       </div>
       <p class="hero-text">
-        PgSearch, built in the PgSeek repository, started as a searchable file and document application. It became a
-        practical way to learn how real systems connect: a TypeScript frontend, server routes, PostgreSQL search,
+        PgSeek started as a searchable file and document application. It became a practical way to learn how real
+        systems connect: a Nuxt 4 and Vue frontend, TypeScript server routes, PostgreSQL-backed storage,
         Dockerized infrastructure, and a repeatable container workflow.
       </p>
 
       <div class="blog-card-image">
         <img src="../images/PgSearchHero.png"
-          alt="PgSearch hero image representing PostgreSQL search, Docker containers, and TypeScript development" />
+          alt="PgSeek hero image representing PostgreSQL, Docker containers, and TypeScript development" />
       </div>
 
       <div class="blog-article-layout">
@@ -156,17 +156,17 @@
           <h2>The gap between using tools and understanding systems</h2>
           <p>
             There is a major difference between using a database, running a framework, and actually understanding how a
-            full-stack system behaves when those pieces have to work together. PgSearch was built to make that gap much
+            full-stack system behaves when those pieces have to work together. PgSeek was built to make that gap much
             smaller.
           </p>
           <p>
             The project looks simple from the outside: upload files, store them in PostgreSQL, search them, preview
             safe content, and delete records when they are no longer needed. But underneath that workflow are the same
             engineering concerns that show up in production systems: storage, indexing, API design, type safety,
-            container networking, migrations, environment variables, and deployment consistency.
+            container networking, migrations, environment variables, and repeatable environment setup.
           </p>
           <p>
-            That is what made PgSearch valuable. It was not just a feature project. It was a learning project built
+            That is what made PgSeek valuable. It was not just a feature project. It was a learning project built
             around real infrastructure.
           </p>
         </section>
@@ -179,28 +179,29 @@
             indexing, and how much work the database should do.
           </p>
           <p>
-            PgSearch uses PostgreSQL as more than a place to store rows. It became the engine behind the search
-            behavior. Working with PostgreSQL full-text search made database design feel much more concrete because the
-            structure of the data directly affected how useful the results were.
+            PgSeek uses PostgreSQL as more than a place to store rows. Uploaded files are stored, listed, previewed,
+            and deleted through PostgreSQL-backed API routes, while the repository also includes a document search
+            endpoint that experiments with PostgreSQL full-text search.
           </p>
           <p>
             The project gave me a reason to work with concepts like <code>tsvector</code>, <code>plainto_tsquery</code>,
-            ranking, weighted searchable fields, GIN indexes, trigram matching, and query-backed result previews. Those
-            are not abstract database features anymore once they are powering a real interface.
+            ranking, weighted searchable fields, GIN indexes, <code>pg_trgm</code> indexes, and query-backed result
+            previews. Those concepts are present in the schema and search endpoint, even though the uploaded-file
+            browser currently uses application-level filtering for its main list search.
           </p>
         </section>
 
         <section class="blog-article-body">
           <h2>Learning PostgreSQL through implementation</h2>
           <p>
-            A lot of database learning happens through basic CRUD examples. PgSearch pushed past that because search
+            A lot of database learning happens through basic CRUD examples. PgSeek pushed past that because search
             immediately raises harder questions.
           </p>
           <ul>
             <li>What should be searchable?</li>
             <li>Which columns should be indexed?</li>
             <li>How should file metadata and file contents be stored?</li>
-            <li>When should the database calculate rank?</li>
+            <li>When should the database calculate rank, and when is simpler application filtering enough?</li>
             <li>How should preview data be returned safely?</li>
             <li>How does the schema evolve as the application grows?</li>
           </ul>
@@ -214,7 +215,7 @@
         <section class="blog-article-body">
           <h2>Why TypeScript mattered</h2>
           <p>
-            PgSearch was also a chance to use TypeScript in a practical full-stack setting. The project uses Nuxt,
+            PgSeek was also a chance to use TypeScript in a practical full-stack setting. The project uses Nuxt 4,
             Vue, server routes, typed data structures, and PostgreSQL-backed API responses. That combination made type
             safety useful in a very direct way.
           </p>
@@ -233,7 +234,7 @@
         <section class="blog-article-body">
           <h2>Containerization changed the development workflow</h2>
           <p>
-            One of the most important parts of PgSearch was learning how Docker changes local development. Without
+            One of the most important parts of PgSeek was learning how Docker changes local development. Without
             containers, every service becomes tied to the host machine: local PostgreSQL versions, installed tools,
             environment variables, ports, and manual setup steps.
           </p>
@@ -243,7 +244,7 @@
           </p>
           <div class="code-block">
             <div class="code-block-label">
-              <span>Run PgSearch locally</span>
+              <span>Run PgSeek locally</span>
               <span>Docker Compose</span>
             </div>
             <pre><code>docker compose up --build</code></pre>
@@ -257,18 +258,18 @@
         <section class="blog-article-body">
           <h2>Docker Compose made the system feel real</h2>
           <p>
-            PgSearch uses Docker Compose to run the Nuxt application and PostgreSQL database as separate services. That
+            PgSeek uses Docker Compose to run the Nuxt application and PostgreSQL database as separate services. That
             separation made several infrastructure concepts much easier to understand.
           </p>
           <ul>
-            <li>The app connects to PostgreSQL through a container network instead of localhost.</li>
+            <li>The app connects to PostgreSQL through the Compose service name <code>postgres</code>.</li>
             <li>The database uses a persistent volume so data survives container restarts.</li>
             <li>Migrations are mounted into the PostgreSQL initialization flow.</li>
             <li>The app waits for the database health check before starting.</li>
             <li>Environment variables define runtime behavior instead of hardcoded settings.</li>
           </ul>
           <p>
-            Those details are easy to skip in small portfolio apps, but they matter in real systems. PgSearch helped
+            Those details are easy to skip in small portfolio apps, but they matter in real systems. PgSeek helped
             turn containerization from a buzzword into something practical and understandable.
           </p>
         </section>
@@ -276,9 +277,9 @@
         <section class="blog-article-body">
           <h2>Building the application around real user workflows</h2>
           <p>
-            The PgSearch interface was built around a simple workflow: upload files, browse stored files, search stored
-            content, preview safe files, and delete what is no longer needed. That gave the project a real product shape
-            instead of being only a backend experiment.
+            The PgSeek interface was built around a simple workflow: upload files, browse stored files, search file
+            names and searchable text content, preview safe files, and delete what is no longer needed. That gave the
+            project a real product shape instead of being only a backend experiment.
           </p>
           <div class="blog-card-image">
             <img src="../images/PgSeekUpload.png"
@@ -300,9 +301,9 @@
         </section>
 
         <section class="blog-article-body">
-          <h2>CI/CD and quality checks made the project stronger</h2>
+          <h2>CI and quality checks made the project stronger</h2>
           <p>
-            PgSearch also includes the kind of quality workflow that makes a project feel more complete. The repository
+            PgSeek also includes the kind of quality workflow that makes a project feel more complete. The repository
             includes linting, tests, type checking, a production build, a Docker image build, Husky pre-commit checks,
             and GitHub Actions automation.
           </p>
@@ -319,26 +320,26 @@
           </div>
           <p>
             The Docker image build is especially important because it verifies more than application code. It confirms
-            that the project can be built as a deployable container artifact.
+            that the project can be packaged as a container image, even without a deployment or publishing step.
           </p>
         </section>
 
         <section class="blog-article-body">
-          <h2>What PgSearch demonstrates</h2>
+          <h2>What PgSeek demonstrates</h2>
           <p>
-            PgSearch is more than a searchable file app. It demonstrates how several software engineering skills fit
+            PgSeek is more than a searchable file app. It demonstrates how several software engineering skills fit
             together in one practical system.
           </p>
           <ul>
-            <li>PostgreSQL schema design, full-text search, ranking, and indexing</li>
+            <li>PostgreSQL schema design, uploaded-file storage, search vectors, ranking queries, and indexing</li>
             <li>TypeScript-based full-stack development with Nuxt and Vue</li>
             <li>Docker Compose for repeatable multi-service development</li>
             <li>Container networking, volumes, health checks, and runtime configuration</li>
             <li>API design for uploads, search, previews, deletion, and OpenAPI documentation</li>
-            <li>Automated checks with Jest, ESLint, type checking, builds, and GitHub Actions</li>
+            <li>Automated CI checks with Jest, ESLint, type checking, builds, Docker image validation, and GitHub Actions</li>
           </ul>
           <p>
-            The final application matters, but the larger value is the engineering process behind it. PgSearch helped
+            The final application matters, but the larger value is the engineering process behind it. PgSeek helped
             me learn how databases, containers, APIs, frontend code, and automation fit together as one system.
           </p>
         </section>
@@ -346,7 +347,7 @@
         <section class="blog-article-body">
           <h2>The bigger takeaway</h2>
           <p>
-            The best learning projects are the ones that force systems to interact. PgSearch did that. It was not only
+            The best learning projects are the ones that force systems to interact. PgSeek did that. It was not only
             about writing a search bar or storing files. It was about learning how to build an environment where the app,
             database, containers, and quality checks all support each other.
           </p>
@@ -355,11 +356,11 @@
             containerized, documented, and reproducible.
           </p>
           <p>
-            That is what PgSearch helped me practice.
+            That is what PgSeek helped me practice.
           </p>
           <p class="project-links">
             <a class="project-link-button" href="https://github.com/Hibob555556/PgSeek" target="_blank"
-              rel="noopener">View PgSearch on GitHub</a>
+              rel="noopener">View PgSeek on GitHub</a>
             <a class="project-link-button project-link-button-accent" href="./">Back to blog</a>
           </p>
         </section>

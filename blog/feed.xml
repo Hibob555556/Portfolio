@@ -9,11 +9,11 @@
     <ttl>1440</ttl>
 
     <item>
-      <title>Learning Systems Through Search: Building PgSearch with PostgreSQL, TypeScript, Docker, and Containers</title>
+      <title>Learning Systems Through Search: Building PgSeek with PostgreSQL, TypeScript, Docker, and Containers</title>
       <link>https://www.caydenlunt.com/blog/learning-search-systems-with-pgsearch.html</link>
       <guid>https://www.caydenlunt.com/blog/learning-search-systems-with-pgsearch.html</guid>
       <pubDate>Tue, 12 May 2026 00:00:00 GMT</pubDate>
-      <description>How building PgSearch with PgSeek became a hands-on way to learn PostgreSQL search, TypeScript, Docker, and containerized development.</description>
+      <description>How building PgSeek became a hands-on way to learn PostgreSQL-backed application design, TypeScript, Docker, and containerized development.</description>
     </item>
 
     <item>
