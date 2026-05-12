@@ -5,8 +5,16 @@
     <link>https://www.caydenlunt.com/blog/</link>
     <description>Software engineering notes, technical milestones, and lessons learned from Cayden Lunt.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 26 Apr 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 12 May 2026 00:00:00 GMT</lastBuildDate>
     <ttl>1440</ttl>
+
+    <item>
+      <title>Learning Systems Through Search: Building PgSearch with PostgreSQL, TypeScript, Docker, and Containers</title>
+      <link>https://www.caydenlunt.com/blog/learning-search-systems-with-pgsearch.html</link>
+      <guid>https://www.caydenlunt.com/blog/learning-search-systems-with-pgsearch.html</guid>
+      <pubDate>Tue, 12 May 2026 00:00:00 GMT</pubDate>
+      <description>How building PgSearch with PgSeek became a hands-on way to learn PostgreSQL search, TypeScript, Docker, and containerized development.</description>
+    </item>
 
     <item>
       <title>From Commit to Package: Building and Shipping a QR Code Generator with CI/CD</title>
