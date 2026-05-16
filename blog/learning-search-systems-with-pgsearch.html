@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Cayden Lunt" />
+  <meta name="description"
+    content="How building PgSeek became a hands-on way to learn PostgreSQL-backed application design, TypeScript, Docker, and containerized development." />
+  <meta name="keywords"
+    content="PgSeek, PostgreSQL, Docker Compose, TypeScript, Nuxt, Vue, OpenAPI, containerization, Cayden Lunt blog" />
+  <meta name="theme-color" content="#07111f" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Learning Systems Through Search: Building PgSeek with PostgreSQL, TypeScript, Docker, and Containers" />
+  <meta property="og:description"
+    content="A portfolio case study on using PgSeek to learn PostgreSQL-backed application design, containerized development, Docker workflows, and TypeScript system design." />
+  <meta property="og:url"
+    content="https://www.caydenlunt.com/blog/learning-search-systems-with-pgsearch.html" />
+  <meta property="og:site_name" content="Cayden Lunt Portfolio" />
+  <meta property="fb:app_id" content="966242223397117" />
+  <meta property="og:image" content="https://www.caydenlunt.com/images/PgSearchHero.png" />
+  <meta property="og:image:alt"
+    content="PgSeek themed hero image representing PostgreSQL, Docker containers, and TypeScript development" />
+  <meta property="article:published_time" content="2026-05-12" />
+  <meta property="article:modified_time" content="2026-05-12" />
+  <meta property="article:author" content="Cayden Lunt" />
+  <meta property="article:section" content="Software Engineering" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Learning Systems Through Search: Building PgSeek with PostgreSQL, TypeScript, Docker, and Containers" />
+  <meta name="twitter:description"
+    content="How PgSeek turned PostgreSQL, TypeScript, Docker, and containerization into a practical full-stack learning project." />
+  <meta name="twitter:image" content="https://www.caydenlunt.com/images/PgSearchHero.png" />
+  <title>Learning Systems Through Search: Building PgSeek with PostgreSQL, TypeScript, Docker, and Containers</title>
+  <link rel="canonical"
+    href="https://www.caydenlunt.com/blog/learning-search-systems-with-pgsearch.html" />
+  <link rel="alternate" type="application/rss+xml" title="Cayden Lunt Blog RSS"
+    href="https://www.caydenlunt.com/blog/feed.xml" />
+  <link rel="manifest" href="../site.webmanifest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="../styles/normalize.css" />
+  <link rel="stylesheet" href="../styles/main.css" />
+  <link rel="stylesheet" href="../styles/large.css" media="(min-width: 768px)" />
+  <link rel="icon" href="../images/portfolio.ico" type="image/x-icon" />
+  <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "BlogPosting",
+            "headline": "Learning Systems Through Search: Building PgSeek with PostgreSQL, TypeScript, Docker, and Containers",
+            "description": "A portfolio case study on using PgSeek to learn PostgreSQL-backed application design, containerized development, Docker workflows, and TypeScript system design.",
+            "author": {
+              "@type": "Person",
+              "name": "Cayden Lunt",
+              "url": "https://www.caydenlunt.com/"
+            },
+            "publisher": {
+              "@type": "Person",
+              "name": "Cayden Lunt",
+              "url": "https://www.caydenlunt.com/"
+            },
+            "datePublished": "2026-05-12",
+            "dateModified": "2026-05-12",
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": "https://www.caydenlunt.com/blog/learning-search-systems-with-pgsearch.html"
+            },
+            "image": "https://www.caydenlunt.com/images/PgSearchHero.png"
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Portfolio",
+                "item": "https://www.caydenlunt.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Blog",
+                "item": "https://www.caydenlunt.com/blog/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Learning Systems Through Search: Building PgSeek with PostgreSQL, TypeScript, Docker, and Containers",
+                "item": "https://www.caydenlunt.com/blog/learning-search-systems-with-pgsearch.html"
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+</head>
+
+<body class="is-loading">
+  <div id="loader" aria-hidden="true">
+    <div class="loader-mark">CL</div>
+    <div class="loader-line"></div>
+    <p>Loading article...</p>
+  </div>
+
+  <header class="site-header">
+    <a class="brand" href="../index.html" aria-label="Back to portfolio">
+      <span class="brand-mark">CL</span>
+      <span class="brand-copy">
+        <strong>Cayden Lunt</strong>
+        <span>Full-Stack Software Engineer</span>
+      </span>
+    </a>
+
+    <nav class="site-nav" aria-label="Primary">
+      <a href="../index.html#top">Overview</a>
+      <a href="../index.html#work">Projects</a>
+      <a href="./">Blog</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="page-shell">
+    <article class="blog-article-shell" data-reveal>
+      <div class="blog-breadcrumbs">
+        <a href="../index.html">Portfolio</a>
+        <span>/</span>
+        <a href="./">Blog</a>
+      </div>
+
+      <p class="eyebrow">Software Engineering</p>
+      <h1>Learning Systems Through Search: Building PgSeek with PostgreSQL, TypeScript, Docker, and Containers</h1>
+      <div class="blog-meta">
+        <span>Published May 12, 2026</span>
+        <span>PostgreSQL</span>
+        <span>Docker</span>
+      </div>
+      <p class="hero-text">
+        PgSeek started as a searchable file and document application. It became a practical way to learn how real
+        systems connect: a Nuxt 4 and Vue frontend, TypeScript server routes, PostgreSQL-backed storage,
+        Dockerized infrastructure, and a repeatable container workflow.
+      </p>
+
+      <div class="blog-card-image">
+        <img src="../images/PgSearchHero.png"
+          alt="PgSeek hero image representing PostgreSQL, Docker containers, and TypeScript development" />
+      </div>
+
+      <div class="blog-article-layout">
+        <section class="blog-article-body">
+          <h2>The gap between using tools and understanding systems</h2>
+          <p>
+            There is a major difference between using a database, running a framework, and actually understanding how a
+            full-stack system behaves when those pieces have to work together. PgSeek was built to make that gap much
+            smaller.
+          </p>
+          <p>
+            The project looks simple from the outside: upload files, store them in PostgreSQL, search them, preview
+            safe content, and delete records when they are no longer needed. But underneath that workflow are the same
+            engineering concerns that show up in production systems: storage, indexing, API design, type safety,
+            container networking, migrations, environment variables, and repeatable environment setup.
+          </p>
+          <p>
+            That is what made PgSeek valuable. It was not just a feature project. It was a learning project built
+            around real infrastructure.
+          </p>
+        </section>
+
+        <section class="blog-article-body">
+          <h2>Why search was the right problem to build around</h2>
+          <p>
+            Search is easy to underestimate. A user types a query, receives results, and expects the experience to feel
+            instant. Behind that simple interaction is a chain of decisions about data structure, ranking, filtering,
+            indexing, and how much work the database should do.
+          </p>
+          <p>
+            PgSeek uses PostgreSQL as more than a place to store rows. Uploaded files are stored, listed, previewed,
+            and deleted through PostgreSQL-backed API routes, while the repository also includes a document search
+            endpoint that experiments with PostgreSQL full-text search.
+          </p>
+          <p>
+            The project gave me a reason to work with concepts like <code>tsvector</code>, <code>plainto_tsquery</code>,
+            ranking, weighted searchable fields, GIN indexes, <code>pg_trgm</code> indexes, and query-backed result
+            previews. Those concepts are present in the schema and search endpoint, even though the uploaded-file
+            browser currently uses application-level filtering for its main list search.
+          </p>
+        </section>
+
+        <section class="blog-article-body">
+          <h2>Learning PostgreSQL through implementation</h2>
+          <p>
+            A lot of database learning happens through basic CRUD examples. PgSeek pushed past that because search
+            immediately raises harder questions.
+          </p>
+          <ul>
+            <li>What should be searchable?</li>
+            <li>Which columns should be indexed?</li>
+            <li>How should file metadata and file contents be stored?</li>
+            <li>When should the database calculate rank, and when is simpler application filtering enough?</li>
+            <li>How should preview data be returned safely?</li>
+            <li>How does the schema evolve as the application grows?</li>
+          </ul>
+          <p>
+            Answering those questions required treating PostgreSQL like an engineering system instead of just a storage
+            dependency. The database schema, migrations, search vectors, indexes, and API queries all had to support the
+            product behavior together.
+          </p>
+        </section>
+
+        <section class="blog-article-body">
+          <h2>Why TypeScript mattered</h2>
+          <p>
+            PgSeek was also a chance to use TypeScript in a practical full-stack setting. The project uses Nuxt 4,
+            Vue, server routes, typed data structures, and PostgreSQL-backed API responses. That combination made type
+            safety useful in a very direct way.
+          </p>
+          <p>
+            Search results are structured data. Uploaded files have names, sizes, MIME types, timestamps, preview rules,
+            and delete behavior. API routes need predictable inputs and outputs. TypeScript helped make those contracts
+            explicit so the application could evolve without relying on guesswork.
+          </p>
+          <p>
+            The biggest lesson was that TypeScript is not just about catching syntax mistakes. It helps document the
+            shape of the system. When the frontend, backend routes, and database access all move together, stronger
+            types make refactoring safer and the code easier to reason about.
+          </p>
+        </section>
+
+        <section class="blog-article-body">
+          <h2>Containerization changed the development workflow</h2>
+          <p>
+            One of the most important parts of PgSeek was learning how Docker changes local development. Without
+            containers, every service becomes tied to the host machine: local PostgreSQL versions, installed tools,
+            environment variables, ports, and manual setup steps.
+          </p>
+          <p>
+            Docker made the environment reproducible. The application and PostgreSQL database could run together with a
+            single command, using the same expected configuration each time.
+          </p>
+          <div class="code-block">
+            <div class="code-block-label">
+              <span>Run PgSeek locally</span>
+              <span>Docker Compose</span>
+            </div>
+            <pre><code>docker compose up --build</code></pre>
+          </div>
+          <p>
+            That one command represents a major shift. The database, app server, ports, volumes, health checks, and
+            startup order are no longer scattered across notes or memory. They are described as infrastructure.
+          </p>
+        </section>
+
+        <section class="blog-article-body">
+          <h2>Docker Compose made the system feel real</h2>
+          <p>
+            PgSeek uses Docker Compose to run the Nuxt application and PostgreSQL database as separate services. That
+            separation made several infrastructure concepts much easier to understand.
+          </p>
+          <ul>
+            <li>The app connects to PostgreSQL through the Compose service name <code>postgres</code>.</li>
+            <li>The database uses a persistent volume so data survives container restarts.</li>
+            <li>Migrations are mounted into the PostgreSQL initialization flow.</li>
+            <li>The app waits for the database health check before starting.</li>
+            <li>Environment variables define runtime behavior instead of hardcoded settings.</li>
+          </ul>
+          <p>
+            Those details are easy to skip in small portfolio apps, but they matter in real systems. PgSeek helped
+            turn containerization from a buzzword into something practical and understandable.
+          </p>
+        </section>
+
+        <section class="blog-article-body">
+          <h2>Building the application around real user workflows</h2>
+          <p>
+            The PgSeek interface was built around a simple workflow: upload files, browse stored files, search file
+            names and searchable text content, preview safe files, and delete what is no longer needed. That gave the
+            project a real product shape instead of being only a backend experiment.
+          </p>
+          <div class="blog-card-image">
+            <img src="../images/PgSeekUpload.png"
+              alt="PgSeek upload screen with a drag and drop file intake area" />
+          </div>
+          <p>
+            The backend stores uploaded files in PostgreSQL, exposes API routes for listing and searching records,
+            supports safe previews for supported content types, and documents the API through Swagger/OpenAPI. The
+            frontend gives those backend behaviors a polished interface instead of leaving them as isolated endpoints.
+          </p>
+          <div class="blog-card-image">
+            <img src="../images/PgSearchUploadFiles.png"
+              alt="PgSeek uploaded files screen with search, filters, previews, and file management controls" />
+          </div>
+          <p>
+            That mattered because it connected database engineering, API development, frontend state, and user
+            experience into one project.
+          </p>
+        </section>
+
+        <section class="blog-article-body">
+          <h2>CI and quality checks made the project stronger</h2>
+          <p>
+            PgSeek also includes the kind of quality workflow that makes a project feel more complete. The repository
+            includes linting, tests, type checking, a production build, a Docker image build, Husky pre-commit checks,
+            and GitHub Actions automation.
+          </p>
+          <p>
+            That matters because confidence does not come from hoping the app still works. It comes from repeatable
+            checks that validate the code before changes move forward.
+          </p>
+          <div class="code-block">
+            <div class="code-block-label">
+              <span>Local quality check</span>
+              <span>pnpm</span>
+            </div>
+            <pre><code>pnpm run ci:check</code></pre>
+          </div>
+          <p>
+            The Docker image build is especially important because it verifies more than application code. It confirms
+            that the project can be packaged as a container image, even without a deployment or publishing step.
+          </p>
+        </section>
+
+        <section class="blog-article-body">
+          <h2>What PgSeek demonstrates</h2>
+          <p>
+            PgSeek is more than a searchable file app. It demonstrates how several software engineering skills fit
+            together in one practical system.
+          </p>
+          <ul>
+            <li>PostgreSQL schema design, uploaded-file storage, search vectors, ranking queries, and indexing</li>
+            <li>TypeScript-based full-stack development with Nuxt and Vue</li>
+            <li>Docker Compose for repeatable multi-service development</li>
+            <li>Container networking, volumes, health checks, and runtime configuration</li>
+            <li>API design for uploads, search, previews, deletion, and OpenAPI documentation</li>
+            <li>Automated CI checks with Jest, ESLint, type checking, builds, Docker image validation, and GitHub Actions</li>
+          </ul>
+          <p>
+            The final application matters, but the larger value is the engineering process behind it. PgSeek helped
+            me learn how databases, containers, APIs, frontend code, and automation fit together as one system.
+          </p>
+        </section>
+
+        <section class="blog-article-body">
+          <h2>The bigger takeaway</h2>
+          <p>
+            The best learning projects are the ones that force systems to interact. PgSeek did that. It was not only
+            about writing a search bar or storing files. It was about learning how to build an environment where the app,
+            database, containers, and quality checks all support each other.
+          </p>
+          <p>
+            Good software is not just code that runs locally. It is structured, searchable, typed, tested,
+            containerized, documented, and reproducible.
+          </p>
+          <p>
+            That is what PgSeek helped me practice.
+          </p>
+          <p class="project-links">
+            <a class="project-link-button" href="https://github.com/Hibob555556/PgSeek" target="_blank"
+              rel="noopener">View PgSeek on GitHub</a>
+            <a class="project-link-button project-link-button-accent" href="./">Back to blog</a>
+          </p>
+        </section>
+      </div>
+    </article>
+  </main>
+
+  <footer class="page-shell">
+    <section class="site-footer" data-reveal>
+      <p class="eyebrow">Contact</p>
+      <div class="footer-copy">
+        <h2>Open to full-stack software engineering opportunities.</h2>
+        <p>
+          I am especially interested in roles involving internal platforms, modern web applications, automation
+          systems, and software that makes team workflows faster and more reliable.
+        </p>
+      </div>
+
+      <div class="footer-actions">
+        <a class="button button-primary" href="https://www.linkedin.com/in/cayden-lunt-test-engineer" target="_blank"
+          rel="me noopener">
+          Connect on LinkedIn
+        </a>
+        <div class="social-links">
+          <a href="https://github.com/Hibob555556" target="_blank" rel="me noopener">
+            <img src="../images/github.svg" alt="GitHub" />
+            GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/cayden-lunt-test-engineer" target="_blank" rel="me noopener">
+            <img src="../images/linkedin.svg" alt="LinkedIn" />
+            LinkedIn
+          </a>
+        </div>
+      </div>
+
+      <p class="footer-note">
+        &copy;<span id="year">2026</span> Cayden Lunt | Utah, United States
+      </p>
+    </section>
+  </footer>
+
+  <script src="../scripts/main.js"></script>
+</body>
+
+</html>

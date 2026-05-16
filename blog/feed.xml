@@ -17,6 +17,22 @@
     </item>
 
     <item>
+      <title>Learning Systems Through Search: Building PgSeek with PostgreSQL, TypeScript, Docker, and Containers</title>
+      <link>https://www.caydenlunt.com/blog/learning-search-systems-with-pgsearch.html</link>
+      <guid>https://www.caydenlunt.com/blog/learning-search-systems-with-pgsearch.html</guid>
+      <pubDate>Tue, 12 May 2026 00:00:00 GMT</pubDate>
+      <description>How building PgSeek became a hands-on way to learn PostgreSQL-backed application design, TypeScript, Docker, and containerized development.</description>
+    </item>
+
+    <item>
+      <title>From Commit to Package: Building and Shipping a QR Code Generator with CI/CD</title>
+      <link>https://www.caydenlunt.com/blog/from-commit-to-package-building-and-shipping-a-qr-code-generator-with-ci-cd.html</link>
+      <guid>https://www.caydenlunt.com/blog/from-commit-to-package-building-and-shipping-a-qr-code-generator-with-ci-cd.html</guid>
+      <pubDate>Sun, 26 Apr 2026 00:00:00 GMT</pubDate>
+      <description>How QRGenerator and QuickQRForge demonstrate the difference between working code and software that is packaged, automated, and shipped with CI/CD.</description>
+    </item>
+
+    <item>
       <title>Why Learning Assembly Still Matters (A Developer's Perspective)</title>
       <link>https://www.caydenlunt.com/blog/why-learning-assembly-still-matters.html</link>
       <guid>https://www.caydenlunt.com/blog/why-learning-assembly-still-matters.html</guid>
