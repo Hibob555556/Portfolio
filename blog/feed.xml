@@ -5,8 +5,16 @@
     <link>https://www.caydenlunt.com/blog/</link>
     <description>Software engineering notes, technical milestones, and lessons learned from Cayden Lunt.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 15 Apr 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 16 May 2026 00:00:00 GMT</lastBuildDate>
     <ttl>1440</ttl>
+
+    <item>
+      <title>Building IronCanvas: Learning Geometry and WebAssembly Through a Browser-Based Graphics Experiment</title>
+      <link>https://www.caydenlunt.com/blog/building-ironcanvas-geometry-webassembly.html</link>
+      <guid>https://www.caydenlunt.com/blog/building-ironcanvas-geometry-webassembly.html</guid>
+      <pubDate>Sat, 16 May 2026 00:00:00 GMT</pubDate>
+      <description>How a small Rust and WebAssembly graphics experiment is helping me understand vertices, transformations, browser rendering, and memory interaction.</description>
+    </item>
 
     <item>
       <title>Why Learning Assembly Still Matters (A Developer's Perspective)</title>
