@@ -17,6 +17,14 @@
     </item>
 
     <item>
+      <title>Building IronCanvas: Learning Geometry and WebAssembly Through a Browser-Based Graphics Experiment</title>
+      <link>https://www.caydenlunt.com/blog/building-ironcanvas-geometry-webassembly.html</link>
+      <guid>https://www.caydenlunt.com/blog/building-ironcanvas-geometry-webassembly.html</guid>
+      <pubDate>Sat, 16 May 2026 00:00:00 GMT</pubDate>
+      <description>How a small Rust and WebAssembly graphics experiment is helping me understand vertices, transformations, browser rendering, and memory interaction.</description>
+    </item>
+
+    <item>
       <title>Learning Systems Through Search: Building PgSeek with PostgreSQL, TypeScript, Docker, and Containers</title>
       <link>https://www.caydenlunt.com/blog/learning-search-systems-with-pgsearch.html</link>
       <guid>https://www.caydenlunt.com/blog/learning-search-systems-with-pgsearch.html</guid>

@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Cayden Lunt" />
+  <meta name="description"
+    content="Building IronCanvas, a Rust and WebAssembly graphics experiment for learning browser-based geometry, transformations, and canvas rendering." />
+  <meta name="keywords"
+    content="IronCanvas, Rust WebAssembly graphics, browser graphics programming, geometric transformations, Cayden Lunt blog" />
+  <meta name="theme-color" content="#07111f" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title"
+    content="Building IronCanvas: Learning Geometry and WebAssembly Through a Browser-Based Graphics Experiment" />
+  <meta property="og:description"
+    content="A practical look at using Rust, WebAssembly, and canvas rendering to learn vertices, transformations, browser rendering, and memory interaction." />
+  <meta property="og:url"
+    content="https://www.caydenlunt.com/blog/building-ironcanvas-geometry-webassembly.html" />
+  <meta property="og:site_name" content="Cayden Lunt Portfolio" />
+  <meta property="fb:app_id" content="966242223397117" />
+  <meta property="og:image" content="https://www.caydenlunt.com/images/blog/IronCanvas_Hero.png" />
+  <meta property="og:image:alt"
+    content="IronCanvas browser graphics experiment hero image showing Rust and WebAssembly geometry work" />
+  <meta property="article:published_time" content="2026-05-16" />
+  <meta property="article:modified_time" content="2026-05-16" />
+  <meta property="article:author" content="Cayden Lunt" />
+  <meta property="article:section" content="Programming" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title"
+    content="Building IronCanvas: Learning Geometry and WebAssembly Through a Browser-Based Graphics Experiment" />
+  <meta name="twitter:description"
+    content="How a small Rust and WebAssembly graphics experiment is helping me understand vertices, transformations, and browser rendering." />
+  <meta name="twitter:image" content="https://www.caydenlunt.com/images/blog/IronCanvas_Hero.png" />
+  <title>Building IronCanvas: Learning Geometry and WebAssembly Through a Browser-Based Graphics Experiment</title>
+  <link rel="canonical" href="https://www.caydenlunt.com/blog/building-ironcanvas-geometry-webassembly.html" />
+  <link rel="alternate" type="application/rss+xml" title="Cayden Lunt Blog RSS"
+    href="https://www.caydenlunt.com/blog/feed.xml" />
+  <link rel="manifest" href="../site.webmanifest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="../styles/normalize.css" />
+  <link rel="stylesheet" href="../styles/main.css" />
+  <link rel="stylesheet" href="../styles/large.css" media="(min-width: 768px)" />
+  <link rel="icon" href="../images/portfolio.ico" type="image/x-icon" />
+  <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "BlogPosting",
+            "headline": "Building IronCanvas: Learning Geometry and WebAssembly Through a Browser-Based Graphics Experiment",
+            "description": "A practical look at using Rust, WebAssembly, and canvas rendering to learn vertices, transformations, browser rendering, and memory interaction.",
+            "author": {
+              "@type": "Person",
+              "name": "Cayden Lunt",
+              "url": "https://www.caydenlunt.com/"
+            },
+            "publisher": {
+              "@type": "Person",
+              "name": "Cayden Lunt",
+              "url": "https://www.caydenlunt.com/"
+            },
+            "datePublished": "2026-05-16",
+            "dateModified": "2026-05-16",
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": "https://www.caydenlunt.com/blog/building-ironcanvas-geometry-webassembly.html"
+            },
+            "image": "https://www.caydenlunt.com/images/blog/IronCanvas_Hero.png"
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Portfolio",
+                "item": "https://www.caydenlunt.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Blog",
+                "item": "https://www.caydenlunt.com/blog/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Building IronCanvas",
+                "item": "https://www.caydenlunt.com/blog/building-ironcanvas-geometry-webassembly.html"
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+</head>
+
+<body class="is-loading">
+  <div id="loader" aria-hidden="true">
+    <div class="loader-mark">CL</div>
+    <div class="loader-line"></div>
+    <p>Loading article...</p>
+  </div>
+
+  <header class="site-header">
+    <a class="brand" href="../index.html" aria-label="Back to portfolio">
+      <span class="brand-mark">CL</span>
+      <span class="brand-copy">
+        <strong>Cayden Lunt</strong>
+        <span>Full-Stack Software Engineer</span>
+      </span>
+    </a>
+
+    <nav class="site-nav" aria-label="Primary">
+      <a href="../index.html#top">Overview</a>
+      <a href="../index.html#work">Projects</a>
+      <a href="./">Blog</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="page-shell">
+    <article class="blog-article-shell" data-reveal>
+      <div class="blog-breadcrumbs">
+        <a href="../index.html">Portfolio</a>
+        <span>/</span>
+        <a href="./">Blog</a>
+      </div>
+
+      <p class="eyebrow">Rust WebAssembly Graphics Programming</p>
+      <h1>Building IronCanvas: Learning Geometry and WebAssembly Through a Browser-Based Graphics Experiment</h1>
+      <div class="blog-meta">
+        <span>Published May 16, 2026</span>
+        <span>Rust</span>
+        <span>WebAssembly</span>
+        <span>Graphics Programming</span>
+      </div>
+      <p class="hero-text">
+        I recently started building <a href="https://github.com/Hibob555556/IronCanvas" target="_blank"
+          rel="noopener">IronCanvas</a>, a small Rust and WebAssembly project focused on understanding how geometric
+        transformations work inside the browser. The live development version is available at <a
+          href="https://vertex.caydenlunt.com" target="_blank" rel="noopener">vertex.caydenlunt.com</a>.
+      </p>
+
+      <div class="blog-article-layout">
+        <section class="blog-article-body">
+          <p>
+            The project is intentionally simple right now. It is not a full rendering engine or a GPU-accelerated
+            graphics pipeline yet. The goal at this stage is much more foundational: understand how vertices,
+            transformations, browser rendering, and WebAssembly memory interaction actually work before adding more
+            advanced graphics concepts on top.
+          </p>
+        </section>
+
+        <section class="blog-article-body">
+          <h2>Why I started this project</h2>
+          <p>
+            One thing I have been increasingly interested in is moving closer to the lower-level side of software
+            engineering. A lot of modern development abstracts away what is happening underneath the system, which is
+            useful for productivity but can also make it harder to understand how software actually works internally.
+          </p>
+          <p>
+            Graphics programming forces you to confront those details directly.
+          </p>
+          <p>Even simple geometry operations require thinking about:</p>
+          <ul>
+            <li>coordinate systems</li>
+            <li>trigonometry</li>
+            <li>memory layout</li>
+            <li>data structures</li>
+            <li>browser rendering behavior</li>
+            <li>mathematical transformations</li>
+          </ul>
+          <p>
+            IronCanvas started as a way to explore those ideas in a controlled and understandable environment.
+          </p>
+        </section>
+
+        <section class="blog-article-body">
+          <h2>What IronCanvas currently does</h2>
+          <p>Right now, IronCanvas defines a rectangle as a collection of vertices stored in Rust:</p>
+          <div class="code-block">
+            <div class="code-block-label">
+              <span>Rust vertex structure</span>
+              <span>Geometry data</span>
+            </div>
+            <pre><code>#[repr(C)]
+#[derive(Copy, Clone, Debug)]
+pub struct Vertex {
+    pub position: [f32; 3],
+}</code></pre>
+          </div>
+          <p>Each vertex stores:</p>
+          <ul>
+            <li>X position</li>
+            <li>Y position</li>
+            <li>Z position</li>
+          </ul>
+          <p>
+            The browser reads those vertices directly from WebAssembly memory and renders the shape onto an HTML
+            canvas.
+          </p>
+          <p>The project also exposes a small Rust API that allows JavaScript to:</p>
+          <ul>
+            <li>access vertex buffers</li>
+            <li>reset geometry</li>
+            <li>rotate the rectangle</li>
+            <li>redraw the updated coordinates in real time</li>
+          </ul>
+          <p>
+            When the rectangle rotates, JavaScript is not calculating the transformation itself. Instead, it calls into
+            Rust:
+          </p>
+          <div class="code-block">
+            <div class="code-block-label">
+              <span>JavaScript to WebAssembly call</span>
+              <span>Runtime update</span>
+            </div>
+            <pre><code>wasmExports.rotate_current_rectangle_z(degrees);</code></pre>
+          </div>
+          <p>
+            Rust performs the mathematical transformation, updates the underlying vertex data, and the browser redraws
+            the result.
+          </p>
+        </section>
+
+        <section class="blog-article-body">
+          <h2>Learning transformations from first principles</h2>
+          <p>
+            The most interesting part of the project so far has been implementing rotation manually instead of relying
+            on a graphics library.
+          </p>
+          <p>The rectangle rotates around its center point using trigonometric functions:</p>
+          <div class="code-block">
+            <div class="code-block-label">
+              <span>Rotation formula</span>
+              <span>2D transform</span>
+            </div>
+            <pre><code>x' = x * cos(theta) - y * sin(theta)
+y' = x * sin(theta) + y * cos(theta)</code></pre>
+          </div>
+          <p>A 45-degree rotation becomes:</p>
+          <div class="code-block">
+            <div class="code-block-label">
+              <span>Rust angle conversion</span>
+              <span>Radians</span>
+            </div>
+            <pre><code>let angle = 45.0_f32.to_radians();</code></pre>
+          </div>
+          <p>
+            That small amount of math changes how you think about rendering. Shapes stop feeling like static objects
+            and start feeling like collections of points being transformed mathematically through space.
+          </p>
+          <p>
+            Even though the project is visually simple right now, it already introduces concepts used in real rendering
+            systems:
+          </p>
+          <ul>
+            <li>vertex transformations</li>
+            <li>coordinate spaces</li>
+            <li>geometry manipulation</li>
+            <li>transformation logic</li>
+            <li>runtime rendering updates</li>
+          </ul>
+        </section>
+
+        <section class="blog-article-body">
+          <h2>Why Rust and WebAssembly</h2>
+          <p>
+            I chose Rust and WebAssembly because I wanted the geometry and transformation logic to live outside the
+            browser runtime itself.
+          </p>
+          <p>
+            Rust owns the data structures and calculations. JavaScript acts more like a visualization and interaction
+            layer.
+          </p>
+          <p>That separation creates a cleaner architecture:</p>
+          <div class="code-block">
+            <div class="code-block-label">
+              <span>Application boundary</span>
+              <span>Architecture</span>
+            </div>
+            <pre><code>Browser UI
+    ->
+JavaScript Canvas Rendering
+    ->
+Rust WebAssembly Geometry Logic</code></pre>
+          </div>
+          <p>
+            The project is not using WebGPU yet, and the rendering is still happening through the 2D canvas API. The
+            transformation math is currently CPU-side through Rust/WASM rather than GPU accelerated.
+          </p>
+          <p>
+            That is intentional for this stage of the project. Before introducing shaders, GPU buffers, or rendering
+            pipelines, I wanted to understand the lower-level mathematical and memory concepts first.
+          </p>
+        </section>
+
+        <section class="blog-article-body">
+          <h2>More than just drawing a rectangle</h2>
+          <p>
+            One thing I wanted to avoid was treating this as a throwaway experiment. Even though the rendering itself
+            is small, the project still includes:
+          </p>
+          <ul>
+            <li>Rust unit tests</li>
+            <li>integration tests</li>
+            <li>GitHub Actions CI</li>
+            <li>automated validation</li>
+            <li>GitHub Pages deployment</li>
+            <li>browser-side testing</li>
+          </ul>
+          <p>
+            That matters to me because software engineering is not just about making something work once. It is about
+            building systems that are maintainable, testable, and repeatable.
+          </p>
+        </section>
+
+        <section class="blog-article-body">
+          <h2>Where the project goes next</h2>
+          <p>IronCanvas is still very early, but the direction is becoming clearer.</p>
+          <p>The next steps are likely:</p>
+          <ul>
+            <li>matrix-based transformations</li>
+            <li>triangle rendering</li>
+            <li>projection math</li>
+            <li>separating model space from screen space</li>
+            <li>introducing WebGPU</li>
+            <li>eventually moving toward true GPU-backed rendering</li>
+          </ul>
+          <p>
+            For now, though, the project is serving its original purpose well: helping me better understand how
+            mathematical geometry becomes something visible inside the browser through Rust, WebAssembly, and direct
+            transformation logic.
+          </p>
+          <p class="project-links">
+            <a class="project-link-button project-link-button-accent" href="https://github.com/Hibob555556/IronCanvas"
+              target="_blank" rel="noopener">View IronCanvas on GitHub</a>
+            <a class="project-link-button" href="https://vertex.caydenlunt.com" target="_blank" rel="noopener">View the
+              live demo</a>
+            <a class="project-link-button" href="./">Back to blog</a>
+          </p>
+        </section>
+      </div>
+    </article>
+  </main>
+
+  <footer class="page-shell">
+    <section class="site-footer" data-reveal>
+      <p class="eyebrow">Contact</p>
+      <div class="footer-copy">
+        <h2>Open to full-stack software engineering opportunities.</h2>
+        <p>
+          I am especially interested in roles involving internal platforms, modern web applications, automation
+          systems, and software that makes team workflows faster and more reliable.
+        </p>
+      </div>
+
+      <div class="footer-actions">
+        <a class="button button-primary" href="https://www.linkedin.com/in/cayden-lunt-test-engineer" target="_blank"
+          rel="me noopener">
+          Connect on LinkedIn
+        </a>
+        <div class="social-links">
+          <a href="https://github.com/Hibob555556" target="_blank" rel="me noopener">
+            <img src="../images/github.svg" alt="GitHub" />
+            GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/cayden-lunt-test-engineer" target="_blank" rel="me noopener">
+            <img src="../images/linkedin.svg" alt="LinkedIn" />
+            LinkedIn
+          </a>
+        </div>
+      </div>
+
+      <p class="footer-note">
+        &copy;<span id="year">2026</span> Cayden Lunt | Utah, United States
+      </p>
+    </section>
+  </footer>
+
+  <script src="../scripts/main.js"></script>
+</body>
+
+</html>
