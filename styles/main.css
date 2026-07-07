@@ -1046,6 +1046,210 @@ ul {
     color: #dfe8fb;
 }
 
+.arkendriver-demo-shell {
+    max-width: 72rem;
+    margin: 1.2rem auto 0;
+    padding: 1.5rem;
+    border: 1px solid rgba(124, 240, 207, 0.18);
+    border-radius: var(--radius-lg);
+    background:
+        radial-gradient(circle at top right, rgba(124, 240, 207, 0.13), transparent 28%),
+        linear-gradient(180deg, rgba(20, 33, 58, 0.95), rgba(9, 16, 30, 0.94));
+    box-shadow: 0 28px 70px rgba(0, 0, 0, 0.32);
+}
+
+.arkendriver-demo-header,
+.arkendriver-demo-actions,
+.arkendriver-demo-grid,
+.arkendriver-timeline {
+    display: grid;
+    gap: 1rem;
+}
+
+.arkendriver-demo-header {
+    margin-bottom: 1rem;
+}
+
+.arkendriver-demo-header h2 {
+    margin-bottom: 0;
+    font-size: clamp(1.75rem, 4vw, 2.7rem);
+    line-height: 1.05;
+}
+
+.arkendriver-demo-actions {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.arkendriver-demo-actions button {
+    width: 100%;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.arkendriver-browser,
+.demo-panel {
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-lg);
+    background: rgba(7, 17, 31, 0.84);
+}
+
+.browser-chrome {
+    display: grid;
+    grid-template-columns: 0.7rem 0.7rem 0.7rem minmax(0, 1fr);
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.8rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.browser-chrome span {
+    width: 0.7rem;
+    height: 0.7rem;
+    border-radius: 999px;
+    background: rgba(124, 240, 207, 0.65);
+}
+
+.browser-chrome span:nth-child(2) {
+    background: rgba(129, 168, 255, 0.75);
+}
+
+.browser-chrome span:nth-child(3) {
+    background: rgba(255, 255, 255, 0.45);
+}
+
+.browser-chrome div {
+    min-width: 0;
+    padding: 0.45rem 0.7rem;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 999px;
+    color: var(--muted);
+    font-size: 0.82rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.browser-page {
+    min-height: 22rem;
+    padding: 1.25rem;
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent 45%),
+        rgba(255, 255, 255, 0.02);
+}
+
+.browser-kicker {
+    margin-bottom: 0.35rem;
+    color: var(--accent);
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.browser-page h3 {
+    margin-bottom: 1rem;
+    color: #fbfdff;
+    font-size: 1.55rem;
+}
+
+.browser-page label {
+    display: block;
+    margin-bottom: 0.45rem;
+    color: #dce6fb;
+    font-weight: 700;
+}
+
+.browser-page input {
+    width: 100%;
+    min-height: 3rem;
+    padding: 0.7rem 0.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.07);
+    color: #f7fbff;
+    font: inherit;
+}
+
+.browser-page[data-demo-state="found"] input,
+.browser-page[data-demo-state="filled"] input {
+    border-color: rgba(124, 240, 207, 0.55);
+    box-shadow: 0 0 0 3px rgba(124, 240, 207, 0.12);
+}
+
+.browser-page button {
+    width: 100%;
+    min-height: 3rem;
+    margin-top: 0.9rem;
+    border: 0;
+    border-radius: var(--radius-md);
+    background: linear-gradient(135deg, var(--accent), #9fb7ff);
+    color: #07111f;
+    font-weight: 900;
+}
+
+.browser-page[data-demo-state="clicked"] button {
+    background: linear-gradient(135deg, #dfffea, var(--accent));
+}
+
+.browser-status {
+    min-height: 3rem;
+    margin-top: 1rem;
+    padding: 0.85rem;
+    border-left: 3px solid rgba(124, 240, 207, 0.55);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    background: rgba(124, 240, 207, 0.08);
+    color: #dce6fb;
+}
+
+.arkendriver-panels {
+    display: grid;
+    gap: 1rem;
+}
+
+.demo-panel pre {
+    min-height: 9.5rem;
+    margin: 0;
+    padding: 1rem;
+    overflow-x: auto;
+}
+
+.demo-panel code {
+    display: block;
+    color: #e9f4ff;
+    font-family: "Consolas", "SFMono-Regular", "Liberation Mono", monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    white-space: pre;
+}
+
+.arkendriver-timeline {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin: 1rem 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.arkendriver-timeline li {
+    min-height: 2.85rem;
+    padding: 0.7rem 0.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--muted);
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.arkendriver-timeline li.is-complete {
+    color: #dce6fb;
+    border-color: rgba(124, 240, 207, 0.18);
+}
+
+.arkendriver-timeline li.is-active {
+    color: #07111f;
+    background: var(--accent);
+}
+
 .certification-panel {
     display: grid;
     gap: 1.5rem;
@@ -1439,9 +1643,15 @@ ul {
     }
 
     .project-article-shell,
-    .code-showcase {
+    .code-showcase,
+    .arkendriver-demo-shell {
         padding: 1.4rem;
         border-radius: 26px;
+    }
+
+    .arkendriver-demo-actions,
+    .arkendriver-timeline {
+        grid-template-columns: 1fr;
     }
 
     .code-block-label {

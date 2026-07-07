@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Cayden Lunt" />
+  <meta name="description"
+    content="An interactive ArkenDriver portfolio demo showing how a Rust WebDriver client translates framework calls into browser automation protocol requests." />
+  <meta name="keywords"
+    content="ArkenDriver demo, Rust WebDriver client, browser automation demo, W3C WebDriver protocol, Cayden Lunt portfolio" />
+  <meta name="theme-color" content="#07111f" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="ArkenDriver | Rust WebDriver Demo" />
+  <meta property="og:description"
+    content="Step through a simulated ArkenDriver browser run and see the Rust API, WebDriver request, and browser state change together." />
+  <meta property="og:url" content="https://www.caydenlunt.com/projects/arkendriver-demo.html" />
+  <meta property="og:site_name" content="Cayden Lunt Portfolio" />
+  <meta property="fb:app_id" content="966242223397117" />
+  <meta property="og:image" content="https://www.caydenlunt.com/images/og-card.svg" />
+  <meta property="og:image:type" content="image/svg+xml" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Cayden Lunt software engineer portfolio card" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="ArkenDriver | Rust WebDriver Demo" />
+  <meta name="twitter:description"
+    content="A browser-based demo for ArkenDriver, a from-scratch Rust WebDriver client." />
+  <meta name="twitter:image" content="https://www.caydenlunt.com/images/og-card.svg" />
+  <title>ArkenDriver | Rust WebDriver Demo</title>
+  <link rel="canonical" href="https://www.caydenlunt.com/projects/arkendriver-demo.html" />
+  <link rel="manifest" href="../site.webmanifest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="../styles/normalize.css" />
+  <link rel="stylesheet" href="../styles/main.css" />
+  <link rel="stylesheet" href="../styles/large.css" media="(min-width: 768px)" />
+  <link rel="icon" href="../images/portfolio.ico" type="image/x-icon" />
+  <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "SoftwareSourceCode",
+            "name": "ArkenDriver",
+            "codeRepository": "https://github.com/Hibob555556/ArkenDriver",
+            "programmingLanguage": "Rust",
+            "runtimePlatform": "WebDriver",
+            "description": "A from-scratch Rust WebDriver client for learning browser automation protocol design, session management, and testable framework boundaries.",
+            "author": {
+              "@type": "Person",
+              "name": "Cayden Lunt",
+              "url": "https://www.caydenlunt.com/"
+            },
+            "url": "https://www.caydenlunt.com/projects/arkendriver-demo.html"
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Portfolio",
+                "item": "https://www.caydenlunt.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "ArkenDriver Demo",
+                "item": "https://www.caydenlunt.com/projects/arkendriver-demo.html"
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+</head>
+
+<body class="is-loading">
+  <div id="loader" aria-hidden="true">
+    <div class="loader-mark">CL</div>
+    <div class="loader-line"></div>
+    <p>Loading demo...</p>
+  </div>
+
+  <header class="site-header">
+    <a class="brand" href="../index.html" aria-label="Back to portfolio">
+      <span class="brand-mark">CL</span>
+      <span class="brand-copy">
+        <strong>Cayden Lunt</strong>
+        <span>Full-Stack Software Engineer</span>
+      </span>
+    </a>
+
+    <nav class="site-nav" aria-label="Primary">
+      <a href="../index.html#top">Overview</a>
+      <a href="../index.html#work">Projects</a>
+      <a href="../blog/">Blog</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="page-shell">
+    <article class="project-article-shell" data-reveal>
+      <div class="blog-breadcrumbs">
+        <a href="../index.html">Portfolio</a>
+        <span>/</span>
+        <span>ArkenDriver Demo</span>
+      </div>
+
+      <p class="eyebrow">Rust Browser Automation Demo</p>
+      <h1>ArkenDriver</h1>
+      <div class="blog-meta">
+        <span>Rust</span>
+        <span>W3C WebDriver</span>
+        <span>Protocol simulation</span>
+      </div>
+      <p class="hero-text">
+        This interactive demo shows the shape of an ArkenDriver browser run. Each step pairs a Rust framework call
+        with the WebDriver request it becomes and the browser state that changes after the command resolves.
+      </p>
+
+      <div class="project-links">
+        <a class="project-link-button project-link-button-accent" href="https://github.com/Hibob555556/ArkenDriver"
+          target="_blank" rel="noopener">View on GitHub</a>
+        <a class="project-link-button" href="../blog/building-arkendriver-lessons-learned.html">Read the writeup</a>
+        <a class="project-link-button" href="../index.html#work">Back to portfolio projects</a>
+      </div>
+    </article>
+
+    <section class="arkendriver-demo-shell" data-reveal aria-labelledby="demo-title">
+      <div class="arkendriver-demo-header">
+        <div>
+          <p class="eyebrow">Protocol Runner</p>
+          <h2 id="demo-title">API call to browser command</h2>
+        </div>
+        <div class="arkendriver-demo-actions">
+          <button class="project-link-button project-link-button-accent" type="button" data-demo-run>Run flow</button>
+          <button class="project-link-button" type="button" data-demo-next>Next step</button>
+          <button class="project-link-button" type="button" data-demo-reset>Reset</button>
+        </div>
+      </div>
+
+      <div class="arkendriver-demo-grid">
+        <div class="arkendriver-browser" aria-label="Simulated browser preview">
+          <div class="browser-chrome">
+            <span></span>
+            <span></span>
+            <span></span>
+            <div data-demo-url>about:blank</div>
+          </div>
+          <div class="browser-page" data-demo-page>
+            <p class="browser-kicker">Demo target</p>
+            <h3>Example Login</h3>
+            <label for="demo-email">Email</label>
+            <input id="demo-email" type="text" value="" readonly data-demo-email />
+            <button type="button" data-demo-button>Submit</button>
+            <p class="browser-status" data-demo-status>Waiting for a session.</p>
+          </div>
+        </div>
+
+        <div class="arkendriver-panels">
+          <div class="demo-panel">
+            <div class="code-block-label">
+              <span data-demo-step-title>Session</span>
+              <span data-demo-method>POST</span>
+            </div>
+            <pre><code data-demo-rust>let mut driver = Driver::new("http://localhost:9515");
+driver.start().await?;</code></pre>
+          </div>
+
+          <div class="demo-panel">
+            <div class="code-block-label">
+              <span>WebDriver request</span>
+              <span data-demo-endpoint>/session</span>
+            </div>
+            <pre><code data-demo-request>{
+  "capabilities": {
+    "alwaysMatch": {
+      "browserName": "chrome"
+    }
+  }
+}</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <ol class="arkendriver-timeline" aria-label="ArkenDriver automation steps">
+        <li class="is-active" data-demo-timeline>Start session</li>
+        <li data-demo-timeline>Navigate</li>
+        <li data-demo-timeline>Find element</li>
+        <li data-demo-timeline>Send keys</li>
+        <li data-demo-timeline>Click</li>
+        <li data-demo-timeline>Quit</li>
+      </ol>
+    </section>
+  </main>
+
+  <footer class="page-shell">
+    <section class="site-footer" data-reveal>
+      <p class="eyebrow">Contact</p>
+      <div class="footer-copy">
+        <h2>Open to full-stack software engineering opportunities.</h2>
+        <p>
+          I am especially interested in roles involving internal platforms, modern web applications, automation
+          systems, and software that makes team workflows faster and more reliable.
+        </p>
+      </div>
+
+      <div class="footer-actions">
+        <a class="button button-primary" href="https://www.linkedin.com/in/cayden-lunt-test-engineer" target="_blank"
+          rel="me noopener">
+          Connect on LinkedIn
+        </a>
+        <div class="social-links">
+          <a href="https://github.com/Hibob555556" target="_blank" rel="me noopener">
+            <img src="../images/github.svg" alt="GitHub" />
+            GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/cayden-lunt-test-engineer" target="_blank" rel="me noopener">
+            <img src="../images/linkedin.svg" alt="LinkedIn" />
+            LinkedIn
+          </a>
+        </div>
+      </div>
+
+      <p class="footer-note">
+        &copy;<span id="year">2026</span> Cayden Lunt | Utah, United States
+      </p>
+    </section>
+  </footer>
+
+  <script src="../scripts/main.js"></script>
+  <script src="../scripts/arkendriver-demo.js"></script>
+</body>
+
+</html>

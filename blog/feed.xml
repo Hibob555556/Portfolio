@@ -17,6 +17,14 @@
     </item>
 
     <item>
+      <title>Building ArkenDriver: Lessons Learned from Writing a WebDriver Client in Rust</title>
+      <link>https://www.caydenlunt.com/blog/building-arkendriver-lessons-learned.html</link>
+      <guid>https://www.caydenlunt.com/blog/building-arkendriver-lessons-learned.html</guid>
+      <pubDate>Mon, 01 Jun 2026 00:00:00 GMT</pubDate>
+      <description>Lessons learned from building ArkenDriver, a from-scratch Rust browser automation framework that communicates directly with the W3C WebDriver protocol.</description>
+    </item>
+
+    <item>
       <title>Building IronCanvas: Learning Geometry and WebAssembly Through a Browser-Based Graphics Experiment</title>
       <link>https://www.caydenlunt.com/blog/building-ironcanvas-geometry-webassembly.html</link>
       <guid>https://www.caydenlunt.com/blog/building-ironcanvas-geometry-webassembly.html</guid>

@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Cayden Lunt" />
+  <meta name="description"
+    content="Lessons learned from building ArkenDriver, a from-scratch Rust browser automation framework that communicates directly with the W3C WebDriver protocol." />
+  <meta name="keywords"
+    content="ArkenDriver, Rust WebDriver client, browser automation framework, W3C WebDriver protocol, Rust automation, Cayden Lunt blog" />
+  <meta name="theme-color" content="#07111f" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Building ArkenDriver: Lessons Learned from Writing a WebDriver Client in Rust" />
+  <meta property="og:description"
+    content="A lessons-learned post on protocol design, Rust API boundaries, browser sessions, ChromeDriver setup, and automation framework architecture." />
+  <meta property="og:url" content="https://www.caydenlunt.com/blog/building-arkendriver-lessons-learned.html" />
+  <meta property="og:site_name" content="Cayden Lunt Portfolio" />
+  <meta property="fb:app_id" content="966242223397117" />
+  <meta property="og:image" content="https://www.caydenlunt.com/images/blog/arkendriver_hero.jpg" />
+  <meta property="og:image:alt"
+    content="ArkenDriver themed hero image representing a Rust browser automation framework" />
+  <meta property="article:published_time" content="2026-06-01" />
+  <meta property="article:modified_time" content="2026-06-01" />
+  <meta property="article:author" content="Cayden Lunt" />
+  <meta property="article:section" content="Software Engineering" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Building ArkenDriver: Lessons Learned from Writing a WebDriver Client in Rust" />
+  <meta name="twitter:description"
+    content="What building ArkenDriver taught me about WebDriver, Rust APIs, automation architecture, and testable protocol clients." />
+  <meta name="twitter:image" content="https://www.caydenlunt.com/images/blog/arkendriver_hero.jpg" />
+  <title>Building ArkenDriver: Lessons Learned from Writing a WebDriver Client in Rust</title>
+  <link rel="canonical" href="https://www.caydenlunt.com/blog/building-arkendriver-lessons-learned.html" />
+  <link rel="alternate" type="application/rss+xml" title="Cayden Lunt Blog RSS"
+    href="https://www.caydenlunt.com/blog/feed.xml" />
+  <link rel="manifest" href="../site.webmanifest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="../styles/normalize.css" />
+  <link rel="stylesheet" href="../styles/main.css" />
+  <link rel="stylesheet" href="../styles/large.css" media="(min-width: 768px)" />
+  <link rel="icon" href="../images/portfolio.ico" type="image/x-icon" />
+  <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "BlogPosting",
+            "headline": "Building ArkenDriver: Lessons Learned from Writing a WebDriver Client in Rust",
+            "description": "Lessons learned from building ArkenDriver, a from-scratch Rust browser automation framework that communicates directly with the W3C WebDriver protocol.",
+            "author": {
+              "@type": "Person",
+              "name": "Cayden Lunt",
+              "url": "https://www.caydenlunt.com/"
+            },
+            "publisher": {
+              "@type": "Person",
+              "name": "Cayden Lunt",
+              "url": "https://www.caydenlunt.com/"
+            },
+            "datePublished": "2026-06-01",
+            "dateModified": "2026-06-01",
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": "https://www.caydenlunt.com/blog/building-arkendriver-lessons-learned.html"
+            },
+            "image": "https://www.caydenlunt.com/images/blog/arkendriver_hero.jpg"
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Portfolio",
+                "item": "https://www.caydenlunt.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Blog",
+                "item": "https://www.caydenlunt.com/blog/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Building ArkenDriver: Lessons Learned from Writing a WebDriver Client in Rust",
+                "item": "https://www.caydenlunt.com/blog/building-arkendriver-lessons-learned.html"
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+</head>
+
+<body class="is-loading">
+  <div id="loader" aria-hidden="true">
+    <div class="loader-mark">CL</div>
+    <div class="loader-line"></div>
+    <p>Loading article...</p>
+  </div>
+
+  <header class="site-header">
+    <a class="brand" href="../index.html" aria-label="Back to portfolio">
+      <span class="brand-mark">CL</span>
+      <span class="brand-copy">
+        <strong>Cayden Lunt</strong>
+        <span>Full-Stack Software Engineer</span>
+      </span>
+    </a>
+
+    <nav class="site-nav" aria-label="Primary">
+      <a href="../index.html#top">Overview</a>
+      <a href="../index.html#work">Projects</a>
+      <a href="./">Blog</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="page-shell">
+    <article class="blog-article-shell" data-reveal>
+      <div class="blog-breadcrumbs">
+        <a href="../index.html">Portfolio</a>
+        <span>/</span>
+        <a href="./">Blog</a>
+      </div>
+
+      <p class="eyebrow">Software Engineering</p>
+      <h1>Building ArkenDriver: Lessons Learned from Writing a WebDriver Client in Rust</h1>
+      <div class="blog-meta">
+        <span>Published June 1, 2026</span>
+        <span>Rust</span>
+        <span>Browser Automation</span>
+      </div>
+      <p class="hero-text">
+        ArkenDriver started as a way to understand browser automation below the Selenium client layer. The project
+        became a practical lesson in protocol design, Rust API boundaries, async HTTP, driver setup, and the difference
+        between automating a browser and building an automation framework.
+      </p>
+
+      <div class="blog-card-image">
+        <img src="../images/blog/arkendriver_hero.jpg"
+          alt="ArkenDriver hero image representing a Rust browser automation framework" />
+      </div>
+
+      <div class="blog-article-layout">
+        <section class="blog-article-body">
+          <h2>Why build a WebDriver client from scratch?</h2>
+          <p>
+            Browser automation can feel familiar when you use a polished client library. You create a driver, find an
+            element, click a button, and move on. That is useful, but it hides the shape of the system underneath.
+          </p>
+          <p>
+            ArkenDriver was built to remove that layer of comfort. Instead of depending on an existing Selenium client,
+            the framework talks directly to the W3C WebDriver protocol using Rust, async HTTP requests, typed request
+            and response structures, and explicit session management.
+          </p>
+          <p>
+            The goal was not to outbuild mature automation tools. The goal was to learn what those tools have to solve:
+            sessions, capabilities, protocol payloads, element references, driver processes, configuration, errors, and
+            the API design choices that make automation code feel trustworthy.
+          </p>
+        </section>
+
+        <section class="blog-article-body">
+          <h2>Lesson 1: browser automation is a protocol problem first</h2>
+          <p>
+            At the user level, automation looks like commands: navigate, find, click, type, quit. Under the hood, those
+            commands are HTTP calls against a browser driver that follows a protocol.
+          </p>
+          <p>
+            ArkenDriver made that concrete. Starting a browser session means sending a new-session payload with
+            capabilities. Finding an element means sending a locator strategy and value. A returned element is not a DOM
+            node in your process; it is a protocol reference identified by the W3C element key.
+          </p>
+          <div class="code-block">
+            <div class="code-block-label">
+              <span>Public API shape</span>
+              <span>Rust</span>
+            </div>
+            <pre><code>let mut driver = Driver::new("http://localhost:4444");
+
+driver.start().await?;
+driver.navigate("https://example.com").await?;
+
+let button = driver.find_element(By::id("submit")).await?;
+button.click().await?;
+
+driver.quit().await?;</code></pre>
+          </div>
+          <p>
+            The nice API is only the surface. The real work is translating that surface into correct protocol requests
+            and validating that the responses contain the fields the framework needs.
+          </p>
+        </section>
+
+        <section class="blog-article-body">
+          <h2>Lesson 2: Rust forces better boundaries</h2>
+          <p>
+            Rust made the framework design more intentional. The project separates driver session state, navigation,
+            element behavior, error handling, configuration, and infrastructure code into focused modules.
+          </p>
+          <p>
+            That structure mattered because a WebDriver client has several different responsibilities. The main driver
+            owns the HTTP client, base URL, and current session. Element objects need enough context to send element
+            commands later. Configuration belongs outside the protocol layer. ChromeDriver installation and process
+            management are infrastructure concerns, not browser command concerns.
+          </p>
+          <p>
+            Rust's ownership model pushed those boundaries into the design. Instead of passing loose data around, the
+            code has to be clear about who owns the session ID, what can be cloned safely, and when an operation should
+            fail because no active session exists.
+          </p>
+        </section>
+
+        <section class="blog-article-body">
+          <h2>Lesson 3: small abstractions matter</h2>
+          <p>
+            Locator design is a good example. A framework could expose only raw protocol strings, but that would make
+            user code easier to misuse. ArkenDriver exposes a <code>By</code> type with helpers like
+            <code>By::css</code>, <code>By::id</code>, <code>By::name</code>, and <code>By::xpath</code>.
+          </p>
+          <p>
+            That is a small abstraction, but it teaches an important framework lesson: good APIs reduce the number of
+            protocol details the caller has to remember while still mapping honestly to the underlying system.
+          </p>
+          <p>
+            The same idea shows up in the <code>WebElement</code> type. Once the driver finds an element, the caller
+            should not have to manually rebuild the session URL or remember the element ID format. The element can hold
+            the context it needs and expose behavior like <code>click</code> and <code>send_keys</code>.
+          </p>
+        </section>
+
+        <section class="blog-article-body">
+          <h2>Lesson 4: setup is part of the framework</h2>
+          <p>
+            Automation examples often skip over the most annoying part: getting the browser driver installed, launched,
+            and reachable. ArkenDriver includes infrastructure for downloading or reusing ChromeDriver, mapping platform
+            names to Chrome for Testing packages, starting the local driver process, and reading configuration from
+            <code>ArkenDriver.config</code>.
+          </p>
+          <p>
+            That work is not glamorous, but it is what makes automation usable. A framework that sends perfect protocol
+            requests still feels fragile if every user has to manually manage driver binaries, paths, ports, and process
+            startup details.
+          </p>
+          <p>
+            This was one of the bigger lessons from the project: developer experience lives in the edges. The core
+            commands are important, but the surrounding setup often decides whether the tool feels reliable.
+          </p>
+        </section>
+
+        <section class="blog-article-body">
+          <h2>Lesson 5: testing protocol code requires a different mindset</h2>
+          <p>
+            Testing a browser automation client can become slow or flaky if every test launches a real browser. For
+            ArkenDriver, the more useful pattern was to test protocol behavior directly.
+          </p>
+          <p>
+            Some tests verify serialization and deserialization: the session request, navigation payload, locator
+            mapping, element response parsing, and send-keys payload. An integration-style test uses a small local TCP
+            server to assert that the public API sends the expected HTTP requests and correctly reads a mock WebDriver
+            response.
+          </p>
+          <p>
+            That approach keeps the tests fast while still checking the important contract: when user code calls the
+            framework API, ArkenDriver should produce the right WebDriver traffic.
+          </p>
+        </section>
+
+        <section class="blog-article-body">
+          <h2>Lesson 6: error handling is framework design</h2>
+          <p>
+            A browser automation framework fails in many ways. The driver might not be running. The session might not
+            exist. The browser can return an unexpected response. The network request can fail. An element can be
+            missing, stale, or not interactable.
+          </p>
+          <p>
+            ArkenDriver's current error model is still early, but even the first version made one thing clear: error
+            handling is part of the API. A framework should not only fail. It should fail in a way that gives the caller
+            enough information to understand what happened.
+          </p>
+          <p>
+            That is especially important for automation because failures are often diagnostic. The error message is not
+            just for a developer reading logs. It may be the first clue in a test run, CI failure, or debugging session.
+          </p>
+        </section>
+
+        <section class="blog-article-body">
+          <h2>Lesson 7: a roadmap keeps experiments honest</h2>
+          <p>
+            ArkenDriver is intentionally early. It already covers core WebDriver client behavior like session creation,
+            navigation, element lookup, clicking, typing, ChromeDriver setup, and a terminal runner. The roadmap points
+            toward screenshot support, wait utilities, locator abstractions, Page Object Model support, logging, a test
+            runner, parallel execution, reporting, and CI/CD integration.
+          </p>
+          <p>
+            Writing that roadmap mattered because it turned the project from a pile of experiments into a framework
+            direction. It also made tradeoffs easier. Not every feature belongs in the first pass, but the design should
+            leave room for the features that are clearly coming.
+          </p>
+        </section>
+
+        <section class="blog-article-body">
+          <h2>What ArkenDriver demonstrates</h2>
+          <p>
+            ArkenDriver is a learning project, but it exercises practical engineering skills that apply far beyond
+            browser automation.
+          </p>
+          <ul>
+            <li>Rust API design around ownership, async behavior, and module boundaries</li>
+            <li>Direct W3C WebDriver protocol communication through typed HTTP requests</li>
+            <li>Browser session management, navigation commands, and element interactions</li>
+            <li>ChromeDriver installation, platform mapping, process startup, and configuration</li>
+            <li>Fast protocol-level testing without requiring a real browser in every test</li>
+            <li>CI-backed build and test checks for a Rust automation project</li>
+          </ul>
+          <p>
+            The larger lesson is that frameworks are not magic. They are layers of careful translation between a human
+            API and a lower-level system with strict rules. Building one from scratch made those layers visible.
+          </p>
+        </section>
+
+        <section class="blog-article-body">
+          <h2>The bigger takeaway</h2>
+          <p>
+            ArkenDriver taught me that learning a technology deeply often means rebuilding a small version of the tools
+            I already use. Not because the world needs another automation client immediately, but because the process
+            reveals what production tools are quietly solving.
+          </p>
+          <p>
+            Browser automation is not only clicking buttons. It is protocol communication, session lifecycle, process
+            management, typed API design, testability, configuration, and clear failure behavior.
+          </p>
+          <p>
+            That is the value of the project: it turned WebDriver from a black box into an architecture I can reason
+            about.
+          </p>
+          <p class="project-links">
+            <a class="project-link-button project-link-button-accent" href="../projects/arkendriver-demo.html">View the demo</a>
+            <a class="project-link-button" href="https://github.com/Hibob555556/ArkenDriver" target="_blank"
+              rel="noopener">View ArkenDriver on GitHub</a>
+            <a class="project-link-button" href="./">Back to blog</a>
+          </p>
+        </section>
+      </div>
+    </article>
+  </main>
+
+  <footer class="page-shell">
+    <section class="site-footer" data-reveal>
+      <p class="eyebrow">Contact</p>
+      <div class="footer-copy">
+        <h2>Open to full-stack software engineering opportunities.</h2>
+        <p>
+          I am especially interested in roles involving internal platforms, modern web applications, automation
+          systems, and software that makes team workflows faster and more reliable.
+        </p>
+      </div>
+
+      <div class="footer-actions">
+        <a class="button button-primary" href="https://www.linkedin.com/in/cayden-lunt-test-engineer" target="_blank"
+          rel="me noopener">
+          Connect on LinkedIn
+        </a>
+        <div class="social-links">
+          <a href="https://github.com/Hibob555556" target="_blank" rel="me noopener">
+            <img src="../images/github.svg" alt="GitHub" />
+            GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/cayden-lunt-test-engineer" target="_blank" rel="me noopener">
+            <img src="../images/linkedin.svg" alt="LinkedIn" />
+            LinkedIn
+          </a>
+        </div>
+      </div>
+
+      <p class="footer-note">
+        &copy;<span id="year">2026</span> Cayden Lunt | Utah, United States
+      </p>
+    </section>
+  </footer>
+
+  <script src="../scripts/main.js"></script>
+</body>
+
+</html>

@@ -42,6 +42,24 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
+    .arkendriver-demo-header {
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: end;
+    }
+
+    .arkendriver-demo-actions {
+        width: min(28rem, 100%);
+    }
+
+    .arkendriver-demo-grid {
+        grid-template-columns: minmax(19rem, 0.9fr) minmax(0, 1.1fr);
+        align-items: stretch;
+    }
+
+    .arkendriver-timeline {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
+
     .overview-notes {
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
