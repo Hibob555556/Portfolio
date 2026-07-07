@@ -5,8 +5,16 @@
     <link>https://www.caydenlunt.com/blog/</link>
     <description>Software engineering notes, technical milestones, and lessons learned from Cayden Lunt.</description>
     <language>en-us</language>
-    <lastBuildDate>Sat, 16 May 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 07 Jul 2026 00:00:00 GMT</lastBuildDate>
     <ttl>1440</ttl>
+
+    <item>
+      <title>Building Observable Incident Alerts with FastAPI, Kubernetes, Prometheus, and Grafana</title>
+      <link>https://www.caydenlunt.com/blog/building-observable-incident-alerts-fastapi-kubernetes-prometheus-grafana.html</link>
+      <guid>https://www.caydenlunt.com/blog/building-observable-incident-alerts-fastapi-kubernetes-prometheus-grafana.html</guid>
+      <pubDate>Tue, 07 Jul 2026 00:00:00 GMT</pubDate>
+      <description>How SmokeStack Ops turns simulated grill telemetry into a Kubernetes observability workflow with per-pod Prometheus scraping, Grafana dashboards, alert rules, and runbooks.</description>
+    </item>
 
     <item>
       <title>Building IronCanvas: Learning Geometry and WebAssembly Through a Browser-Based Graphics Experiment</title>

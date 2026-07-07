@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Cayden Lunt" />
+  <meta name="description"
+    content="Building observable incident alerts with FastAPI, Kubernetes, Prometheus, and Grafana in the SmokeStack Ops portfolio project." />
+  <meta name="keywords"
+    content="SmokeStack Ops, FastAPI, Kubernetes, Prometheus, Grafana, observability, incident alerts, DevOps portfolio, Cayden Lunt blog" />
+  <meta name="theme-color" content="#07111f" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title"
+    content="Building Observable Incident Alerts with FastAPI, Kubernetes, Prometheus, and Grafana" />
+  <meta property="og:description"
+    content="How SmokeStack Ops turns a simulated grill telemetry API into a local Kubernetes incident monitoring workflow with Prometheus alerts and Grafana dashboards." />
+  <meta property="og:url"
+    content="https://www.caydenlunt.com/blog/building-observable-incident-alerts-fastapi-kubernetes-prometheus-grafana.html" />
+  <meta property="og:site_name" content="Cayden Lunt Portfolio" />
+  <meta property="fb:app_id" content="966242223397117" />
+  <meta property="og:image" content="https://www.caydenlunt.com/images/blog/smokestack_ops_hero.avif" />
+  <meta property="og:image:alt"
+    content="SmokeStack Ops hero image representing Kubernetes observability, Prometheus alerts, and Grafana dashboards" />
+  <meta property="article:published_time" content="2026-07-07" />
+  <meta property="article:modified_time" content="2026-07-07" />
+  <meta property="article:author" content="Cayden Lunt" />
+  <meta property="article:section" content="Observability" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title"
+    content="Building Observable Incident Alerts with FastAPI, Kubernetes, Prometheus, and Grafana" />
+  <meta name="twitter:description"
+    content="A SmokeStack Ops case study on per-pod Prometheus scraping, alert rules, Grafana dashboards, and incident runbooks." />
+  <meta name="twitter:image" content="https://www.caydenlunt.com/images/blog/smokestack_ops_hero.avif" />
+  <title>Building Observable Incident Alerts with FastAPI, Kubernetes, Prometheus, and Grafana</title>
+  <link rel="canonical"
+    href="https://www.caydenlunt.com/blog/building-observable-incident-alerts-fastapi-kubernetes-prometheus-grafana.html" />
+  <link rel="alternate" type="application/rss+xml" title="Cayden Lunt Blog RSS"
+    href="https://www.caydenlunt.com/blog/feed.xml" />
+  <link rel="manifest" href="../site.webmanifest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="../styles/normalize.css" />
+  <link rel="stylesheet" href="../styles/main.css" />
+  <link rel="stylesheet" href="../styles/large.css" media="(min-width: 768px)" />
+  <link rel="icon" href="../images/portfolio.ico" type="image/x-icon" />
+  <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "BlogPosting",
+            "headline": "Building Observable Incident Alerts with FastAPI, Kubernetes, Prometheus, and Grafana",
+            "description": "Building observable incident alerts with FastAPI, Kubernetes, Prometheus, and Grafana in the SmokeStack Ops portfolio project.",
+            "author": {
+              "@type": "Person",
+              "name": "Cayden Lunt",
+              "url": "https://www.caydenlunt.com/"
+            },
+            "publisher": {
+              "@type": "Person",
+              "name": "Cayden Lunt",
+              "url": "https://www.caydenlunt.com/"
+            },
+            "datePublished": "2026-07-07",
+            "dateModified": "2026-07-07",
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": "https://www.caydenlunt.com/blog/building-observable-incident-alerts-fastapi-kubernetes-prometheus-grafana.html"
+            },
+            "image": "https://www.caydenlunt.com/images/blog/smokestack_ops_hero.avif"
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Portfolio",
+                "item": "https://www.caydenlunt.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Blog",
+                "item": "https://www.caydenlunt.com/blog/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Building Observable Incident Alerts",
+                "item": "https://www.caydenlunt.com/blog/building-observable-incident-alerts-fastapi-kubernetes-prometheus-grafana.html"
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+</head>
+
+<body class="is-loading">
+  <div id="loader" aria-hidden="true">
+    <div class="loader-mark">CL</div>
+    <div class="loader-line"></div>
+    <p>Loading article...</p>
+  </div>
+
+  <header class="site-header">
+    <a class="brand" href="../index.html" aria-label="Back to portfolio">
+      <span class="brand-mark">CL</span>
+      <span class="brand-copy">
+        <strong>Cayden Lunt</strong>
+        <span>Full-Stack Software Engineer</span>
+      </span>
+    </a>
+
+    <nav class="site-nav" aria-label="Primary">
+      <a href="../index.html#top">Overview</a>
+      <a href="../index.html#work">Projects</a>
+      <a href="./">Blog</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="page-shell">
+    <article class="blog-article-shell" data-reveal>
+      <div class="blog-breadcrumbs">
+        <a href="../index.html">Portfolio</a>
+        <span>/</span>
+        <a href="./">Blog</a>
+      </div>
+
+      <p class="eyebrow">DevOps Observability</p>
+      <h1>Building Observable Incident Alerts with FastAPI, Kubernetes, Prometheus, and Grafana</h1>
+      <div class="blog-meta">
+        <span>Published July 7, 2026</span>
+        <span>FastAPI</span>
+        <span>Kubernetes</span>
+        <span>Prometheus</span>
+        <span>Grafana</span>
+      </div>
+      <p class="hero-text">
+        SmokeStack Ops started as a small DevOps portfolio project: a FastAPI service that simulates telemetry from
+        smart pellet grills. The application itself is intentionally simple, but the operating environment is where the
+        real learning happens.
+      </p>
+
+      <div class="blog-card-image">
+        <img src="../images/blog/smokestack_ops_hero.avif"
+          alt="SmokeStack Ops hero image representing Kubernetes observability and incident alerts" />
+      </div>
+
+      <div class="blog-article-layout">
+        <section class="blog-article-body">
+          <h2>The observability loop</h2>
+          <p>
+            I wanted the project to demonstrate more than "an app runs in Kubernetes." I wanted it to show a realistic
+            observability loop: expose application metrics, scrape every running API pod, visualize service behavior in
+            Grafana, trigger a real alert condition, and document how to investigate and resolve it.
+          </p>
+          <p>
+            The final result is a local Kubernetes observability setup where a simulated grill temperature incident
+            appears in Prometheus, fires a <code>HighGrillTemperature</code> alert, shows up in Grafana, and then
+            resolves automatically after one minute.
+          </p>
+          <div class="blog-card-image">
+            <img src="../images/blog/grafana-dashboard-demo.png"
+              alt="Grafana dashboard for SmokeStack Ops showing grill telemetry and service metrics" />
+          </div>
+        </section>
+
+        <section class="blog-article-body">
+          <h2>The application</h2>
+          <p>
+            SmokeStack Ops is a Python FastAPI service with a few operational endpoints:
+          </p>
+          <div class="code-block">
+            <div class="code-block-label">
+              <span>FastAPI endpoints</span>
+              <span>HTTP</span>
+            </div>
+            <pre><code>GET  /health
+GET  /ready
+GET  /grills
+POST /simulate/spike
+GET  /metrics</code></pre>
+          </div>
+          <p>
+            The service exposes Prometheus-compatible metrics using <code>prometheus_client</code>:
+          </p>
+          <div class="code-block">
+            <div class="code-block-label">
+              <span>Application metrics</span>
+              <span>Prometheus</span>
+            </div>
+            <pre><code>smokestack_api_requests_total
+smokestack_active_grills
+smokestack_grill_temperature_fahrenheit
+smokestack_pellet_level_percent</code></pre>
+          </div>
+          <p>
+            The most important metric for the incident workflow is
+            <code>smokestack_grill_temperature_fahrenheit</code>. Each grill reports a temperature by
+            <code>grill_id</code>, and normal simulated grill temperatures are randomized between <code>180F</code> and
+            <code>450F</code>.
+          </p>
+        </section>
+
+        <section class="blog-article-body">
+          <h2>Simulating a real incident</h2>
+          <p>
+            To make alert testing repeatable, I added a dedicated incident grill named
+            <code>grill-incident-demo</code>.
+          </p>
+          <div class="code-block">
+            <div class="code-block-label">
+              <span>Trigger the spike</span>
+              <span>PowerShell</span>
+            </div>
+            <pre><code>Invoke-RestMethod -Method Post http://localhost:8000/simulate/spike</code></pre>
+          </div>
+          <p>
+            When that endpoint is called, the API sets the incident grill temperature to <code>625F</code>. The
+            incident stays active for 60 seconds, then returns to a safe idle value of <code>225F</code>.
+          </p>
+          <div class="code-block">
+            <div class="code-block-label">
+              <span>Incident response</span>
+              <span>JSON</span>
+            </div>
+            <pre><code>{
+  "event": "temperature_spike",
+  "grill_id": "grill-incident-demo",
+  "current_temp": 625,
+  "severity": "critical",
+  "alert_threshold": 600,
+  "duration_seconds": 60,
+  "expires_at": 1783463655
+}</code></pre>
+          </div>
+          <p>
+            I also added random scheduled demo incidents. During <code>/metrics</code> scrapes, each API pod can start a
+            one-minute incident every three to seven minutes. That gives the monitoring system something realistic to
+            catch even when I am not manually triggering the endpoint.
+          </p>
+        </section>
+
+        <section class="blog-article-body">
+          <h2>The first Prometheus problem</h2>
+          <p>
+            The original Prometheus configuration scraped the application through the normal Kubernetes Service:
+          </p>
+          <div class="code-block">
+            <div class="code-block-label">
+              <span>Original target</span>
+              <span>Kubernetes DNS</span>
+            </div>
+            <pre><code>smokestack-api-service.smokestack.svc.cluster.local:80</code></pre>
+          </div>
+          <p>
+            That worked while there was only one pod, but it was not good enough once the deployment had two replicas.
+            The incident metric is stored in the memory of the API pod that handled the request. If
+            <code>/simulate/spike</code> hits pod A, but Prometheus' next scrape through the load-balanced Service hits
+            pod B, Prometheus can miss the incident.
+          </p>
+          <p>
+            That is a subtle but important observability bug. The app had the metric, and Prometheus had a scrape
+            target, but the scrape topology was wrong for per-pod in-memory metrics.
+          </p>
+        </section>
+
+        <section class="blog-article-body">
+          <h2>Fixing Prometheus with per-pod scraping</h2>
+          <p>
+            I added a headless Kubernetes Service just for metrics:
+          </p>
+          <div class="code-block">
+            <div class="code-block-label">
+              <span>Headless metrics Service</span>
+              <span>YAML</span>
+            </div>
+            <pre><code>apiVersion: v1
+kind: Service
+metadata:
+  name: smokestack-api-metrics
+  namespace: smokestack
+spec:
+  clusterIP: None
+  selector:
+    app: smokestack-api
+  ports:
+    - name: metrics
+      protocol: TCP
+      port: 8000
+      targetPort: 8000</code></pre>
+          </div>
+          <p>
+            Because this Service is headless, DNS resolves to the individual API pod IPs instead of one load-balanced
+            virtual IP. Prometheus can then use DNS service discovery to scrape each pod directly.
+          </p>
+          <div class="code-block">
+            <div class="code-block-label">
+              <span>Prometheus scrape config</span>
+              <span>YAML</span>
+            </div>
+            <pre><code>scrape_configs:
+  - job_name: "smokestack-api-pods"
+    metrics_path: "/metrics"
+    dns_sd_configs:
+      - names:
+          - "smokestack-api-metrics.smokestack.svc.cluster.local"
+        type: A
+        port: 8000</code></pre>
+          </div>
+          <p>
+            Now Prometheus sees each API pod as its own target.
+          </p>
+          <div class="blog-card-image">
+            <img src="../images/blog/prometheus-two-targets.png"
+              alt="Prometheus targets page showing both SmokeStack Ops API pods as up" />
+          </div>
+        </section>
+
+        <section class="blog-article-body">
+          <h2>The alert rule</h2>
+          <p>
+            The Prometheus alert rule is intentionally simple: if any grill reports a temperature above
+            <code>600F</code> for 30 seconds, fire a critical alert.
+          </p>
+          <div class="code-block">
+            <div class="code-block-label">
+              <span>HighGrillTemperature</span>
+              <span>YAML</span>
+            </div>
+            <pre><code>- alert: HighGrillTemperature
+  expr: smokestack_grill_temperature_fahrenheit > 600
+  for: 30s
+  labels:
+    severity: critical
+    service: smokestack-api
+    team: devops
+  annotations:
+    summary: "High grill temperature detected"
+    description: "Grill {{ $labels.grill_id }} is reporting {{ $value }}F, which is above the 600F safety threshold."
+    runbook_url: "docs/high-temperature-incident-runbook.md"</code></pre>
+          </div>
+          <p>
+            The manual incident lasts 60 seconds, and the alert requires the condition to hold for 30 seconds. That
+            gives Prometheus enough time to scrape and evaluate the spike before the metric resolves.
+          </p>
+          <div class="code-block">
+            <div class="code-block-label">
+              <span>Useful Prometheus checks</span>
+              <span>PromQL</span>
+            </div>
+            <pre><code>smokestack_grill_temperature_fahrenheit{grill_id="grill-incident-demo"}
+ALERTS{alertname="HighGrillTemperature"}</code></pre>
+          </div>
+          <div class="blog-card-image">
+            <img src="../images/blog/high-temp-firing.png"
+              alt="Prometheus alert page showing HighGrillTemperature firing" />
+          </div>
+        </section>
+
+        <section class="blog-article-body">
+          <h2>Grafana got messy, then better</h2>
+          <p>
+            Once Prometheus started scraping each pod, Grafana initially looked messy. The dashboard was showing
+            duplicate series because each API pod exported the same logical grill IDs. For troubleshooting, raw per-pod
+            series are useful. For a dashboard, they are noisy.
+          </p>
+          <p>
+            I changed the Grafana queries to aggregate pod-level metrics into logical application-level views:
+          </p>
+          <div class="code-block">
+            <div class="code-block-label">
+              <span>Dashboard queries</span>
+              <span>PromQL</span>
+            </div>
+            <pre><code>max(smokestack_active_grills)
+sum by (endpoint) (smokestack_api_requests_total)
+max by (grill_id) (smokestack_grill_temperature_fahrenheit)
+avg by (grill_id) (smokestack_pellet_level_percent)</code></pre>
+          </div>
+          <p>
+            The temperature panel uses <code>max by (grill_id)</code> so the incident stays visible even if only one API
+            pod reports <code>625F</code>. That gave the dashboard the right balance: Prometheus still has pod-level
+            detail for investigation, while Grafana tells the application-level story clearly.
+          </p>
+        </section>
+
+        <section class="blog-article-body">
+          <h2>Runbooks matter</h2>
+          <p>
+            I also added a high-temperature incident runbook, and the alert links directly to it through
+            <code>runbook_url</code>. The runbook explains what condition triggered the alert, how to query the incident
+            metric, how to check Prometheus targets, how to inspect API pod logs, and what normal resolution looks like.
+          </p>
+          <p>
+            For this demo, resolution is expected after the 60-second incident window expires. Prometheus should then
+            scrape the safe <code>225F</code> value and clear the alert.
+          </p>
+        </section>
+
+        <section class="blog-article-body">
+          <h2>What I learned</h2>
+          <p>
+            The most useful part of this project was not just adding Prometheus. It was finding the edge case where
+            "Prometheus is scraping the app" was technically true, but still not reliable enough.
+          </p>
+          <p>
+            The important lesson: if an application exposes pod-local metrics, Prometheus should scrape the pods, not
+            only a load-balanced Service.
+          </p>
+          <p>
+            The other lesson was about dashboards. Raw Prometheus series are great for investigation, but Grafana panels
+            often need aggregation so they tell the operational story clearly.
+          </p>
+        </section>
+
+        <section class="blog-article-body">
+          <h2>Final architecture</h2>
+          <p>
+            At the end of this iteration, SmokeStack Ops has:
+          </p>
+          <ul>
+            <li>FastAPI application metrics</li>
+            <li>Kubernetes deployment with two API replicas</li>
+            <li>headless metrics Service for per-pod discovery</li>
+            <li>Prometheus scrape config and alert rule</li>
+            <li>Grafana dashboard with aggregated app-level panels</li>
+            <li>one-minute manual and scheduled incident simulation</li>
+            <li>operational runbooks for troubleshooting</li>
+          </ul>
+          <p>
+            This turned a simple portfolio API into a small but realistic incident monitoring workflow.
+          </p>
+          <p class="project-links">
+            <a class="project-link-button project-link-button-accent" href="./">Back to blog</a>
+          </p>
+        </section>
+      </div>
+    </article>
+  </main>
+
+  <footer class="page-shell">
+    <section class="site-footer" data-reveal>
+      <p class="eyebrow">Contact</p>
+      <div class="footer-copy">
+        <h2>Open to full-stack software engineering opportunities.</h2>
+        <p>
+          I am especially interested in roles involving internal platforms, modern web applications, automation
+          systems, and software that makes team workflows faster and more reliable.
+        </p>
+      </div>
+
+      <div class="footer-actions">
+        <a class="button button-primary" href="https://www.linkedin.com/in/cayden-lunt-test-engineer" target="_blank"
+          rel="me noopener">
+          Connect on LinkedIn
+        </a>
+        <div class="social-links">
+          <a href="https://github.com/Hibob555556" target="_blank" rel="me noopener">
+            <img src="../images/github.svg" alt="GitHub" />
+            GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/cayden-lunt-test-engineer" target="_blank" rel="me noopener">
+            <img src="../images/linkedin.svg" alt="LinkedIn" />
+            LinkedIn
+          </a>
+        </div>
+      </div>
+
+      <p class="footer-note">
+        &copy;<span id="year">2026</span> Cayden Lunt | Utah, United States
+      </p>
+    </section>
+  </footer>
+
+  <script src="../scripts/main.js"></script>
+</body>
+
+</html>
