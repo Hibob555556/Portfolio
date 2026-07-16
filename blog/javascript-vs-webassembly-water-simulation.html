@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Cayden Lunt" />
+  <meta name="description" content="What an interactive water simulation reveals about honest JavaScript and WebAssembly performance measurement." />
+  <meta name="keywords" content="JavaScript vs WebAssembly, WASM performance, water simulation, WebGL benchmark, typed arrays" />
+  <meta name="theme-color" content="#07111f" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="JavaScript vs WebAssembly: What a Water Simulation Actually Teaches Us" />
+  <meta property="og:description" content="A like-for-like browser experiment about what WASM improves, what it does not, and how to measure the difference honestly." />
+  <meta property="og:url" content="https://www.caydenlunt.com/blog/javascript-vs-webassembly-water-simulation.html" />
+  <meta property="og:site_name" content="Cayden Lunt Portfolio" />
+  <meta property="article:published_time" content="2026-07-15" />
+  <meta property="article:modified_time" content="2026-07-15" />
+  <meta property="article:author" content="Cayden Lunt" />
+  <meta property="article:section" content="Programming" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="JavaScript vs WebAssembly: What a Water Simulation Actually Teaches Us" />
+  <meta name="twitter:description" content="An honest, interactive comparison of JavaScript and C/WASM water solvers." />
+  <title>JavaScript vs WebAssembly: What a Water Simulation Actually Teaches Us</title>
+  <link rel="canonical" href="https://www.caydenlunt.com/blog/javascript-vs-webassembly-water-simulation.html" />
+  <link rel="alternate" type="application/rss+xml" title="Cayden Lunt Blog RSS" href="https://www.caydenlunt.com/blog/feed.xml" />
+  <link rel="manifest" href="../site.webmanifest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles/normalize.css" />
+  <link rel="stylesheet" href="../styles/main.css" />
+  <link rel="stylesheet" href="../styles/large.css" media="(min-width: 768px)" />
+  <link rel="icon" href="../images/portfolio.ico" type="image/x-icon" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"JavaScript vs WebAssembly: What a Water Simulation Actually Teaches Us","description":"What an interactive water simulation reveals about honest JavaScript and WebAssembly performance measurement.","author":{"@type":"Person","name":"Cayden Lunt","url":"https://www.caydenlunt.com/"},"datePublished":"2026-07-15","dateModified":"2026-07-15","mainEntityOfPage":"https://www.caydenlunt.com/blog/javascript-vs-webassembly-water-simulation.html"}</script>
+</head>
+<body class="is-loading">
+  <div id="loader" aria-hidden="true"><div class="loader-mark">CL</div><div class="loader-line"></div><p>Loading article...</p></div>
+  <header class="site-header">
+    <a class="brand" href="../index.html" aria-label="Back to portfolio"><span class="brand-mark">CL</span><span class="brand-copy"><strong>Cayden Lunt</strong><span>Full-Stack Software Engineer</span></span></a>
+    <nav class="site-nav" aria-label="Primary"><a href="../index.html#top">Overview</a><a href="../index.html#work">Projects</a><a href="./">Blog</a><a href="../index.html#contact">Contact</a></nav>
+  </header>
+  <main class="page-shell">
+    <article class="blog-article-shell" data-reveal>
+      <div class="blog-breadcrumbs"><a href="../index.html">Portfolio</a><span>/</span><a href="./">Blog</a></div>
+      <p class="eyebrow">JavaScript · WebAssembly · WebGL</p>
+      <h1>JavaScript vs WebAssembly: What a Water Simulation Actually Teaches Us</h1>
+      <div class="blog-meta"><span>Published July 15, 2026</span><span>JavaScript</span><span>WebAssembly</span><span>Performance</span></div>
+      <p class="hero-text">WebAssembly is often introduced with a simple promise: compile C, run it in the browser, and get native-like performance. That promise is directionally useful, but incomplete. This <a href="https://water.caydenlunt.com" target="_blank" rel="noopener">interactive water demo</a> provides a better way to discuss what WASM improves, what it does not, and how to measure the difference honestly.</p>
+      <div class="blog-article-layout">
+        <section class="blog-article-body">
+          <p>The demo runs the same height-field water simulation twice. One solver is written in JavaScript with typed arrays. The other is written in C and compiled to WebAssembly. Both feed their height data into the same WebGL renderer, which draws the ocean surface and lighting.</p>
+          <p>That shared renderer is important. If one version used a simpler visual effect, its frame rate would say little about the simulation language. Keeping the rendering path identical leaves one meaningful variable: the cost of updating the water state.</p>
+        </section>
+        <section class="blog-article-body">
+          <h2>Why FPS Was the Wrong Metric</h2>
+          <p>The first version displayed frames per second. Both implementations usually reported the same value because they used <code>requestAnimationFrame</code>. A browser schedules those callbacks around the display refresh rate, so two renderers on the same page naturally tend to report the same FPS.</p>
+          <p>Frame rate also combines several unrelated costs:</p>
+          <ul><li>Updating the height field</li><li>Uploading simulation data to the GPU</li><li>Running the WebGL shaders</li><li>Compositing the page</li><li>Waiting for the display refresh cycle</li></ul>
+          <p>Most of those costs are identical in this comparison. Counting completed frames therefore hides the relatively small section we actually want to examine.</p>
+          <p>The improved benchmark times only the solver call. It reports a rolling average in microseconds per simulation step. Both progress bars use a fixed zero-to-500-microsecond scale, and values above 500 microseconds are marked red. A fixed scale makes the bars directly comparable over time; neither bar quietly rescales itself to make small changes appear dramatic.</p>
+        </section>
+        <section class="blog-article-body">
+          <h2>What the Solvers Do</h2>
+          <p>Each solver maintains two arrays: surface height and vertical velocity. For every interior cell, it samples four neighboring heights and calculates a discrete Laplacian. That value approximates local surface curvature and accelerates the cell toward its neighbors.</p>
+          <p>Velocity damping removes energy over time, preventing ripples from oscillating forever. Pointer movement applies a localized impulse. The solver writes into separate next-state buffers so every cell in a step reads the same previous state. Updating the grid in place would create directional artifacts because later cells would read partially updated neighbors.</p>
+          <p>The JavaScript and C implementations use the same:</p>
+          <ul><li>Grid dimensions</li><li>Initial conditions</li><li>Wave coefficient</li><li>Velocity damping</li><li>Pointer radius and impulse strength</li><li>Height and velocity limits</li><li>Double-buffered update strategy</li></ul>
+          <p>That parity matters more than the language labels. A faster algorithm will usually beat a slower algorithm regardless of whether it is implemented in JavaScript or WASM.</p>
+        </section>
+        <section class="blog-article-body">
+          <h2>Where WebAssembly Can Win</h2>
+          <p>The solver is a favorable WASM workload. It performs predictable numeric work over contiguous memory with few branches and no DOM access. C compilers can optimize such loops aggressively, and WASM gives the browser a compact, typed instruction stream.</p>
+          <p>WASM becomes increasingly attractive when a workload has:</p>
+          <ul><li>Large numeric loops</li><li>Stable memory layouts</li><li>Existing C, C++, or Rust code</li><li>Substantial computation per call</li><li>Limited communication with JavaScript</li></ul>
+          <p>The water grid is intentionally modest, so the absolute difference may be measured in tens or hundreds of microseconds. Increasing the grid size or running multiple substeps per frame would make solver cost more significant and may make the relative advantage clearer.</p>
+        </section>
+        <section class="blog-article-body">
+          <h2>Why WASM Does Not Automatically Win</h2>
+          <p>Modern JavaScript engines optimize typed-array loops well. For a small grid, JavaScript can be surprisingly competitive. Calling across the JavaScript/WASM boundary also has a cost, although one call per complete simulation step keeps that overhead small.</p>
+          <p>Data movement can erase a WASM advantage. This demo allocates the height and velocity fields inside WASM memory and lets WebGL consume a view of the resulting height data. Copying large arrays back and forth on every step would produce a benchmark of memory transfer rather than numerical computation.</p>
+          <p>Results also vary by browser, CPU, power mode, background activity, and thermal state. A rolling browser measurement is useful for exploration, not a universal performance claim. Serious evaluation should include warm-up, repeated trials, multiple grid sizes, percentile timings, and several browsers and devices.</p>
+        </section>
+        <section class="blog-article-body">
+          <h2>The Practical Lesson</h2>
+          <p>The strongest reason to use WebAssembly is not a belief that it makes every function faster. It is the ability to bring optimized systems-language code and predictable numeric workloads to the web while keeping the surrounding interface in JavaScript.</p>
+          <p>This water demo illustrates a sensible division of labor:</p>
+          <ul><li>JavaScript manages the page, input, animation scheduling, and presentation.</li><li>JavaScript or C/WASM updates the simulation state.</li><li>WebGL performs the shared, GPU-heavy rendering.</li></ul>
+          <p>Measure the narrow operation you intend to optimize, keep every other part of the comparison identical, and report absolute time alongside relative speed. When WASM wins under those conditions, the result means something. When JavaScript is close—or faster—that result is equally valuable.</p>
+          <p class="project-links"><a class="project-link-button project-link-button-accent" href="https://water.caydenlunt.com" target="_blank" rel="noopener">Open the water demo</a><a class="project-link-button" href="./">Back to blog</a></p>
+        </section>
+      </div>
+    </article>
+  </main>
+  <footer class="page-shell"><section class="site-footer" data-reveal><p class="eyebrow">Contact</p><div class="footer-copy"><h2>Open to full-stack software engineering opportunities.</h2><p>I am especially interested in roles involving internal platforms, modern web applications, automation systems, and software that makes team workflows faster and more reliable.</p></div><div class="footer-actions"><a class="button button-primary" href="https://www.linkedin.com/in/cayden-lunt-test-engineer" target="_blank" rel="me noopener">Connect on LinkedIn</a></div><p class="footer-note">&copy;<span id="year">2026</span> Cayden Lunt | Utah, United States</p></section></footer>
+  <script src="../scripts/main.js"></script>
+</body>
+</html>

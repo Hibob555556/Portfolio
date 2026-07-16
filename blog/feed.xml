@@ -5,8 +5,16 @@
     <link>https://www.caydenlunt.com/blog/</link>
     <description>Software engineering notes, technical milestones, and lessons learned from Cayden Lunt.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 07 Jul 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 15 Jul 2026 00:00:00 GMT</lastBuildDate>
     <ttl>1440</ttl>
+
+    <item>
+      <title>JavaScript vs WebAssembly: What a Water Simulation Actually Teaches Us</title>
+      <link>https://www.caydenlunt.com/blog/javascript-vs-webassembly-water-simulation.html</link>
+      <guid>https://www.caydenlunt.com/blog/javascript-vs-webassembly-water-simulation.html</guid>
+      <pubDate>Wed, 15 Jul 2026 00:00:00 GMT</pubDate>
+      <description>An interactive, like-for-like water solver experiment about what WASM improves, what it does not, and how to measure the difference honestly.</description>
+    </item>
 
     <item>
       <title>Building Observable Incident Alerts with FastAPI, Kubernetes, Prometheus, and Grafana</title>
